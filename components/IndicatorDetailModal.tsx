@@ -71,18 +71,18 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col">
         {/* Header Bar */}
-        <div className="bg-slate-900 text-white p-6 flex items-start justify-between border-b border-slate-800 shrink-0">
+        <div className="bg-[#1B2028] text-white p-6 flex items-start justify-between border-b border-[#2D3642] shrink-0">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider bg-emerald-950 px-2.5 py-0.5 rounded border border-emerald-800">
+              <span className="text-[10px] font-bold text-[#F7C331] uppercase tracking-wider bg-[#232A34] px-2.5 py-0.5 rounded border border-[#2D3642]">
                 {indicator.category}
               </span>
-              <span className="text-[10px] font-bold text-slate-300 bg-slate-800 px-2 py-0.5 rounded">
+              <span className="text-[10px] font-bold text-[#DCC7AA] bg-[#232A34] px-2 py-0.5 rounded">
                 Verified Dataset
               </span>
             </div>
             <h2 className="text-xl font-bold text-white">{indicator.name}</h2>
-            <p className="text-xs text-slate-400">{indicator.description}</p>
+            <p className="text-xs text-[#6B7A8F]">{indicator.description}</p>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
@@ -90,8 +90,8 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
               onClick={() => onToggleWatchlist(indicator.id)}
               className={`p-2 rounded-xl border transition-colors ${
                 isWatchlisted
-                  ? 'bg-emerald-600 text-white border-emerald-500'
-                  : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                  ? 'bg-[#F7882F] text-white border-[#F7882F]'
+                  : 'bg-[#232A34] text-[#DCC7AA] border-[#2D3642] hover:bg-[#2D3642]'
               }`}
               title="Save to Watchlist"
             >
@@ -99,7 +99,7 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 border border-slate-700 transition-colors"
+              className="p-2 rounded-xl bg-[#232A34] text-[#DCC7AA] hover:text-white hover:bg-[#2D3642] border border-[#2D3642] transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -109,22 +109,22 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
         {/* Modal Scrollable Body */}
         <div className="p-6 overflow-y-auto space-y-6 text-slate-800 text-xs">
           {/* Key Metric Highlight Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#FAF6EF] p-4 rounded-xl border border-[#DCC7AA]">
             <div>
-              <div className="text-[10px] text-slate-500 font-medium">India&apos;s Global Rank</div>
+              <div className="text-[10px] text-[#6B7A8F] font-medium">India&apos;s Global Rank</div>
               <div className="text-2xl font-black text-slate-900">
                 #{indicator.latestIndiaRank}
-                <span className="text-xs font-normal text-slate-500"> / {indicator.totalCountriesMeasured}</span>
+                <span className="text-xs font-normal text-[#6B7A8F]"> / {indicator.totalCountriesMeasured}</span>
               </div>
             </div>
 
             <div>
-              <div className="text-[10px] text-slate-500 font-medium">Metric Score / Value</div>
-              <div className="text-base font-black text-emerald-700 mt-1">{indicator.latestIndiaValue}</div>
+              <div className="text-[10px] text-[#6B7A8F] font-medium">Metric Score / Value</div>
+              <div className="text-base font-black text-[#D46917] mt-1">{indicator.latestIndiaValue}</div>
             </div>
 
             <div>
-              <div className="text-[10px] text-slate-500 font-medium">10-Year Trajectory</div>
+              <div className="text-[10px] text-[#6B7A8F] font-medium">10-Year Trajectory</div>
               <div className="text-xs font-bold text-slate-800 mt-1">{indicator.changeDelta}</div>
             </div>
           </div>
@@ -132,20 +132,20 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
           {/* Historical Line Chart */}
           <div className="space-y-2">
             <h3 className="font-bold text-slate-900 text-sm">Historical Trajectory (2015-2025)</h3>
-            <div className="h-56 w-full pt-2 bg-slate-50 rounded-xl p-3 border border-slate-100">
+            <div className="h-56 w-full pt-2 bg-[#FAF6EF] rounded-xl p-3 border border-[#DCC7AA]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={indicator.historicalData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis dataKey="year" tick={{ fontSize: 11, fill: '#64748b' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#DCC7AA" />
+                  <XAxis dataKey="year" tick={{ fontSize: 11, fill: '#6B7A8F' }} />
                   <YAxis
                     reversed={!indicator.higherIsBetter}
                     domain={['dataMin - 2', 'dataMax + 2']}
-                    tick={{ fontSize: 11, fill: '#64748b' }}
+                    tick={{ fontSize: 11, fill: '#6B7A8F' }}
                   />
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#0f172a', borderRadius: '8px', color: '#fff', fontSize: '11px' }}
+                    contentStyle={{ backgroundColor: '#1B2028', borderRadius: '8px', color: '#fff', fontSize: '11px', borderColor: '#F7882F' }}
                   />
-                  <Line type="monotone" dataKey="india" name="India" stroke="#10b981" strokeWidth={3} dot={{ r: 4 }} />
+                  <Line type="monotone" dataKey="india" name="India" stroke="#F7882F" strokeWidth={3} dot={{ r: 4 }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -153,33 +153,33 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
 
           {/* Key Drivers & Strengths vs Gaps */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+            <div className="bg-[#FAF6EF] p-4 rounded-xl border border-[#DCC7AA] space-y-2">
               <h4 className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-[#F7882F]" />
                 <span>Primary Drivers & Reform Initiatives</span>
               </h4>
               <ul className="space-y-1 text-slate-600 pl-1">
                 {indicator.keyDriversAndPolicies.map((p, idx) => (
                   <li key={idx} className="flex items-start gap-1">
-                    <span className="text-emerald-600 font-bold">•</span>
+                    <span className="text-[#F7882F] font-bold">•</span>
                     <span>{p}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+            <div className="bg-[#FAF6EF] p-4 rounded-xl border border-[#DCC7AA] space-y-2">
               <h4 className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                <AlertTriangle className="w-4 h-4 text-amber-600" />
+                <AlertTriangle className="w-4 h-4 text-[#F7882F]" />
                 <span>Strengths vs Strategic Bottlenecks</span>
               </h4>
               <div className="space-y-1.5 text-slate-600">
                 <div>
-                  <strong className="text-emerald-800">Strengths:</strong>{' '}
+                  <strong className="text-[#D46917]">Strengths:</strong>{' '}
                   {indicator.strengthsAndGaps.strengths.join(', ')}
                 </div>
                 <div>
-                  <strong className="text-amber-800">Gaps:</strong>{' '}
+                  <strong className="text-[#6B7A8F]">Gaps:</strong>{' '}
                   {indicator.strengthsAndGaps.gaps.join(', ')}
                 </div>
               </div>
@@ -187,37 +187,37 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
           </div>
 
           {/* AI Breakdown Section */}
-          <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 space-y-3">
+          <div className="bg-[#1B2028] text-white p-5 rounded-2xl border border-[#2D3642] space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-emerald-400" />
+                <Sparkles className="w-4 h-4 text-[#F7C331]" />
                 <h4 className="font-bold text-xs text-white">Gemini AI Deep Analytical Breakdown</h4>
               </div>
 
               <button
                 onClick={fetchAiExplanation}
                 disabled={loadingAi}
-                className="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors disabled:opacity-50"
+                className="px-3 py-1 rounded-lg bg-[#F7882F] hover:bg-[#D46917] text-white font-semibold text-xs transition-colors disabled:opacity-50"
               >
                 {loadingAi ? 'Analyzing...' : 'Generate AI Analysis'}
               </button>
             </div>
 
             {aiExplanation ? (
-              <div className="p-3 bg-slate-800/80 rounded-xl text-slate-200 text-xs leading-relaxed max-h-52 overflow-y-auto whitespace-pre-line border border-slate-700">
+              <div className="p-3 bg-[#232A34] rounded-xl text-[#DCC7AA] text-xs leading-relaxed max-h-52 overflow-y-auto whitespace-pre-line border border-[#2D3642]">
                 {aiExplanation}
               </div>
             ) : (
-              <p className="text-slate-400 text-xs">
+              <p className="text-[#6B7A8F] text-xs">
                 Click above to generate an AI-powered policy breakdown and rank improvement roadmap for this metric.
               </p>
             )}
           </div>
 
           {/* Source Attribution Link */}
-          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+          <div className="p-3 bg-[#FAF6EF] rounded-xl border border-[#DCC7AA] flex items-center justify-between">
             <div>
-              <div className="text-[10px] text-slate-400 uppercase font-bold">Source Publisher</div>
+              <div className="text-[10px] text-[#6B7A8F] uppercase font-bold">Source Publisher</div>
               <div className="font-bold text-slate-800">{indicator.source.organization} ({indicator.source.datasetName})</div>
             </div>
 
@@ -225,7 +225,7 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
               href={indicator.source.url}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1 text-emerald-700 font-bold hover:underline"
+              className="flex items-center gap-1 text-[#D46917] font-bold hover:underline"
             >
               <span>Visit Source</span>
               <ExternalLink className="w-3.5 h-3.5" />

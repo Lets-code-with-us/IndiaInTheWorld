@@ -45,7 +45,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 font-sans selection:bg-emerald-200">
+    <div className="min-h-screen bg-[#FAF6EF] text-slate-900 font-sans selection:bg-[#F7882F]/20">
       {/* Top Navbar Header */}
       <Navbar
         activeTab={activeTab}
@@ -104,14 +104,14 @@ export default function Home() {
       </main>
 
       {/* Footer Bar */}
-      <footer className="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
+      <footer className="bg-[#1B2028] text-[#DCC7AA] text-xs py-8 border-t border-[#2D3642]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center md:text-left">
-            <div className="font-bold text-slate-200">India Global Index — Policy Intelligence & World Rankings</div>
-            <div>Aggregating datasets from World Bank, IMF, UN, WHO, WEF, WIPO, RSF & Transparency International.</div>
+            <div className="font-bold text-white">India Global Index — Policy Intelligence & World Rankings</div>
+            <div className="text-[#6B7A8F]">Aggregating datasets from World Bank, IMF, UN, WHO, WEF, WIPO, RSF & Transparency International.</div>
           </div>
-          <div className="flex items-center gap-4 text-slate-400">
-            <span>Powered by Gemini 3.1 Pro Reasoning</span>
+          <div className="flex items-center gap-4 text-[#DCC7AA]">
+            <span>Powered by Gemini 2.5 AI</span>
             <span>•</span>
             <span>2026 Verified Edition</span>
           </div>

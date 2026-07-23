@@ -1,4 +1,4 @@
-import { GoogleGenAI, ThinkingLevel } from '@google/genai';
+import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
@@ -105,20 +105,15 @@ Structure your output in clear Markdown:
       prompt = promptCustom || 'Provide a concise analytical summary on India’s global economic and technological rankings.';
     }
 
-    // Call Gemini 3.1 Pro Preview with HIGH Thinking Level per prompt instructions
+    // Call Gemini 2.5 Flash
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-pro-preview',
+      model: 'gemini-2.5-flash',
       contents: prompt,
-      config: {
-        thinkingConfig: {
-          thinkingLevel: ThinkingLevel.HIGH,
-        },
-      },
     });
 
     return NextResponse.json({
       text: response.text || 'Analysis generation completed.',
-      model: 'gemini-3.1-pro-preview',
+      model: 'gemini-2.5-flash',
     });
   } catch (err: any) {
     console.error('Gemini Insights Error:', err);

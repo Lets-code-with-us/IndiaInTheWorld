@@ -59,16 +59,16 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl max-w-2xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
         {/* Modal Header */}
-        <div className="bg-slate-900 text-white p-5 flex items-center justify-between border-b border-slate-800">
+        <div className="bg-[#1B2028] text-white p-5 flex items-center justify-between border-b border-[#2D3642]">
           <div className="flex items-center gap-2.5">
-            <Bookmark className="w-5 h-5 text-emerald-400" />
+            <Bookmark className="w-5 h-5 text-[#F7C331]" />
             <div>
               <h3 className="font-bold text-sm text-white">Saved Indicators Watchlist</h3>
-              <p className="text-xs text-slate-400">{watchlistedIndicators.length} indicators saved</p>
+              <p className="text-xs text-[#6B7A8F]">{watchlistedIndicators.length} indicators saved</p>
             </div>
           </div>
 
-          <button onClick={onClose} className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white">
+          <button onClick={onClose} className="p-1.5 rounded-lg bg-[#232A34] text-[#DCC7AA] hover:text-white">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -79,12 +79,12 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
             watchlistedIndicators.map((ind) => (
               <div
                 key={ind.id}
-                className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-3 hover:border-emerald-300 transition-colors"
+                className="p-3 bg-[#FAF6EF] rounded-xl border border-[#DCC7AA] flex items-center justify-between gap-3 hover:border-[#F7882F] transition-colors"
               >
                 <div>
                   <div className="font-bold text-slate-900">{ind.name}</div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">
-                    {ind.category} • Rank <strong className="text-emerald-700">#{ind.latestIndiaRank}</strong> ({ind.latestIndiaValue})
+                  <div className="text-[11px] text-[#6B7A8F] mt-0.5">
+                    {ind.category} • Rank <strong className="text-[#D46917]">#{ind.latestIndiaRank}</strong> ({ind.latestIndiaValue})
                   </div>
                 </div>
 
@@ -98,8 +98,8 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
               </div>
             ))
           ) : (
-            <div className="py-12 text-center text-slate-500 space-y-2">
-              <Globe className="w-8 h-8 text-slate-300 mx-auto" />
+            <div className="py-12 text-center text-[#6B7A8F] space-y-2">
+              <Globe className="w-8 h-8 text-[#DCC7AA] mx-auto" />
               <div className="font-bold">Your Watchlist is empty</div>
               <p className="text-[11px]">Click the bookmark icon on any indicator to save it for quick export.</p>
             </div>
@@ -107,11 +107,11 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+        <div className="p-4 bg-[#FAF6EF] border-t border-[#DCC7AA] flex items-center justify-between">
           {watchlistedIndicators.length > 0 && (
             <button
               onClick={onClearWatchlist}
-              className="text-slate-500 hover:text-red-600 text-xs font-semibold"
+              className="text-[#6B7A8F] hover:text-red-600 text-xs font-semibold"
             >
               Clear All
             </button>
@@ -121,7 +121,7 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
             <button
               onClick={exportCSV}
               disabled={watchlistedIndicators.length === 0}
-              className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center gap-2 shadow-sm transition-colors disabled:opacity-50"
+              className="px-4 py-2 rounded-xl bg-[#F7882F] hover:bg-[#D46917] text-white text-xs font-semibold flex items-center gap-2 shadow-sm transition-colors disabled:opacity-50"
             >
               <FileSpreadsheet className="w-4 h-4" />
               <span>Export CSV</span>
