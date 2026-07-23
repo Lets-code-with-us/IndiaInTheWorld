@@ -9,6 +9,7 @@ import { GovernanceDashboard } from '../components/GovernanceDashboard';
 import { HealthcareDashboard } from '../components/HealthcareDashboard';
 import { EnvironmentDashboard } from '../components/EnvironmentDashboard';
 import { SafetyDashboard } from '../components/SafetyDashboard';
+import { EqualityDashboard } from '../components/EqualityDashboard';
 import { CategoryExplorer } from '../components/CategoryExplorer';
 import { CountryComparison } from '../components/CountryComparison';
 import { InteractiveWorldMap } from '../components/InteractiveWorldMap';
@@ -58,6 +59,8 @@ export default function Home() {
       setActiveTab('environment');
     } else if (cat === 'Safety') {
       setActiveTab('safety');
+    } else if (cat === 'Equality') {
+      setActiveTab('equality');
     } else {
       setSelectedCategory(cat);
       setActiveTab('categories');
@@ -126,6 +129,15 @@ export default function Home() {
 
         {activeTab === 'safety' && (
           <SafetyDashboard
+            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+            onOpenAiAssistant={handleOpenAiAssistant}
+            onToggleWatchlist={handleToggleWatchlist}
+            watchlistIds={watchlistIds}
+          />
+        )}
+
+        {activeTab === 'equality' && (
+          <EqualityDashboard
             onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
             onOpenAiAssistant={handleOpenAiAssistant}
             onToggleWatchlist={handleToggleWatchlist}
