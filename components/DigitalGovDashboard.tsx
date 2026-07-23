@@ -372,9 +372,21 @@ export function DigitalGovDashboard({
                 {/* Header & Watchlist */}
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="space-y-1">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-cyan-50 text-cyan-700 border border-cyan-200/60">
-                      {indicator.unit} Metric
-                    </span>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-cyan-50 text-cyan-700 border border-cyan-200/60">
+                        {indicator.unit} Metric
+                      </span>
+                      {(indicator.isCritical || indicator.isFluctuating || indicator.latestIndiaRank <= 20) && (
+                        <motion.span
+                          animate={{ scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
+                          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-400/40 text-cyan-700 text-[10px] font-black uppercase"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-ping" />
+                          <span>{indicator.isFluctuating ? '⚡ Fluctuation' : '🔥 Key Metric'}</span>
+                        </motion.span>
+                      )}
+                    </div>
                     <h3 className="text-base font-black text-slate-900 group-hover:text-cyan-700 transition-colors leading-snug">
                       {indicator.name}
                     </h3>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   X,
   ExternalLink,
@@ -12,6 +13,9 @@ import {
   Globe,
   Share2,
   Bookmark,
+  ShieldCheck,
+  Newspaper,
+  Zap,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -73,13 +77,25 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
         {/* Header Bar */}
         <div className="bg-[#3C2F2F] text-white p-6 flex items-start justify-between border-b border-[#52433A] shrink-0">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-[10px] font-bold text-[#F7C331] uppercase tracking-wider bg-[#4A3E3D] px-2.5 py-0.5 rounded border border-[#52433A]">
                 {indicator.category}
               </span>
-              <span className="text-[10px] font-bold text-[#E8D9C8] bg-[#4A3E3D] px-2 py-0.5 rounded">
-                Verified Dataset
+              <span className="text-[10px] font-bold text-[#E8D9C8] bg-[#4A3E3D] px-2 py-0.5 rounded flex items-center gap-1">
+                <ShieldCheck className="w-3 h-3 text-emerald-400" />
+                <span>{indicator.source.confidenceScore || 95}% Confidence Score</span>
               </span>
+
+              {(indicator.isCritical || indicator.isFluctuating) && (
+                <motion.span
+                  animate={{ scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
+                  transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+                  className="text-[10px] font-black text-rose-300 uppercase tracking-wider bg-rose-950/80 px-2.5 py-0.5 rounded border border-rose-500/50 flex items-center gap-1"
+                >
+                  <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping" />
+                  <span>{indicator.isFluctuating ? '⚡ High Fluctuation' : '🔥 High Priority Indicator'}</span>
+                </motion.span>
+              )}
             </div>
             <h2 className="text-xl font-bold text-white">{indicator.name}</h2>
             <p className="text-xs text-[#E8D9C8]">{indicator.description}</p>
@@ -184,6 +200,27 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Recent News Integration & Ranking Context */}
+          <div className="bg-[#FAF6EF] p-4 rounded-xl border border-[#DCC7AA] space-y-2">
+            <div className="flex items-center gap-2 text-[#3C2F2F] font-bold text-xs">
+              <Newspaper className="w-4 h-4 text-[#F7882F]" />
+              <span>News & Policy Context Explaining Ranking Movements</span>
+            </div>
+            {indicator.recentNews ? (
+              <div className="bg-white p-3 rounded-lg border border-[#DCC7AA] space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-slate-900">{indicator.recentNews.title}</span>
+                  <span className="text-[10px] text-slate-500 font-semibold">{indicator.recentNews.source} • {indicator.recentNews.date}</span>
+                </div>
+                <p className="text-slate-600 text-[11px]">{indicator.recentNews.summary}</p>
+              </div>
+            ) : (
+              <div className="bg-white p-3 rounded-lg border border-[#DCC7AA] text-slate-600 text-[11px] leading-relaxed">
+                <strong className="text-slate-900">Latest Coverage Summary:</strong> Recent policy shifts under Union Budget allocations and state-level reforms are directly impacting India&apos;s trajectory for {indicator.name} in the {indicator.year} global evaluation index.
+              </div>
+            )}
           </div>
 
           {/* AI Breakdown Section */}

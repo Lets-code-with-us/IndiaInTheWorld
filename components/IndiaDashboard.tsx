@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   TrendingUp,
   Award,
@@ -195,12 +196,24 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
             { ind: govTechInd, annotation: 'Group A High Maturity', definition: 'World Bank index evaluating public digital systems.' },
           ].map(({ ind, annotation, definition }) => {
             if (!ind) return null;
+            const isPulse = ind.isCritical || ind.isFluctuating || ind.id === 'gdp-rank' || ind.id === 'global-innovation-index';
             return (
-              <div
+              <motion.div
                 key={ind.id}
+                whileHover={{ scale: 1.02, y: -3 }}
                 onClick={() => onSelectIndicator(ind)}
-                className="bg-white rounded-xl p-4 border border-[#DCC7AA] shadow-sm hover:shadow-md hover:border-[#F7882F] cursor-pointer transition-all flex flex-col justify-between group min-h-[160px]"
+                className="relative bg-white rounded-xl p-4 border border-[#DCC7AA] shadow-sm hover:shadow-md hover:border-[#F7882F] cursor-pointer transition-all flex flex-col justify-between group min-h-[160px]"
               >
+                {isPulse && (
+                  <motion.div
+                    animate={{ scale: [1, 1.05, 1], opacity: [0.85, 1, 0.85] }}
+                    transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
+                    className="absolute -top-2 -right-2 px-2 py-0.5 rounded-full bg-rose-500 text-white text-[9px] font-black uppercase tracking-wider shadow-md flex items-center gap-1 border border-white"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                    <span>{ind.isFluctuating ? '⚡ Shift' : '🔥 Priority'}</span>
+                  </motion.div>
+                )}
                 <div>
                   <div className="flex items-center justify-between gap-1 text-[10px] font-bold text-[#6B7A8F] uppercase tracking-wider">
                     <span className="truncate">{ind.category}</span>
@@ -235,7 +248,7 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
                   </span>
                   <ChevronRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-[#F7882F] transition-transform" />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

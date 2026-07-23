@@ -67,6 +67,14 @@ export interface Indicator {
     strengths: string[];
     gaps: string[];
   };
+  isCritical?: boolean;
+  isFluctuating?: boolean;
+  recentNews?: {
+    title: string;
+    source: string;
+    date: string;
+    summary: string;
+  };
 }
 
 export interface CategorySummary {

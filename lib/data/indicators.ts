@@ -52,6 +52,13 @@ export const GLOBAL_INDICATORS: Indicator[] = [
       strengths: ['Robust domestic consumption engine', 'Young demographic dividend', 'High digital payment adoption'],
       gaps: ['Low per-capita conversion', 'Informal sector dominance', 'High rural underemployment'],
     },
+    isCritical: true,
+    recentNews: {
+      title: 'IMF Projects India Nominal GDP to Touch $4 Trillion in 2026',
+      source: 'Economic Times / IMF Report',
+      date: 'July 2026',
+      summary: 'Strong domestic service exports and manufacturing PLI incentives push India close to overtaking Japan in global nominal GDP rankings.',
+    },
   },
   {
     id: 'gdp-ppp-rank',

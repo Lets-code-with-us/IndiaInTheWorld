@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   TrendingUp,
   DollarSign,
@@ -381,6 +382,16 @@ export const EconomyDashboard: React.FC<EconomyDashboardProps> = ({
                       <span className="text-[10px] font-bold text-[#F7882F] uppercase tracking-wider bg-[#F7882F]/10 px-2 py-0.5 rounded border border-[#F7882F]/20">
                         {indicator.unit} Metric
                       </span>
+                      {(indicator.isCritical || indicator.isFluctuating || indicator.latestIndiaRank <= 10) && (
+                        <motion.span
+                          animate={{ scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
+                          transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#F7882F]/10 border border-[#F7882F]/40 text-[#D46917] text-[10px] font-black uppercase"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#F7882F] animate-ping" />
+                          <span>{indicator.isFluctuating ? '⚡ Shift' : '🔥 Core Economy'}</span>
+                        </motion.span>
+                      )}
                       {indicator.trend === 'improving' && (
                         <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded flex items-center gap-1 border border-emerald-200">
                           <ArrowUpRight className="w-3 h-3" />
