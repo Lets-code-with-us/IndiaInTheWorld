@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { IndiaDashboard } from '../components/IndiaDashboard';
+import { EconomyDashboard } from '../components/EconomyDashboard';
+import { SocietyDashboard } from '../components/SocietyDashboard';
+import { GovernanceDashboard } from '../components/GovernanceDashboard';
 import { CategoryExplorer } from '../components/CategoryExplorer';
 import { CountryComparison } from '../components/CountryComparison';
 import { InteractiveWorldMap } from '../components/InteractiveWorldMap';
@@ -40,8 +43,16 @@ export default function Home() {
   };
 
   const handleSelectCategoryFromDashboard = (cat: CategoryType) => {
-    setSelectedCategory(cat);
-    setActiveTab('categories');
+    if (cat === 'Economy') {
+      setActiveTab('economy');
+    } else if (cat === 'Society') {
+      setActiveTab('society');
+    } else if (cat === 'Governance') {
+      setActiveTab('governance');
+    } else {
+      setSelectedCategory(cat);
+      setActiveTab('categories');
+    }
   };
 
   return (
@@ -65,6 +76,33 @@ export default function Home() {
             onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
             onOpenAiAssistant={handleOpenAiAssistant}
             onOpenReportCard={() => setIsReportCardOpen(true)}
+          />
+        )}
+
+        {activeTab === 'economy' && (
+          <EconomyDashboard
+            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+            onOpenAiAssistant={handleOpenAiAssistant}
+            onToggleWatchlist={handleToggleWatchlist}
+            watchlistIds={watchlistIds}
+          />
+        )}
+
+        {activeTab === 'society' && (
+          <SocietyDashboard
+            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+            onOpenAiAssistant={handleOpenAiAssistant}
+            onToggleWatchlist={handleToggleWatchlist}
+            watchlistIds={watchlistIds}
+          />
+        )}
+
+        {activeTab === 'governance' && (
+          <GovernanceDashboard
+            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+            onOpenAiAssistant={handleOpenAiAssistant}
+            onToggleWatchlist={handleToggleWatchlist}
+            watchlistIds={watchlistIds}
           />
         )}
 

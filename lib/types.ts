@@ -15,7 +15,7 @@ export interface SourceInfo {
   datasetName: string;
   url: string;
   lastUpdatedYear: number;
-  frequency: 'Annual' | 'Bi-Annual' | 'Quarterly' | 'Periodic';
+  frequency: 'Annual' | 'Bi-Annual' | 'Quarterly' | 'Monthly' | 'Periodic';
   confidenceScore: number; // 0-100
 }
 

@@ -15,6 +15,8 @@ import {
   ChevronRight,
   ShieldAlert,
   ArrowUpRight,
+  Users,
+  Landmark,
 } from 'lucide-react';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 import { Indicator } from '../lib/types';
@@ -52,7 +54,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navItems = [
     { id: 'dashboard', label: 'Overview', icon: BarChart3 },
-    { id: 'categories', label: 'Indicators Explorer', icon: Globe },
+    { id: 'economy', label: 'Economy Category', icon: TrendingUp },
+    { id: 'society', label: 'Society Category', icon: Users },
+    { id: 'governance', label: 'Governance Category', icon: Landmark },
+    { id: 'categories', label: 'All Categories', icon: Globe },
     { id: 'compare', label: 'Country Comparison', icon: GitCompare },
     { id: 'worldmap', label: 'Global Map', icon: MapPin },
     { id: 'trends', label: '10-Yr Trends', icon: TrendingUp },
