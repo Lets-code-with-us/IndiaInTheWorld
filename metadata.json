@@ -1,0 +1,6 @@
+{
+  "name": "India Global Index",
+  "description": "Consolidated global rankings, international indicators, country comparisons, historical trends, and AI-powered insights for India.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
