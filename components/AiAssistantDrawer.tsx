@@ -91,12 +91,17 @@ export const AiAssistantDrawer: React.FC<AiAssistantDrawerProps> = ({
     }
   }, [inputQuery, loading, messages]);
 
+  const processedQueryRef = useRef<string | null>(null);
+
   useEffect(() => {
-    if (initialQuery && isOpen) {
-      const timer = setTimeout(() => {
-        handleSend(initialQuery);
-      }, 0);
-      return () => clearTimeout(timer);
+    if (!isOpen) {
+      processedQueryRef.current = null;
+      return;
+    }
+
+    if (initialQuery && processedQueryRef.current !== initialQuery) {
+      processedQueryRef.current = initialQuery;
+      handleSend(initialQuery);
     }
   }, [initialQuery, isOpen, handleSend]);
 
