@@ -57,6 +57,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
   const [selectedTrend, setSelectedTrend] = useState<string>('all');
   const [selectedChartIndicatorId, setSelectedChartIndicatorId] = useState<string>('human-development-index');
   const [chartMode, setChartMode] = useState<'bar' | 'line'>('bar');
+  const [comparisonCountry, setComparisonCountry] = useState<string>('china');
 
   // Format 3D Chart Data
   const threeDChartData = useMemo(() => {

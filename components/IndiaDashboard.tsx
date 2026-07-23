@@ -33,7 +33,7 @@ interface IndiaDashboardProps {
   onOpenReportCard: () => void;
 }
 
-const CATEGORY_ICONS: Record<CategoryType, React.ElementType> = {
+const CATEGORY_ICONS: Record<CategoryType, React.ComponentType<{ className?: string }>> = {
   Economy: TrendingUp,
   Society: Users,
   Governance: Landmark,

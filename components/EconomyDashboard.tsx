@@ -56,6 +56,7 @@ export const EconomyDashboard: React.FC<EconomyDashboardProps> = ({
   const [selectedTrend, setSelectedTrend] = useState<string>('all');
   const [selectedChartIndicatorId, setSelectedChartIndicatorId] = useState<string>('gdp-growth-rate');
   const [chartMode, setChartMode] = useState<'bar' | 'line'>('bar');
+  const [comparisonCountry, setComparisonCountry] = useState<string>('china');
 
   // Format 3D Chart Data
   const threeDChartData = useMemo(() => {

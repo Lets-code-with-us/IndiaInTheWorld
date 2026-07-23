@@ -14,10 +14,12 @@ import {
   Building2,
   ChevronRight,
   ShieldAlert,
+  ShieldCheck,
   ArrowUpRight,
   Users,
   Landmark,
   HeartPulse,
+  Leaf,
 } from 'lucide-react';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 import { Indicator } from '../lib/types';
@@ -59,6 +61,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'society', label: 'Society Category', icon: Users },
     { id: 'governance', label: 'Governance Category', icon: Landmark },
     { id: 'healthcare', label: 'Healthcare Category', icon: HeartPulse },
+    { id: 'environment', label: 'Environment Category', icon: Leaf },
+    { id: 'safety', label: 'Safety Category', icon: ShieldCheck },
     { id: 'categories', label: 'All Categories', icon: Globe },
     { id: 'compare', label: 'Country Comparison', icon: GitCompare },
     { id: 'worldmap', label: 'Global Map', icon: MapPin },

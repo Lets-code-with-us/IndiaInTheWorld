@@ -7,6 +7,8 @@ import { EconomyDashboard } from '../components/EconomyDashboard';
 import { SocietyDashboard } from '../components/SocietyDashboard';
 import { GovernanceDashboard } from '../components/GovernanceDashboard';
 import { HealthcareDashboard } from '../components/HealthcareDashboard';
+import { EnvironmentDashboard } from '../components/EnvironmentDashboard';
+import { SafetyDashboard } from '../components/SafetyDashboard';
 import { CategoryExplorer } from '../components/CategoryExplorer';
 import { CountryComparison } from '../components/CountryComparison';
 import { InteractiveWorldMap } from '../components/InteractiveWorldMap';
@@ -52,6 +54,10 @@ export default function Home() {
       setActiveTab('governance');
     } else if (cat === 'Healthcare') {
       setActiveTab('healthcare');
+    } else if (cat === 'Environment') {
+      setActiveTab('environment');
+    } else if (cat === 'Safety') {
+      setActiveTab('safety');
     } else {
       setSelectedCategory(cat);
       setActiveTab('categories');
@@ -111,6 +117,15 @@ export default function Home() {
 
         {activeTab === 'healthcare' && (
           <HealthcareDashboard
+            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+            onOpenAiAssistant={handleOpenAiAssistant}
+            onToggleWatchlist={handleToggleWatchlist}
+            watchlistIds={watchlistIds}
+          />
+        )}
+
+        {activeTab === 'safety' && (
+          <SafetyDashboard
             onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
             onOpenAiAssistant={handleOpenAiAssistant}
             onToggleWatchlist={handleToggleWatchlist}
