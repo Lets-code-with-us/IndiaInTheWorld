@@ -131,14 +131,14 @@ export function EqualityDashboard({
   return (
     <div className="space-y-8 pb-16">
       {/* 1. Executive Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 p-6 md:p-8 text-white shadow-xl">
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-pink-500/20 blur-2xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-stone-950 via-amber-950 to-stone-900 p-6 md:p-8 text-white shadow-xl">
+        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-amber-500/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-orange-500/20 blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 backdrop-blur-md text-purple-300 text-xs font-bold uppercase tracking-widest">
-              <Scale className="w-4 h-4 text-purple-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 backdrop-blur-md text-amber-300 text-xs font-bold uppercase tracking-widest">
+              <Scale className="w-4 h-4 text-amber-400 animate-pulse" />
               <span>Gender Parity & Social Equity Framework</span>
             </div>
             <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
@@ -156,7 +156,7 @@ export function EqualityDashboard({
                   'Provide a comprehensive strategic briefing on India’s progress in gender parity, female labor force participation growth (PLFS 37%), Nari Shakti Vandan Adhiniyam 33% reservation bill, and income inequality reduction.'
                 )
               }
-              className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-black text-xs md:text-sm shadow-lg shadow-purple-950/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-xs md:text-sm shadow-lg shadow-amber-950/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <BrainCircuit className="w-4 h-4" />
               <span>AI Parity Briefing</span>
@@ -169,9 +169,9 @@ export function EqualityDashboard({
           <div className="bg-slate-900/70 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
             <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
               <span>Global Gender Gap</span>
-              <Award className="w-4 h-4 text-purple-400" />
+              <Award className="w-4 h-4 text-amber-400" />
             </div>
-            <div className="text-2xl font-black text-purple-300 mt-1">
+            <div className="text-2xl font-black text-amber-300 mt-1">
               #{genderGapIndicator?.latestIndiaRank || 129}
             </div>
             <div className="text-[11px] text-emerald-400 font-medium mt-1">
@@ -224,8 +224,8 @@ export function EqualityDashboard({
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-md">
           <div className="space-y-1">
-            <div className="text-xs font-extrabold text-purple-600 uppercase tracking-wider flex items-center gap-1.5">
-              <BarChart2 className="w-4 h-4 text-purple-500" />
+            <div className="text-xs font-extrabold text-amber-600 uppercase tracking-wider flex items-center gap-1.5">
+              <BarChart2 className="w-4 h-4 text-amber-500" />
               <span>3D WebGL Equality Visualizer Studio</span>
             </div>
             <h2 className="text-lg font-black text-slate-900">
@@ -238,7 +238,7 @@ export function EqualityDashboard({
             <select
               value={selectedChartIndicatorId}
               onChange={(e) => setSelectedChartIndicatorId(e.target.value)}
-              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500"
             >
               {equalityIndicators.map((ind) => (
                 <option key={ind.id} value={ind.id}>
@@ -253,7 +253,7 @@ export function EqualityDashboard({
                 onClick={() => setChartMode('bar')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'bar'
-                    ? 'bg-purple-600 text-white shadow-sm'
+                    ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -263,7 +263,7 @@ export function EqualityDashboard({
                 onClick={() => setChartMode('line')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'line'
-                    ? 'bg-purple-600 text-white shadow-sm'
+                    ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -298,7 +298,7 @@ export function EqualityDashboard({
             placeholder="Search equality & gender parity metrics..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 text-xs font-bold text-slate-900 rounded-xl border border-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full pl-10 pr-4 py-2 bg-slate-50 text-xs font-bold text-slate-900 rounded-xl border border-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
         </div>
 
@@ -308,7 +308,7 @@ export function EqualityDashboard({
             onClick={() => setSelectedSubtype('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'all'
-                ? 'bg-purple-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -318,7 +318,7 @@ export function EqualityDashboard({
             onClick={() => setSelectedSubtype('gender')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'gender'
-                ? 'bg-purple-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -328,7 +328,7 @@ export function EqualityDashboard({
             onClick={() => setSelectedSubtype('labor')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'labor'
-                ? 'bg-purple-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -338,7 +338,7 @@ export function EqualityDashboard({
             onClick={() => setSelectedSubtype('income')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'income'
-                ? 'bg-purple-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -375,14 +375,14 @@ export function EqualityDashboard({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, delay: idx * 0.04 }}
               whileHover={{ scale: 1.025, y: -6 }}
-              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-purple-500/60 p-5 shadow-sm hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-amber-500/60 p-5 shadow-sm hover:shadow-2xl hover:shadow-amber-900/10 transition-all duration-300 flex flex-col justify-between cursor-pointer"
             >
               <div>
                 {/* Header & Watchlist */}
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="space-y-1">
                     <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-purple-50 text-purple-700 border border-purple-200/60">
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-amber-50 text-amber-800 border border-amber-200/60">
                         {indicator.unit} Metric
                       </span>
                       {(indicator.isCritical || indicator.isFluctuating || indicator.latestIndiaRank > 100) && (
@@ -396,7 +396,7 @@ export function EqualityDashboard({
                         </motion.span>
                       )}
                     </div>
-                    <h3 className="text-base font-black text-slate-900 group-hover:text-purple-700 transition-colors leading-snug">
+                    <h3 className="text-base font-black text-slate-900 group-hover:text-amber-700 transition-colors leading-snug">
                       {indicator.name}
                     </h3>
                   </div>
@@ -433,7 +433,7 @@ export function EqualityDashboard({
                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                       Global Rank / Pos
                     </div>
-                    <div className="text-lg font-black text-purple-600 mt-0.5">
+                    <div className="text-lg font-black text-amber-600 mt-0.5">
                       #{indicator.latestIndiaRank}{' '}
                       <span className="text-xs font-semibold text-slate-400">
                         / {indicator.totalCountriesMeasured}
@@ -471,7 +471,7 @@ export function EqualityDashboard({
                       Benchmark Leader:
                     </span>
                     <span className="font-bold text-slate-800 flex items-center gap-1">
-                      <Globe2 className="w-3.5 h-3.5 text-sky-500" />
+                      <Globe2 className="w-3.5 h-3.5 text-emerald-600" />
                       {topCountry.name} ({topCountry.formattedValue})
                     </span>
                   </div>
@@ -482,7 +482,7 @@ export function EqualityDashboard({
               <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
                 <button
                   onClick={() => setActiveModalIndicator(indicator)}
-                  className="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-purple-700 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                  className="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-amber-700 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
                 >
                   <Info className="w-3.5 h-3.5" />
                   <span>Deep Dive</span>
@@ -505,8 +505,8 @@ export function EqualityDashboard({
       <div className="bg-white rounded-3xl border border-slate-200/90 p-6 md:p-8 shadow-md space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
           <div>
-            <div className="text-xs font-extrabold text-purple-600 uppercase tracking-widest flex items-center gap-1.5">
-              <Scale className="w-4 h-4 text-purple-500" />
+            <div className="text-xs font-extrabold text-amber-600 uppercase tracking-widest flex items-center gap-1.5">
+              <Scale className="w-4 h-4 text-amber-500" />
               <span>National Social Parity & Women Empowerment Pillars</span>
             </div>
             <h2 className="text-xl md:text-2xl font-black text-slate-900 mt-1">
@@ -520,16 +520,16 @@ export function EqualityDashboard({
                 'Detail India’s national gender equality policy reforms: Nari Shakti Vandan Adhiniyam 33% parliamentary seats reservation, Lakhpati Didi rural SHG empowerment, Code on Wages 2019 equal pay mandates, and MUDRA collateral-free credit.'
               )
             }
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 text-xs font-black border border-purple-200 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-black border border-amber-200 transition-all"
           >
-            <Sparkles className="w-4 h-4 text-purple-600" />
+            <Sparkles className="w-4 h-4 text-amber-600" />
             <span>Generate Parity Action Brief</span>
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
+            <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-800 font-bold">
               <Award className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
@@ -541,7 +541,7 @@ export function EqualityDashboard({
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-pink-100 flex items-center justify-center text-pink-700 font-bold">
+            <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-800 font-bold">
               <Briefcase className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
@@ -568,8 +568,8 @@ export function EqualityDashboard({
         {/* Critical Challenges Box */}
         <div className="p-5 rounded-2xl bg-slate-900 text-white space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-black text-purple-400 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-purple-400" />
+            <h4 className="text-sm font-black text-amber-400 flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 text-amber-400" />
               Key Equality & Female Inclusion Bottlenecks
             </h4>
             <span className="text-[11px] font-extrabold text-slate-400">
@@ -578,25 +578,25 @@ export function EqualityDashboard({
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 font-medium">
             <li className="flex items-start gap-2">
-              <span className="text-purple-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold">•</span>
               <span>
                 <strong>Urban FLFP Stagnation:</strong> Urban female labor participation remains low (~25%) due to caregiving responsibilities and commuting safety concerns.
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-purple-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold">•</span>
               <span>
                 <strong>Unpaid Care Economy Burden:</strong> Indian women perform 7x more unpaid domestic care work than men, constraining career progression.
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-purple-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold">•</span>
               <span>
                 <strong>Informal Sector Wage Gap:</strong> 20-25% gender pay gap in construction and unorganized manual agricultural labor.
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-purple-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold">•</span>
               <span>
                 <strong>Corporate Boardroom Pipeline:</strong> Only ~18% representation of women in senior executive and C-suite decision-making positions.
               </span>
@@ -624,7 +624,7 @@ export function EqualityDashboard({
 
               <div className="space-y-6">
                 <div>
-                  <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-purple-100 text-purple-800">
+                  <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-100 text-amber-800">
                     {activeModalIndicator.category} • {activeModalIndicator.unit}
                   </span>
                   <h2 className="text-2xl font-black text-slate-900 mt-2">
@@ -646,11 +646,11 @@ export function EqualityDashboard({
                     </div>
                   </div>
 
-                  <div className="p-3.5 bg-purple-50 rounded-2xl border border-purple-100">
-                    <div className="text-[10px] font-bold text-purple-600 uppercase">
+                  <div className="p-3.5 bg-amber-50 rounded-2xl border border-amber-100">
+                    <div className="text-[10px] font-bold text-amber-700 uppercase">
                       Global Rank
                     </div>
-                    <div className="text-lg font-black text-purple-700 mt-0.5">
+                    <div className="text-lg font-black text-amber-800 mt-0.5">
                       #{activeModalIndicator.latestIndiaRank}
                     </div>
                   </div>
@@ -659,7 +659,7 @@ export function EqualityDashboard({
                     <div className="text-[10px] font-bold text-slate-400 uppercase">
                       Trend Delta
                     </div>
-                    <div className="text-sm font-extrabold text-purple-700 mt-1">
+                    <div className="text-sm font-extrabold text-amber-700 mt-1">
                       {activeModalIndicator.changeDelta}
                     </div>
                   </div>
@@ -717,7 +717,7 @@ export function EqualityDashboard({
                     href={activeModalIndicator.source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-purple-700 font-bold hover:underline"
+                    className="inline-flex items-center gap-1 text-amber-700 font-bold hover:underline"
                   >
                     <span>View Portal</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -732,7 +732,7 @@ export function EqualityDashboard({
                       setActiveModalIndicator(null);
                       onSelectIndicator(ind);
                     }}
-                    className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-purple-700 text-white text-xs font-black transition-all"
+                    className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-amber-700 text-white text-xs font-black transition-all"
                   >
                     Open Full Metric Dashboard
                   </button>

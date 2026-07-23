@@ -116,14 +116,14 @@ export function SafetyDashboard({
   return (
     <div className="space-y-8 pb-16">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-6 md:p-8 text-white shadow-xl">
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-slate-500/20 blur-2xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-stone-950 via-amber-950 to-stone-900 p-6 md:p-8 text-white shadow-xl">
+        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-amber-500/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-orange-500/20 blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 backdrop-blur-md text-indigo-300 text-xs font-bold uppercase tracking-widest">
-              <ShieldCheck className="w-4 h-4 text-indigo-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 backdrop-blur-md text-amber-300 text-xs font-bold uppercase tracking-widest">
+              <ShieldCheck className="w-4 h-4 text-amber-400 animate-pulse" />
               <span>National Security & Homeland Protection</span>
             </div>
             <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
@@ -141,7 +141,7 @@ export function SafetyDashboard({
                   'Provide a comprehensive analysis of India’s public safety performance across Global Peace Index #126, CCTNS digital police station network, road safety reforms, and NDRF disaster response protocols.'
                 )
               }
-              className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-gradient-to-r from-indigo-500 to-slate-500 hover:from-indigo-400 hover:to-slate-400 text-white font-black text-xs md:text-sm shadow-lg shadow-indigo-950/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-xs md:text-sm shadow-lg shadow-amber-950/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <BrainCircuit className="w-4 h-4" />
               <span>AI Security Briefing</span>
@@ -154,9 +154,9 @@ export function SafetyDashboard({
           <div className="bg-slate-900/70 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
             <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
               <span>Global Peace Rank</span>
-              <Award className="w-4 h-4 text-indigo-400" />
+              <Award className="w-4 h-4 text-amber-400" />
             </div>
-            <div className="text-2xl font-black text-indigo-300 mt-1">
+            <div className="text-2xl font-black text-amber-300 mt-1">
               #{gpiIndicator?.latestIndiaRank || 126}
             </div>
             <div className="text-[11px] text-emerald-400 font-medium mt-1">
@@ -193,12 +193,12 @@ export function SafetyDashboard({
           <div className="bg-slate-900/70 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
             <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
               <span>Terror Impact (GTI)</span>
-              <Lock className="w-4 h-4 text-sky-400" />
+              <Lock className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-2xl font-black text-white mt-1">
               #{gtiIndicator?.latestIndiaRank || 14} Impact
             </div>
-            <div className="text-[11px] text-sky-300 font-medium mt-1">
+            <div className="text-[11px] text-emerald-300 font-medium mt-1">
               75%+ drop in Naxal violence
             </div>
           </div>
@@ -209,8 +209,8 @@ export function SafetyDashboard({
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-md">
           <div className="space-y-1">
-            <div className="text-xs font-extrabold text-indigo-600 uppercase tracking-wider flex items-center gap-1.5">
-              <BarChart2 className="w-4 h-4 text-indigo-500" />
+            <div className="text-xs font-extrabold text-amber-600 uppercase tracking-wider flex items-center gap-1.5">
+              <BarChart2 className="w-4 h-4 text-amber-500" />
               <span>3D WebGL Safety Visualizer Studio</span>
             </div>
             <h2 className="text-lg font-black text-slate-900">
@@ -223,7 +223,7 @@ export function SafetyDashboard({
             <select
               value={selectedChartIndicatorId}
               onChange={(e) => setSelectedChartIndicatorId(e.target.value)}
-              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500"
             >
               {safetyIndicators.map((ind) => (
                 <option key={ind.id} value={ind.id}>
@@ -238,7 +238,7 @@ export function SafetyDashboard({
                 onClick={() => setChartMode('bar')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'bar'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -248,7 +248,7 @@ export function SafetyDashboard({
                 onClick={() => setChartMode('line')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'line'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -266,7 +266,7 @@ export function SafetyDashboard({
             chartMode === 'bar' ? 'Global Benchmarking' : 'India Historical Trajectory'
           }`}
           subtitle={`Source: ${activeChartIndicator?.source?.organization} (${activeChartIndicator?.source?.lastUpdatedYear})`}
-          accentColor="#6366F1"
+          accentColor="#D97706"
           height={380}
         />
       </div>
@@ -281,7 +281,7 @@ export function SafetyDashboard({
             placeholder="Search safety & security metrics..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 text-xs font-bold text-slate-900 rounded-xl border border-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full pl-10 pr-4 py-2 bg-slate-50 text-xs font-bold text-slate-900 rounded-xl border border-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
         </div>
 
@@ -291,7 +291,7 @@ export function SafetyDashboard({
             onClick={() => setSelectedSubtype('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'all'
-                ? 'bg-indigo-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -301,7 +301,7 @@ export function SafetyDashboard({
             onClick={() => setSelectedSubtype('peace')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'peace'
-                ? 'bg-indigo-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -311,7 +311,7 @@ export function SafetyDashboard({
             onClick={() => setSelectedSubtype('crime')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'crime'
-                ? 'bg-indigo-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -321,7 +321,7 @@ export function SafetyDashboard({
             onClick={() => setSelectedSubtype('disaster')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'disaster'
-                ? 'bg-indigo-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -357,16 +357,16 @@ export function SafetyDashboard({
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, delay: idx * 0.04 }}
-              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-indigo-500/50 p-5 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-amber-500/50 p-5 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
             >
               <div>
                 {/* Header & Watchlist */}
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="space-y-1">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-indigo-50 text-indigo-700 border border-indigo-200/60">
+                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-amber-50 text-amber-800 border border-amber-200/60">
                       {indicator.unit} Metric
                     </span>
-                    <h3 className="text-base font-black text-slate-900 group-hover:text-indigo-700 transition-colors leading-snug">
+                    <h3 className="text-base font-black text-slate-900 group-hover:text-amber-700 transition-colors leading-snug">
                       {indicator.name}
                     </h3>
                   </div>
@@ -403,7 +403,7 @@ export function SafetyDashboard({
                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                       Global Rank / Pos
                     </div>
-                    <div className="text-lg font-black text-indigo-600 mt-0.5">
+                    <div className="text-lg font-black text-amber-600 mt-0.5">
                       #{indicator.latestIndiaRank}{' '}
                       <span className="text-xs font-semibold text-slate-400">
                         / {indicator.totalCountriesMeasured}
@@ -439,7 +439,7 @@ export function SafetyDashboard({
                   <div className="text-xs text-slate-600 flex items-center justify-between pt-3 border-t border-slate-100 mb-4">
                     <span className="font-semibold text-slate-500">Benchmark Leader:</span>
                     <span className="font-bold text-slate-800 flex items-center gap-1">
-                      <Globe2 className="w-3.5 h-3.5 text-sky-500" />
+                      <Globe2 className="w-3.5 h-3.5 text-emerald-600" />
                       {topCountry.name} ({topCountry.formattedValue})
                     </span>
                   </div>
@@ -450,7 +450,7 @@ export function SafetyDashboard({
               <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
                 <button
                   onClick={() => setActiveModalIndicator(indicator)}
-                  className="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-indigo-700 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                  className="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-amber-700 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
                 >
                   <Info className="w-3.5 h-3.5" />
                   <span>Deep Dive</span>
@@ -473,8 +473,8 @@ export function SafetyDashboard({
       <div className="bg-white rounded-3xl border border-slate-200/90 p-6 md:p-8 shadow-md space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
           <div>
-            <div className="text-xs font-extrabold text-indigo-600 uppercase tracking-widest flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-indigo-500" />
+            <div className="text-xs font-extrabold text-amber-600 uppercase tracking-widest flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-amber-500" />
               <span>National Safety & Disaster Action Pillars</span>
             </div>
             <h2 className="text-xl md:text-2xl font-black text-slate-900 mt-1">
@@ -488,16 +488,16 @@ export function SafetyDashboard({
                 'Detail India’s national security and public safety reforms: CCTNS digital police integration, Dial 112 ERSS system, NDRF zero-casualty evacuation protocols, and Highway Safety Amendments.'
               )
             }
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-800 text-xs font-black border border-indigo-200 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-black border border-amber-200 transition-all"
           >
-            <Sparkles className="w-4 h-4 text-indigo-600" />
+            <Sparkles className="w-4 h-4 text-amber-600" />
             <span>Generate Security Strategy Brief</span>
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold">
+            <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-800 font-bold">
               <Siren className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
@@ -521,7 +521,7 @@ export function SafetyDashboard({
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 font-bold">
+            <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold">
               <CloudLightning className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
@@ -536,27 +536,27 @@ export function SafetyDashboard({
         {/* Critical Challenges Box */}
         <div className="p-5 rounded-2xl bg-slate-900 text-white space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-black text-indigo-400 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-indigo-400" />
+            <h4 className="text-sm font-black text-amber-400 flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 text-amber-400" />
               Key Homeland Security & Safety Bottlenecks
             </h4>
             <span className="text-[11px] font-extrabold text-slate-400">UN Police Benchmark: 222 / 100k</span>
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 font-medium">
             <li className="flex items-start gap-2">
-              <span className="text-indigo-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold">•</span>
               <span><strong>Police Personnel Ratio Gap:</strong> Current ~152 police officers per 100,000 citizens vs UN recommended 222.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-indigo-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold">•</span>
               <span><strong>Surging Cyber Phishing & Fraud:</strong> Financial digital phishing calls require AI fraud monitoring at banking gateways.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-indigo-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold">•</span>
               <span><strong>Urban Monsoon Infrastructure Risk:</strong> Metro drainage expansion needed to prevent recurring monsoon flash floods.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-indigo-400 font-bold">•</span>
+              <span className="text-amber-400 font-bold">•</span>
               <span><strong>Border Drone Infiltration:</strong> Counter-drone systems required across western border smuggling routes.</span>
             </li>
           </ul>
@@ -582,7 +582,7 @@ export function SafetyDashboard({
 
               <div className="space-y-6">
                 <div>
-                  <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-indigo-100 text-indigo-800">
+                  <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-100 text-amber-800">
                     {activeModalIndicator.category} • {activeModalIndicator.unit}
                   </span>
                   <h2 className="text-2xl font-black text-slate-900 mt-2">
@@ -604,11 +604,11 @@ export function SafetyDashboard({
                     </div>
                   </div>
 
-                  <div className="p-3.5 bg-indigo-50 rounded-2xl border border-indigo-100">
-                    <div className="text-[10px] font-bold text-indigo-600 uppercase">
+                  <div className="p-3.5 bg-amber-50 rounded-2xl border border-amber-100">
+                    <div className="text-[10px] font-bold text-amber-700 uppercase">
                       Global Rank
                     </div>
-                    <div className="text-lg font-black text-indigo-700 mt-0.5">
+                    <div className="text-lg font-black text-amber-800 mt-0.5">
                       #{activeModalIndicator.latestIndiaRank}
                     </div>
                   </div>
@@ -617,7 +617,7 @@ export function SafetyDashboard({
                     <div className="text-[10px] font-bold text-slate-400 uppercase">
                       Trend Delta
                     </div>
-                    <div className="text-sm font-extrabold text-indigo-700 mt-1">
+                    <div className="text-sm font-extrabold text-amber-700 mt-1">
                       {activeModalIndicator.changeDelta}
                     </div>
                   </div>
@@ -671,7 +671,7 @@ export function SafetyDashboard({
                     href={activeModalIndicator.source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-indigo-700 font-bold hover:underline"
+                    className="inline-flex items-center gap-1 text-amber-700 font-bold hover:underline"
                   >
                     <span>View Portal</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -686,7 +686,7 @@ export function SafetyDashboard({
                       setActiveModalIndicator(null);
                       onSelectIndicator(ind);
                     }}
-                    className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-indigo-700 text-white text-xs font-black transition-all"
+                    className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-amber-700 text-white text-xs font-black transition-all"
                   >
                     Open Full Metric Dashboard
                   </button>

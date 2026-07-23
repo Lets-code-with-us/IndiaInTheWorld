@@ -319,7 +319,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 onClick={() => setChartMode('bar')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'bar'
-                    ? 'bg-sky-600 text-white shadow-sm'
+                    ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -329,7 +329,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 onClick={() => setChartMode('line')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'line'
-                    ? 'bg-sky-600 text-white shadow-sm'
+                    ? 'bg-amber-600 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -347,7 +347,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             chartMode === 'bar' ? 'Global Country Benchmarking' : 'India 10-Year Trajectory'
           }`}
           subtitle={`Source: ${activeChartIndicator.source.organization} (${activeChartIndicator.source.lastUpdatedYear})`}
-          accentColor="#0284c7"
+          accentColor="#D97706"
           height={380}
         />
       </div>
@@ -362,7 +362,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             placeholder="Search Society indicators..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 text-xs font-medium text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:bg-white transition-all"
+            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 text-xs font-medium text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:bg-white transition-all"
           />
         </div>
 
@@ -372,7 +372,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             onClick={() => setSelectedSubtype('all')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'all'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -382,7 +382,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             onClick={() => setSelectedSubtype('wellbeing')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'wellbeing'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -392,7 +392,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             onClick={() => setSelectedSubtype('capital')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'capital'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -402,7 +402,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             onClick={() => setSelectedSubtype('demographics')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'demographics'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -415,7 +415,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
           <select
             value={selectedTrend}
             onChange={(e) => setSelectedTrend(e.target.value)}
-            className="px-3 py-2 bg-slate-50 text-xs font-semibold text-slate-700 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-3 py-2 bg-slate-50 text-xs font-semibold text-slate-700 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500"
           >
             <option value="all">All Trends</option>
             <option value="improving">Improving Trend</option>

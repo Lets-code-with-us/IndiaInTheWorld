@@ -200,10 +200,10 @@ export function EnvironmentDashboard({
           <div className="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
             <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
               <span>Per Capita CO₂</span>
-              <Globe2 className="w-4 h-4 text-sky-400" />
+              <Globe2 className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-2xl font-black text-white mt-1">1.9 Tonnes</div>
-            <div className="text-[11px] text-sky-300 font-medium mt-1">
+            <div className="text-[11px] text-emerald-300 font-medium mt-1">
               Vs 4.7 World Average
             </div>
           </div>
@@ -444,7 +444,7 @@ export function EnvironmentDashboard({
                   <div className="text-xs text-slate-600 flex items-center justify-between pt-3 border-t border-slate-100 mb-4">
                     <span className="font-semibold text-slate-500">Benchmark Leader:</span>
                     <span className="font-bold text-slate-800 flex items-center gap-1">
-                      <Globe2 className="w-3.5 h-3.5 text-sky-500" />
+                      <Globe2 className="w-3.5 h-3.5 text-emerald-600" />
                       {topCountry.name} ({topCountry.formattedValue})
                     </span>
                   </div>

@@ -274,16 +274,41 @@ export default function Home() {
       </main>
 
       {/* Footer Bar */}
-      <footer className="bg-[#3C2F2F] text-[#E8D9C8] text-xs py-8 border-t border-[#52433A]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="space-y-1 text-center md:text-left">
-            <div className="font-bold text-white">India Global Index — Policy Intelligence & World Rankings</div>
-            <div className="text-[#C4B2A5]">Aggregating datasets from World Bank, IMF, UN, WHO, WEF, WIPO, RSF & Transparency International.</div>
+      <footer className="bg-slate-900 text-slate-300 text-xs py-10 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-800/80">
+            <div className="space-y-1.5 text-center md:text-left">
+              <div className="font-black text-sm text-white tracking-wide">
+                India Global Index — Policy Intelligence & World Rankings
+              </div>
+              <div className="text-slate-400 text-xs max-w-2xl leading-relaxed">
+                Aggregating datasets from World Bank, IMF, UN, WHO, WEF, WIPO, RSF, Transparency International & NITI Aayog.
+              </div>
+            </div>
+            
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 text-xs font-bold text-slate-300">
+              <span className="px-3 py-1 rounded-full bg-slate-800 text-amber-400 border border-amber-500/20">
+                Powered by Gemini AI
+              </span>
+              <span className="px-3 py-1 rounded-full bg-slate-800 text-emerald-400 border border-emerald-500/20">
+                2026 Verified Edition
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-4 text-[#E8D9C8]">
-            <span>Powered by Gemini AI</span>
-            <span>•</span>
-            <span>2026 Verified Edition</span>
+
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-xs">
+            <p>© {new Date().getFullYear()} India Global Index. Open Data Policy Initiative.</p>
+            <p className="flex items-center gap-1.5 font-medium text-slate-300">
+              Made with <span className="text-rose-500 animate-pulse">💖</span> by{' '}
+              <a
+                href="https://vivekducs.is-a.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-black text-amber-400 hover:text-amber-300 hover:underline transition-colors"
+              >
+                Vivek Kumar
+              </a>
+            </p>
           </div>
         </div>
       </footer>
