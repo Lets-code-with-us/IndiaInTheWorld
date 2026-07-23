@@ -83,7 +83,7 @@ export const TrendAnalysis: React.FC<TrendAnalysisProps> = ({
             </div>
             <button
               onClick={() => onSelectIndicator(activeIndicator)}
-              className="px-3 py-1.5 rounded-lg bg-[#1B2028] text-[#F7C331] hover:bg-[#232A34] transition-colors border border-[#F7882F]/30"
+              className="px-3 py-1.5 rounded-lg bg-[#3C2F2F] text-[#F7C331] hover:bg-[#4A3E3D] transition-colors border border-[#F7882F]/30"
             >
               Full Deep Dive
             </button>
@@ -153,21 +153,21 @@ export const TrendAnalysis: React.FC<TrendAnalysisProps> = ({
         </div>
 
         {/* AI Forecast Banner */}
-        <div className="bg-[#1B2028] text-white rounded-2xl p-6 border border-[#2D3642] shadow-xl space-y-4 flex flex-col justify-between">
+        <div className="bg-[#3C2F2F] text-white rounded-2xl p-6 border border-[#52433A] shadow-xl space-y-4 flex flex-col justify-between">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#F7C331] flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#F7882F]" />
                 AI 2028-2030 Horizon Projection
               </span>
-              <span className="text-[10px] bg-[#232A34] text-[#DCC7AA] px-2 py-0.5 rounded border border-[#2D3642]">
+              <span className="text-[10px] bg-[#4A3E3D] text-[#E8D9C8] px-2 py-0.5 rounded border border-[#52433A]">
                 Gemini Intelligence
               </span>
             </div>
 
             <h3 className="text-base font-bold text-white">Target Rank Projection for {activeIndicator.name}</h3>
 
-            <p className="text-xs text-[#DCC7AA] leading-relaxed">
+            <p className="text-xs text-[#E8D9C8] leading-relaxed">
               Based on historical momentum and recent policy investments, India is projected to continue its upward velocity in {activeIndicator.category}, with potential to gain an additional 5 to 10 places by 2028 if structural bottlenecks are addressed.
             </p>
           </div>

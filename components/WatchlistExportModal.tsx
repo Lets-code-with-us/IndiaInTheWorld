@@ -59,16 +59,16 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl max-w-2xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
         {/* Modal Header */}
-        <div className="bg-[#1B2028] text-white p-5 flex items-center justify-between border-b border-[#2D3642]">
+        <div className="bg-[#3C2F2F] text-white p-5 flex items-center justify-between border-b border-[#52433A]">
           <div className="flex items-center gap-2.5">
             <Bookmark className="w-5 h-5 text-[#F7C331]" />
             <div>
               <h3 className="font-bold text-sm text-white">Saved Indicators Watchlist</h3>
-              <p className="text-xs text-[#6B7A8F]">{watchlistedIndicators.length} indicators saved</p>
+              <p className="text-xs text-[#E8D9C8]">{watchlistedIndicators.length} indicators saved</p>
             </div>
           </div>
 
-          <button onClick={onClose} className="p-1.5 rounded-lg bg-[#232A34] text-[#DCC7AA] hover:text-white">
+          <button onClick={onClose} className="p-1.5 rounded-lg bg-[#4A3E3D] text-[#E8D9C8] hover:text-white cursor-pointer">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -82,15 +82,15 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
                 className="p-3 bg-[#FAF6EF] rounded-xl border border-[#DCC7AA] flex items-center justify-between gap-3 hover:border-[#F7882F] transition-colors"
               >
                 <div>
-                  <div className="font-bold text-slate-900">{ind.name}</div>
-                  <div className="text-[11px] text-[#6B7A8F] mt-0.5">
+                  <div className="font-bold text-neutral-900">{ind.name}</div>
+                  <div className="text-[11px] text-[#7C6C62] mt-0.5">
                     {ind.category} • Rank <strong className="text-[#D46917]">#{ind.latestIndiaRank}</strong> ({ind.latestIndiaValue})
                   </div>
                 </div>
 
                 <button
                   onClick={() => onRemoveFromWatchlist(ind.id)}
-                  className="p-1.5 text-slate-400 hover:text-red-600 transition-colors"
+                  className="p-1.5 text-neutral-400 hover:text-red-600 transition-colors cursor-pointer"
                   title="Remove from watchlist"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -98,7 +98,7 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
               </div>
             ))
           ) : (
-            <div className="py-12 text-center text-[#6B7A8F] space-y-2">
+            <div className="py-12 text-center text-[#7C6C62] space-y-2">
               <Globe className="w-8 h-8 text-[#DCC7AA] mx-auto" />
               <div className="font-bold">Your Watchlist is empty</div>
               <p className="text-[11px]">Click the bookmark icon on any indicator to save it for quick export.</p>
@@ -111,7 +111,7 @@ export const WatchlistExportModal: React.FC<WatchlistExportModalProps> = ({
           {watchlistedIndicators.length > 0 && (
             <button
               onClick={onClearWatchlist}
-              className="text-[#6B7A8F] hover:text-red-600 text-xs font-semibold"
+              className="text-[#7C6C62] hover:text-red-600 text-xs font-semibold cursor-pointer"
             >
               Clear All
             </button>

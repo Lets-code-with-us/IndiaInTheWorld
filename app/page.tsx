@@ -104,14 +104,14 @@ export default function Home() {
       </main>
 
       {/* Footer Bar */}
-      <footer className="bg-[#1B2028] text-[#DCC7AA] text-xs py-8 border-t border-[#2D3642]">
+      <footer className="bg-[#3C2F2F] text-[#E8D9C8] text-xs py-8 border-t border-[#52433A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center md:text-left">
             <div className="font-bold text-white">India Global Index — Policy Intelligence & World Rankings</div>
-            <div className="text-[#6B7A8F]">Aggregating datasets from World Bank, IMF, UN, WHO, WEF, WIPO, RSF & Transparency International.</div>
+            <div className="text-[#C4B2A5]">Aggregating datasets from World Bank, IMF, UN, WHO, WEF, WIPO, RSF & Transparency International.</div>
           </div>
-          <div className="flex items-center gap-4 text-[#DCC7AA]">
-            <span>Powered by Gemini 2.5 AI</span>
+          <div className="flex items-center gap-4 text-[#E8D9C8]">
+            <span>Powered by Gemini AI</span>
             <span>•</span>
             <span>2026 Verified Edition</span>
           </div>

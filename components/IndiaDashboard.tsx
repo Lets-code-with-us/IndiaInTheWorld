@@ -1,16 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TrendingUp,
   Award,
   AlertTriangle,
-  ArrowUpRight,
-  ArrowDownRight,
   Sparkles,
   ChevronRight,
   Globe,
-  Building2,
   Users,
   Landmark,
   Cpu,
@@ -22,6 +19,8 @@ import {
   Zap,
   CheckCircle2,
   BookOpen,
+  Info,
+  HelpCircle,
 } from 'lucide-react';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 import { CATEGORIES } from '../lib/data/categories';
@@ -53,6 +52,8 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
   onOpenAiAssistant,
   onOpenReportCard,
 }) => {
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
   // Key Hero Indicators
   const gdpInd = GLOBAL_INDICATORS.find((i) => i.id === 'gdp-rank');
   const giiInd = GLOBAL_INDICATORS.find((i) => i.id === 'global-innovation-index');
@@ -65,39 +66,46 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
   const criticalGaps = GLOBAL_INDICATORS.filter((i) => i.latestIndiaRank >= 100).slice(0, 5);
 
   const policyMilestones = [
-    { year: 2015, title: 'Digital India & Jan Dhan Launch', impact: 'Built base for 1.4B digital biometric identities & 500M bank accounts' },
-    { year: 2016, title: 'Unified Payments Interface (UPI)', impact: 'Revolutionized digital payments (>13B monthly transactions)' },
-    { year: 2018, title: 'Ayushman Bharat PM-JAY', impact: 'World largest free health cover for 500M low-income citizens' },
-    { year: 2020, title: 'National Education Policy (NEP) & PLI', impact: 'Multi-disciplinary education reform & $26B manufacturing incentives' },
-    { year: 2024, title: 'IndiaAI Mission & DPDP Act Enforcement', impact: '$1.2B allocation for compute infrastructure & data protection' },
+    { year: 2015, title: 'Digital India & Jan Dhan Launch', impact: 'Built foundation for 1.4B digital biometric identities & 500M bank accounts', spike: 'Propelled FinTech & Digital Inclusion (#15 GovTech)' },
+    { year: 2016, title: 'Unified Payments Interface (UPI)', impact: 'Revolutionized digital payments (>13B monthly transactions)', spike: 'Rank #1 globally in real-time digital payment volume' },
+    { year: 2018, title: 'Ayushman Bharat PM-JAY', impact: 'World largest free health cover for 500M low-income citizens', spike: 'Expanded tertiary care access across 28 states' },
+    { year: 2020, title: 'National Education Policy (NEP) & PLI', impact: 'Multi-disciplinary education reform & $26B manufacturing incentives', spike: 'Boosted electronics export velocity from $8B to $29B' },
+    { year: 2024, title: 'IndiaAI Mission & DPDP Act Enforcement', impact: '$1.2B allocation for compute infrastructure & data protection', spike: 'Gained 10 places in Oxford AI Readiness Index (#14)' },
   ];
 
   return (
-    <div className="space-y-8 pb-12">
-      {/* Hero Welcome Banner */}
-      <section className="bg-gradient-to-br from-[#1B2028] via-[#232A34] to-[#1B2028] rounded-2xl p-6 sm:p-8 text-white border border-[#2D3642] shadow-xl relative overflow-hidden">
+    <div className="space-y-6 sm:space-y-8 pb-12">
+      {/* 
+        ========================================================================
+        1. TOP LEVEL (F-PATTERN READING: Top-Left Anchor)
+        - Key Metrics & Executive Overview at Top
+        - Annotations, definitions, and source citations embedded
+        ========================================================================
+      */}
+      <section className="bg-gradient-to-br from-[#3C2F2F] via-[#4A3E3D] to-[#3C2F2F] rounded-2xl p-5 sm:p-8 text-neutral-100 border border-[#52433A] shadow-xl relative overflow-hidden">
         <div className="absolute -right-12 -top-12 w-64 h-64 bg-[#F7882F]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -left-12 -bottom-12 w-64 h-64 bg-[#F7C331]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          {/* Top-Left Main F-Pattern Focus */}
           <div className="max-w-2xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F7882F]/20 text-[#F7C331] border border-[#F7882F]/30 text-xs font-semibold">
-              <Globe className="w-3.5 h-3.5" />
-              <span>India Global Footprint & Policy Radar</span>
+              <Globe className="w-3.5 h-3.5 text-[#F7882F]" />
+              <span>India Global Footprint & Policy Intelligence</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
-              Where India Stands in the Global Order
+              India Global Index Standings
             </h1>
 
-            <p className="text-[#DCC7AA] text-sm leading-relaxed">
-              Consolidating real-time metrics from the United Nations, World Bank, IMF, WHO, WIPO, WEF, and Reporters Without Borders into a single transparent intelligence dashboard.
+            <p className="text-[#E8D9C8] text-xs sm:text-sm leading-relaxed">
+              Consolidating real-time comparative metrics from the United Nations, World Bank, IMF, WHO, WIPO, WEF, and NITI Aayog into a single context-rich dashboard.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={onOpenReportCard}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#F7882F] hover:bg-[#D46917] text-white text-xs font-semibold shadow-lg shadow-black/40 transition-all border border-[#F7C331]/30"
+                className="min-h-[44px] px-4 py-2.5 rounded-xl bg-[#F7882F] hover:bg-[#D46917] text-white text-xs font-semibold shadow-md transition-all border border-[#F7C331]/30 flex items-center gap-2 cursor-pointer"
               >
                 <Award className="w-4 h-4 text-white" />
                 <span>Generate AI Annual Report Card</span>
@@ -105,7 +113,7 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
 
               <button
                 onClick={() => onOpenAiAssistant('Provide a summary of India’s top 5 strengths and weaknesses.')}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2D3642] hover:bg-[#384352] text-slate-200 text-xs font-medium border border-[#384352] transition-colors"
+                className="min-h-[44px] px-4 py-2.5 rounded-xl bg-[#52433A] hover:bg-[#635248] text-neutral-100 text-xs font-medium border border-[#635248] transition-colors flex items-center gap-2 cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 text-[#F7C331]" />
                 <span>Ask AI Assistant</span>
@@ -113,82 +121,119 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
             </div>
           </div>
 
-          {/* Quick Stats Footprint */}
-          <div className="w-full lg:w-auto grid grid-cols-2 gap-3 bg-[#232A34] border border-[#2D3642] rounded-xl p-4">
-            <div className="space-y-1">
-              <div className="text-[11px] text-[#6B7A8F] font-medium">Nominal GDP</div>
+          {/* Key Macro Financial Metrics with Callout Annotations */}
+          <div className="w-full lg:w-auto grid grid-cols-1 sm:grid-cols-2 gap-3 bg-[#4A3E3D] border border-[#52433A] rounded-xl p-4">
+            <div className="space-y-1 p-2 bg-[#3C2F2F] rounded-lg border border-[#52433A]">
+              <div className="flex items-center justify-between text-[11px] text-[#C4B2A5] font-medium">
+                <span>Nominal GDP</span>
+                <span className="text-[9px] bg-[#F7882F]/20 text-[#F7C331] px-1.5 py-0.5 rounded font-bold">IMF 2026</span>
+              </div>
               <div className="text-xl font-bold text-[#F7882F]">$3.93 Trillion</div>
-              <div className="text-[10px] text-slate-400">Rank #5 globally (IMF)</div>
+              <div className="text-[10px] text-[#E8D9C8] flex items-center gap-1">
+                <span>Rank #5 globally</span>
+                <span className="text-emerald-400 font-bold">(+1 place vs UK)</span>
+              </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-[11px] text-[#6B7A8F] font-medium">GDP (PPP)</div>
+
+            <div className="space-y-1 p-2 bg-[#3C2F2F] rounded-lg border border-[#52433A]">
+              <div className="flex items-center justify-between text-[11px] text-[#C4B2A5] font-medium">
+                <span>PPP Adjusted GDP</span>
+                <span className="text-[9px] bg-[#F7882F]/20 text-[#F7C331] px-1.5 py-0.5 rounded font-bold">World Bank</span>
+              </div>
               <div className="text-xl font-bold text-[#F7C331]">$14.2 Trillion</div>
-              <div className="text-[10px] text-slate-400">Rank #3 globally (World Bank)</div>
+              <div className="text-[10px] text-[#E8D9C8] flex items-center gap-1">
+                <span>Rank #3 globally</span>
+                <span className="text-emerald-400 font-bold">(Behind US & China)</span>
+              </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-[11px] text-[#6B7A8F] font-medium">Global Innovation</div>
+
+            <div className="space-y-1 p-2 bg-[#3C2F2F] rounded-lg border border-[#52433A]">
+              <div className="flex items-center justify-between text-[11px] text-[#C4B2A5] font-medium">
+                <span>Global Innovation (GII)</span>
+                <span className="text-[9px] bg-[#F7882F]/20 text-[#F7C331] px-1.5 py-0.5 rounded font-bold">WIPO</span>
+              </div>
               <div className="text-xl font-bold text-[#F7882F]">Rank #39</div>
-              <div className="text-[10px] text-slate-400">+42 places in 10 yrs</div>
+              <div className="text-[10px] text-[#E8D9C8]">
+                <span className="text-emerald-400 font-bold">+42 places</span> surge over 10 yrs
+              </div>
             </div>
-            <div className="space-y-1">
-              <div className="text-[11px] text-[#6B7A8F] font-medium">Population Scale</div>
-              <div className="text-xl font-bold text-[#DCC7AA]">1.43 Billion</div>
-              <div className="text-[10px] text-slate-400">17.7% of world total</div>
+
+            <div className="space-y-1 p-2 bg-[#3C2F2F] rounded-lg border border-[#52433A]">
+              <div className="flex items-center justify-between text-[11px] text-[#C4B2A5] font-medium">
+                <span>Population Scale</span>
+                <span className="text-[9px] bg-[#F7882F]/20 text-[#F7C331] px-1.5 py-0.5 rounded font-bold">UN Population</span>
+              </div>
+              <div className="text-xl font-bold text-[#E8D9C8]">1.43 Billion</div>
+              <div className="text-[10px] text-[#C4B2A5]">17.7% of global population</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Hero KPI Highlight Cards */}
+      {/* 
+        ========================================================================
+        2. KEY BENCHMARK METRICS (TOP ROW)
+        - Interactive KPI cards with contextual definitions & annotations
+        ========================================================================
+      */}
       <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#DCC7AA]/60 pb-2">
+          <h2 className="text-base sm:text-lg font-bold text-neutral-900 flex items-center gap-2">
             <Zap className="w-5 h-5 text-[#F7882F]" />
-            <span>Key Benchmark Indicators</span>
+            <span>Key Benchmark Indicators with Annotations</span>
           </h2>
-          <span className="text-xs text-[#6B7A8F]">Verified 2025/2026 Datasets</span>
+          <span className="text-xs text-[#6B7A8F]">Contextual Callouts & Source Citations Included</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-          {[gdpInd, giiInd, ccpiInd, cyberInd, aiInd, govTechInd].map((ind) => {
+          {[
+            { ind: gdpInd, annotation: 'Spike: Fast nominal growth ($3.93T)', definition: 'Gross Domestic Product in US dollars.' },
+            { ind: giiInd, annotation: 'Spike: +42 ranks since 2015', definition: 'WIPO index measuring tech outputs & IP filings.' },
+            { ind: ccpiInd, annotation: 'Top 10 Global Climate Performer', definition: 'Germanwatch metric on renewable energy & emissions.' },
+            { ind: cyberInd, annotation: 'Tier 1 Global Role Model', definition: 'ITU assessment of cybersecurity legal & tech measures.' },
+            { ind: aiInd, annotation: 'Top 15 AI Readiness', definition: 'Oxford Insights index measuring AI talent & compute.' },
+            { ind: govTechInd, annotation: 'Group A High Maturity', definition: 'World Bank index evaluating public digital systems.' },
+          ].map(({ ind, annotation, definition }) => {
             if (!ind) return null;
             return (
               <div
                 key={ind.id}
                 onClick={() => onSelectIndicator(ind)}
-                className="bg-white rounded-xl p-4 border border-[#DCC7AA] shadow-sm hover:shadow-md hover:border-[#F7882F] cursor-pointer transition-all flex flex-col justify-between group"
+                className="bg-white rounded-xl p-4 border border-[#DCC7AA] shadow-sm hover:shadow-md hover:border-[#F7882F] cursor-pointer transition-all flex flex-col justify-between group min-h-[160px]"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-1 text-[11px] font-semibold text-[#6B7A8F] uppercase tracking-wider">
+                  <div className="flex items-center justify-between gap-1 text-[10px] font-bold text-[#6B7A8F] uppercase tracking-wider">
                     <span className="truncate">{ind.category}</span>
-                    <span
-                      className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
-                        ind.trend === 'improving'
-                          ? 'bg-[#FFF2E8] text-[#D46917] border border-[#F7882F]/30'
-                          : 'bg-[#FFFBE8] text-[#D4A11A] border border-[#F7C331]/30'
-                      }`}
-                    >
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-[#FFF2E8] text-[#D46917] border border-[#F7882F]/30">
                       {ind.trend}
                     </span>
                   </div>
 
-                  <h3 className="text-xs font-bold text-slate-800 mt-2 group-hover:text-[#F7882F] transition-colors line-clamp-1">
+                  <h3 className="text-xs font-bold text-neutral-800 mt-2 group-hover:text-[#F7882F] transition-colors line-clamp-1">
                     {ind.name}
                   </h3>
 
-                  <div className="mt-3 flex items-baseline justify-between">
-                    <span className="text-2xl font-black text-slate-900">
+                  <div className="mt-2 flex items-baseline justify-between">
+                    <span className="text-2xl font-black text-neutral-900">
                       #{ind.latestIndiaRank}
                     </span>
                     <span className="text-xs font-semibold text-[#6B7A8F]">
                       {ind.latestIndiaValue}
                     </span>
                   </div>
+
+                  {/* Context Callout Annotation */}
+                  <div className="mt-2 text-[10px] font-semibold text-[#D46917] bg-[#FFF2E8] px-2 py-1 rounded border border-[#F7882F]/20 flex items-center gap-1">
+                    <Info className="w-3 h-3 shrink-0 text-[#F7882F]" />
+                    <span>{annotation}</span>
+                  </div>
                 </div>
 
-                <div className="mt-3 pt-2 border-t border-[#DCC7AA]/60 flex items-center justify-between text-[11px] text-[#6B7A8F]">
-                  <span>{ind.changeDelta}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#F7882F] group-hover:translate-x-0.5 transition-all" />
+                <div className="mt-3 pt-2 border-t border-[#DCC7AA]/60 flex items-center justify-between text-[10px] text-[#6B7A8F]">
+                  <span className="truncate max-w-[110px]" title={`Source: ${ind.source.organization}`}>
+                    {ind.source.organization}
+                  </span>
+                  <ChevronRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-[#F7882F] transition-transform" />
                 </div>
               </div>
             );
@@ -196,12 +241,17 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
         </div>
       </section>
 
-      {/* 10 Category Snapshot Grid */}
+      {/* 
+        ========================================================================
+        3. MIDDLE SECTION (SUPPORTING CHARTS & CATEGORY SNAPSHOTS)
+        - 10 Category overview cards
+        ========================================================================
+      */}
       <section className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#DCC7AA]/60 pb-2">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Category Index Overview</h2>
-            <p className="text-xs text-[#6B7A8F]">Aggregated India score card across 10 global policy categories</p>
+            <h2 className="text-base sm:text-lg font-bold text-neutral-900">10 Policy Category Indices</h2>
+            <p className="text-xs text-[#6B7A8F]">Comprehensive scores and benchmark metrics across all key public policy domains</p>
           </div>
         </div>
 
@@ -214,37 +264,39 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
               <div
                 key={catKey}
                 onClick={() => onSelectCategory(catKey)}
-                className="bg-white rounded-xl p-4 border border-[#DCC7AA] hover:border-[#F7882F] shadow-sm hover:shadow-md cursor-pointer transition-all space-y-3 group"
+                className="bg-white rounded-xl p-4 border border-[#DCC7AA] hover:border-[#F7882F] shadow-sm hover:shadow-md cursor-pointer transition-all space-y-3 group min-h-[170px] flex flex-col justify-between"
               >
-                <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-lg bg-[#FFF2E8] text-[#F7882F] border border-[#F7882F]/20 group-hover:bg-[#F7882F] group-hover:text-white transition-colors">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <span className="text-[11px] font-bold text-[#6B7A8F] bg-[#FAF6EF] border border-[#DCC7AA] px-2 py-0.5 rounded-full">
-                    Avg Rank #{cat.averageRank}
-                  </span>
-                </div>
-
                 <div>
-                  <h3 className="text-xs font-bold text-slate-800 group-hover:text-[#F7882F] transition-colors">
-                    {cat.title}
-                  </h3>
-                  <p className="text-[11px] text-[#6B7A8F] mt-0.5 line-clamp-2">{cat.description}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="p-2 rounded-lg bg-[#FFF2E8] text-[#F7882F] border border-[#F7882F]/20 group-hover:bg-[#F7882F] group-hover:text-white transition-colors">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span className="text-[10px] font-bold text-[#6B7A8F] bg-[#FAF6EF] border border-[#DCC7AA] px-2 py-0.5 rounded-full">
+                      Avg Rank #{cat.averageRank}
+                    </span>
+                  </div>
+
+                  <div className="mt-2">
+                    <h3 className="text-xs font-bold text-neutral-800 group-hover:text-[#F7882F] transition-colors">
+                      {cat.title}
+                    </h3>
+                    <p className="text-[11px] text-[#6B7A8F] mt-0.5 line-clamp-2">{cat.description}</p>
+                  </div>
                 </div>
 
-                <div className="space-y-1.5 text-[11px] border-t border-[#DCC7AA]/60 pt-2 text-slate-600">
+                <div className="space-y-1 text-[10px] border-t border-[#DCC7AA]/60 pt-2 text-neutral-600">
                   <div className="flex justify-between">
-                    <span className="text-[#6B7A8F]">Top Rank:</span>
-                    <span className="font-semibold text-[#F7882F]">{cat.topIndicator}</span>
+                    <span className="text-[#6B7A8F]">Top Area:</span>
+                    <span className="font-semibold text-[#F7882F] truncate max-w-[110px]">{cat.topIndicator}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[#6B7A8F]">Lagging:</span>
-                    <span className="font-semibold text-amber-700 truncate max-w-[120px]">{cat.weakestIndicator}</span>
+                    <span className="text-[#6B7A8F]">Focus Area:</span>
+                    <span className="font-semibold text-amber-800 truncate max-w-[110px]">{cat.weakestIndicator}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between text-[11px] font-medium text-[#F7882F] group-hover:translate-x-1 transition-transform">
-                  <span>Explore Category ({cat.totalIndicators})</span>
+                  <span>Explore ({cat.totalIndicators})</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </div>
               </div>
@@ -253,22 +305,28 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
         </div>
       </section>
 
-      {/* Top 5 Strengths vs Critical Focus Areas */}
+      {/* 
+        ========================================================================
+        4. DEEP DIVE BOTTOM SECTION
+        - Top Strengths vs Critical Reform Areas
+        - Reform Timeline with Data Spike Annotations
+        ========================================================================
+      */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top Strengths */}
-        <div className="bg-white rounded-2xl p-6 border border-[#DCC7AA] shadow-sm space-y-4">
+        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-[#DCC7AA] shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-[#DCC7AA]/60 pb-3">
             <div className="flex items-center gap-2">
               <div className="p-2 rounded-lg bg-[#FFF2E8] text-[#F7882F]">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">India&apos;s Top Global Strengths</h3>
-                <p className="text-xs text-[#6B7A8F]">World-leading rankings and high-velocity gains</p>
+                <h3 className="text-sm font-bold text-neutral-900">Top Global Strengths (Ranks #1–#15)</h3>
+                <p className="text-xs text-[#6B7A8F]">Areas where India leads globally or shows high velocity</p>
               </div>
             </div>
             <span className="text-xs font-bold text-[#D46917] bg-[#FFF2E8] px-2.5 py-1 rounded-full border border-[#F7882F]/30">
-              Rank Top 15
+              Top Performers
             </span>
           </div>
 
@@ -277,19 +335,19 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
               <div
                 key={ind.id}
                 onClick={() => onSelectIndicator(ind)}
-                className="py-3 flex items-center justify-between gap-3 hover:bg-[#FAF6EF] px-2 rounded-lg cursor-pointer transition-colors"
+                className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-[#FAF6EF] px-2 rounded-lg cursor-pointer transition-colors"
               >
                 <div className="space-y-0.5">
-                  <div className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <div className="text-xs font-bold text-neutral-800 flex items-center gap-2">
                     <span>{ind.name}</span>
                     <span className="text-[10px] text-[#6B7A8F] font-normal">({ind.source.organization})</span>
                   </div>
                   <div className="text-[11px] text-[#6B7A8F]">{ind.whyItMatters}</div>
                 </div>
 
-                <div className="text-right shrink-0">
+                <div className="text-left sm:text-right shrink-0">
                   <div className="text-sm font-black text-[#F7882F]">#{ind.latestIndiaRank}</div>
-                  <div className="text-[11px] font-semibold text-slate-600">{ind.latestIndiaValue}</div>
+                  <div className="text-[11px] font-semibold text-neutral-600">{ind.latestIndiaValue}</div>
                 </div>
               </div>
             ))}
@@ -297,19 +355,19 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
         </div>
 
         {/* Critical Reform Focus Areas */}
-        <div className="bg-white rounded-2xl p-6 border border-[#DCC7AA] shadow-sm space-y-4">
+        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-[#DCC7AA] shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-[#DCC7AA]/60 pb-3">
             <div className="flex items-center gap-2">
               <div className="p-2 rounded-lg bg-[#FFFBE8] text-[#D4A11A]">
                 <AlertTriangle className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Critical Policy Bottlenecks</h3>
-                <p className="text-xs text-[#6B7A8F]">Global indicators requiring immediate policy intervention</p>
+                <h3 className="text-sm font-bold text-neutral-900">Critical Policy Bottlenecks (Ranks #100+)</h3>
+                <p className="text-xs text-[#6B7A8F]">Global metrics requiring targeted structural reforms</p>
               </div>
             </div>
             <span className="text-xs font-bold text-[#D4A11A] bg-[#FFFBE8] px-2.5 py-1 rounded-full border border-[#F7C331]/40">
-              Rank #100+
+              Focus Required
             </span>
           </div>
 
@@ -318,19 +376,19 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
               <div
                 key={ind.id}
                 onClick={() => onSelectIndicator(ind)}
-                className="py-3 flex items-center justify-between gap-3 hover:bg-[#FAF6EF] px-2 rounded-lg cursor-pointer transition-colors"
+                className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-[#FAF6EF] px-2 rounded-lg cursor-pointer transition-colors"
               >
                 <div className="space-y-0.5">
-                  <div className="text-xs font-bold text-slate-800 flex items-center gap-2">
+                  <div className="text-xs font-bold text-neutral-800 flex items-center gap-2">
                     <span>{ind.name}</span>
                     <span className="text-[10px] text-[#6B7A8F] font-normal">({ind.source.organization})</span>
                   </div>
                   <div className="text-[11px] text-[#6B7A8F]">{ind.whyItMatters}</div>
                 </div>
 
-                <div className="text-right shrink-0">
+                <div className="text-left sm:text-right shrink-0">
                   <div className="text-sm font-black text-[#D4A11A]">#{ind.latestIndiaRank}</div>
-                  <div className="text-[11px] font-semibold text-slate-600">{ind.latestIndiaValue}</div>
+                  <div className="text-[11px] font-semibold text-neutral-600">{ind.latestIndiaValue}</div>
                 </div>
               </div>
             ))}
@@ -338,14 +396,14 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
         </div>
       </section>
 
-      {/* Policy Milestones Timeline */}
-      <section className="bg-white rounded-2xl p-6 border border-[#DCC7AA] shadow-sm space-y-4">
+      {/* National Policy Reform Timeline with Annotations */}
+      <section className="bg-white rounded-2xl p-5 sm:p-6 border border-[#DCC7AA] shadow-sm space-y-4">
         <div className="flex items-center justify-between border-b border-[#DCC7AA]/60 pb-3">
           <div className="flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-[#F7882F]" />
             <div>
-              <h3 className="text-sm font-bold text-slate-900">Major National Reform Timeline</h3>
-              <p className="text-xs text-[#6B7A8F]">Key policy milestones driving India&apos;s global index trajectory</p>
+              <h3 className="text-sm font-bold text-neutral-900">10-Year National Policy Reform Timeline</h3>
+              <p className="text-xs text-[#6B7A8F]">Milestones and data point spikes driving India&apos;s trajectory</p>
             </div>
           </div>
         </div>
@@ -354,13 +412,21 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
           {policyMilestones.map((m, idx) => (
             <div
               key={idx}
-              className="bg-[#FAF6EF] rounded-xl p-3.5 border border-[#DCC7AA] space-y-1.5 relative hover:border-[#F7882F] transition-colors"
+              className="bg-[#FAF6EF] rounded-xl p-3.5 border border-[#DCC7AA] space-y-2 relative hover:border-[#F7882F] transition-colors flex flex-col justify-between"
             >
-              <div className="text-xs font-black text-[#D46917] bg-[#FFF2E8] w-fit px-2 py-0.5 rounded border border-[#F7882F]/20">
-                {m.year}
+              <div className="space-y-1.5">
+                <div className="text-xs font-black text-[#D46917] bg-[#FFF2E8] w-fit px-2 py-0.5 rounded border border-[#F7882F]/20">
+                  {m.year}
+                </div>
+                <div className="text-xs font-bold text-neutral-800">{m.title}</div>
+                <div className="text-[11px] text-[#6B7A8F] leading-snug">{m.impact}</div>
               </div>
-              <div className="text-xs font-bold text-slate-800">{m.title}</div>
-              <div className="text-[11px] text-[#6B7A8F] leading-snug">{m.impact}</div>
+
+              {/* Data Point Spike Annotation */}
+              <div className="text-[10px] font-semibold text-[#D46917] bg-[#FFF2E8] p-2 rounded border border-[#F7882F]/20 mt-2 flex items-center gap-1">
+                <TrendingUp className="w-3 h-3 text-[#F7882F] shrink-0" />
+                <span><strong>Data Impact:</strong> {m.spike}</span>
+              </div>
             </div>
           ))}
         </div>

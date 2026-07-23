@@ -115,7 +115,7 @@ export const CountryComparison: React.FC<CountryComparisonProps> = ({
       {/* Country Cards Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* India Profile Card */}
-        <div className="bg-[#1B2028] text-white rounded-2xl p-6 border border-[#2D3642] shadow-xl relative overflow-hidden space-y-4">
+        <div className="bg-[#3C2F2F] text-white rounded-2xl p-6 border border-[#52433A] shadow-xl relative overflow-hidden space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-[#F7882F]/20 text-[#F7C331] border border-[#F7882F]/30 flex items-center justify-center font-bold text-lg">
@@ -123,7 +123,7 @@ export const CountryComparison: React.FC<CountryComparisonProps> = ({
               </div>
               <div>
                 <h3 className="text-lg font-bold">India</h3>
-                <p className="text-xs text-[#6B7A8F]">{indiaCountry.region}</p>
+                <p className="text-xs text-[#E8D9C8]">{indiaCountry.region}</p>
               </div>
             </div>
             <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-[#F7882F]/20 text-[#F7C331] border border-[#F7882F]/30">
@@ -131,14 +131,14 @@ export const CountryComparison: React.FC<CountryComparisonProps> = ({
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 bg-[#232A34] p-3.5 rounded-xl border border-[#2D3642] text-xs">
+          <div className="grid grid-cols-2 gap-3 bg-[#4A3E3D] p-3.5 rounded-xl border border-[#52433A] text-xs">
             <div>
-              <div className="text-[#6B7A8F]">Nominal GDP</div>
+              <div className="text-[#C4B2A5]">Nominal GDP</div>
               <div className="text-base font-bold text-[#F7882F]">{indiaCountry.gdpNominal}</div>
             </div>
             <div>
-              <div className="text-[#6B7A8F]">Population</div>
-              <div className="text-base font-bold text-[#DCC7AA]">{indiaCountry.population}</div>
+              <div className="text-[#C4B2A5]">Population</div>
+              <div className="text-base font-bold text-[#E8D9C8]">{indiaCountry.population}</div>
             </div>
           </div>
         </div>
@@ -229,7 +229,7 @@ export const CountryComparison: React.FC<CountryComparisonProps> = ({
 
           <button
             onClick={() => onOpenAiAssistant(`Compare India and ${targetCountry.name} across FDI inflows, innovation, and digital infrastructure.`)}
-            className="w-full py-2.5 rounded-xl bg-[#1B2028] text-[#F7C331] text-xs font-semibold hover:bg-[#232A34] transition-colors flex items-center justify-center gap-2 border border-[#F7882F]/30"
+            className="w-full py-2.5 rounded-xl bg-[#3C2F2F] text-[#F7C331] text-xs font-semibold hover:bg-[#4A3E3D] transition-colors flex items-center justify-center gap-2 border border-[#F7882F]/30"
           >
             <Sparkles className="w-4 h-4 text-[#F7882F]" />
             <span>Ask AI Assistant for Detailed Questions</span>

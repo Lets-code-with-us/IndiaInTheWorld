@@ -71,18 +71,18 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col">
         {/* Header Bar */}
-        <div className="bg-[#1B2028] text-white p-6 flex items-start justify-between border-b border-[#2D3642] shrink-0">
+        <div className="bg-[#3C2F2F] text-white p-6 flex items-start justify-between border-b border-[#52433A] shrink-0">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold text-[#F7C331] uppercase tracking-wider bg-[#232A34] px-2.5 py-0.5 rounded border border-[#2D3642]">
+              <span className="text-[10px] font-bold text-[#F7C331] uppercase tracking-wider bg-[#4A3E3D] px-2.5 py-0.5 rounded border border-[#52433A]">
                 {indicator.category}
               </span>
-              <span className="text-[10px] font-bold text-[#DCC7AA] bg-[#232A34] px-2 py-0.5 rounded">
+              <span className="text-[10px] font-bold text-[#E8D9C8] bg-[#4A3E3D] px-2 py-0.5 rounded">
                 Verified Dataset
               </span>
             </div>
             <h2 className="text-xl font-bold text-white">{indicator.name}</h2>
-            <p className="text-xs text-[#6B7A8F]">{indicator.description}</p>
+            <p className="text-xs text-[#E8D9C8]">{indicator.description}</p>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
@@ -91,7 +91,7 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
               className={`p-2 rounded-xl border transition-colors ${
                 isWatchlisted
                   ? 'bg-[#F7882F] text-white border-[#F7882F]'
-                  : 'bg-[#232A34] text-[#DCC7AA] border-[#2D3642] hover:bg-[#2D3642]'
+                  : 'bg-[#4A3E3D] text-[#E8D9C8] border-[#52433A] hover:bg-[#52433A]'
               }`}
               title="Save to Watchlist"
             >
@@ -99,7 +99,7 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-[#232A34] text-[#DCC7AA] hover:text-white hover:bg-[#2D3642] border border-[#2D3642] transition-colors"
+              className="p-2 rounded-xl bg-[#4A3E3D] text-[#E8D9C8] hover:text-white hover:bg-[#52433A] border border-[#52433A] transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -187,7 +187,7 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
           </div>
 
           {/* AI Breakdown Section */}
-          <div className="bg-[#1B2028] text-white p-5 rounded-2xl border border-[#2D3642] space-y-3">
+          <div className="bg-[#3C2F2F] text-white p-5 rounded-2xl border border-[#52433A] space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#F7C331]" />
@@ -204,11 +204,11 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
             </div>
 
             {aiExplanation ? (
-              <div className="p-3 bg-[#232A34] rounded-xl text-[#DCC7AA] text-xs leading-relaxed max-h-52 overflow-y-auto whitespace-pre-line border border-[#2D3642]">
+              <div className="p-3 bg-[#4A3E3D] rounded-xl text-[#E8D9C8] text-xs leading-relaxed max-h-52 overflow-y-auto whitespace-pre-line border border-[#52433A]">
                 {aiExplanation}
               </div>
             ) : (
-              <p className="text-[#6B7A8F] text-xs">
+              <p className="text-[#C4B2A5] text-xs">
                 Click above to generate an AI-powered policy breakdown and rank improvement roadmap for this metric.
               </p>
             )}

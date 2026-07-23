@@ -40,9 +40,11 @@ Generate a comprehensive, data-driven "India Annual Global Progress & Policy Rep
 9. Gender Equality & Parity
 10. Digital Government & Infrastructure
 
+IMPORTANT RULE: DO NOT use any emojis anywhere in your output. Use clean text headers, bold terms, numbers, and bullet points.
+
 Please provide your response in clear, beautifully formatted Markdown with the following structured sections:
 
-# 📊 India Global Performance Annual Report Card
+# India Global Performance Annual Report Card
 
 ## Executive Overview & Strategic Trajectory
 [Provide a 3-paragraph summary of India's macroeconomic trajectory, global rank position improvements, and key strategic priorities.]
@@ -53,24 +55,24 @@ Please provide your response in clear, beautifully formatted Markdown with the f
 - **Critical Policy Bottlenecks**: [List 3 areas needing immediate reform]
 
 ## Comprehensive SWOT Analysis
-### 🚀 Strengths
+### Primary Strengths
 - [Detail 3 data-backed strengths]
 
-### ⚡ Weaknesses & Gaps
+### Weaknesses & Gaps
 - [Detail 3 data-backed gaps]
 
-### 💡 Opportunities (2026-2030)
+### Strategic Opportunities (2026-2030)
 - [Detail 3 high-impact global opportunities]
 
-### ⚠️ Threats & Vulnerabilities
+### Geopolitical Threats & Vulnerabilities
 - [Detail 3 structural or geopolitical threats]
 
-## 🔮 2028-2030 Horizon Predictions
+## 2028-2030 Horizon Predictions
 - **GDP & Economic Scale**: [Prediction based on current growth trajectory]
 - **Innovation & AI Leadership**: [Prediction on GII and AI Readiness]
 - **Quality of Life & Human Capital**: [Prediction on HDI and Healthcare]
 
-## 🏛 Top 5 Key Policy Recommendations
+## Top 5 Key Policy Recommendations
 1. [Recommendation 1]
 2. [Recommendation 2]
 3. [Recommendation 3]
@@ -81,6 +83,8 @@ Please provide your response in clear, beautifully formatted Markdown with the f
       prompt = `
 You are an expert global policy researcher.
 Provide an in-depth breakdown of India's ranking for the indicator: "${indicatorName}" in the "${category}" category.
+
+IMPORTANT RULE: DO NOT use any emojis anywhere in your output.
 
 Please format your response in Markdown with:
 1. **Executive Context**: What this metric measures and why it matters globally.
@@ -93,6 +97,8 @@ Please format your response in Markdown with:
       prompt = `
 You are a macroeconomic analyst.
 Provide a comparative strategic analysis comparing **India (IND)** and **Country Code: ${compareCountryCode}**.
+
+IMPORTANT RULE: DO NOT use any emojis anywhere in your output.
 
 Structure your output in clear Markdown:
 1. **Executive Comparison Overview**: Macro economic contrast, population, and strategic positioning.

@@ -10,6 +10,7 @@ import {
   ChevronRight,
   Sparkles,
   Layers,
+  ExternalLink,
 } from 'lucide-react';
 import { INDIAN_STATES_DATA } from '../lib/data/states';
 import { StateIndicator } from '../lib/types';
@@ -68,7 +69,7 @@ export const StateExplorer: React.FC<StateExplorerProps> = ({ onOpenAiAssistant 
               onClick={() => setSelectedMetric(m.id as any)}
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedMetric === m.id
-                  ? 'bg-[#1B2028] text-[#F7C331] shadow-md border border-[#F7882F]/40'
+                  ? 'bg-[#3C2F2F] text-[#F7C331] shadow-md border border-[#F7882F]/40'
                   : 'bg-[#FAF6EF] text-[#6B7A8F] hover:bg-[#F7882F]/10 border border-[#DCC7AA]'
               }`}
             >
@@ -91,9 +92,30 @@ export const StateExplorer: React.FC<StateExplorerProps> = ({ onOpenAiAssistant 
 
       {/* State Rankings Grid */}
       <div className="bg-white rounded-2xl p-6 border border-[#DCC7AA] shadow-sm space-y-4">
-        <div className="flex items-center justify-between border-b border-[#DCC7AA]/60 pb-3 text-xs text-[#6B7A8F]">
+        <div className="flex flex-wrap items-center justify-between border-b border-[#DCC7AA]/60 pb-3 text-xs text-[#6B7A8F] gap-2">
           <span>Displaying {filteredStates.length} Indian States & Union Territories</span>
-          <span>Source: NITI Aayog Official Reports</span>
+          <div className="flex items-center gap-3">
+            <span>Sources:</span>
+            <a
+              href="https://www.niti.gov.in/sdg-india-index"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#D46917] font-semibold hover:underline flex items-center gap-1"
+            >
+              <span>NITI Aayog SDG Index</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+            <span>•</span>
+            <a
+              href="https://www.niti.gov.in/reports-and-indices"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#D46917] font-semibold hover:underline flex items-center gap-1"
+            >
+              <span>NITI Reports Portal</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

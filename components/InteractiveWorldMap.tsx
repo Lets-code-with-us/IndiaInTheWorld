@@ -9,6 +9,7 @@ import {
   Sparkles,
   Info,
   CheckCircle2,
+  ExternalLink,
 } from 'lucide-react';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 import { COMPARISON_COUNTRIES } from '../lib/data/countries';
@@ -77,13 +78,13 @@ export const InteractiveWorldMap: React.FC<InteractiveWorldMapProps> = ({
       {/* Map Stage & Country Details Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Interactive SVG World Canvas */}
-        <div className="lg:col-span-2 bg-[#1B2028] rounded-2xl p-6 border border-[#2D3642] shadow-xl relative overflow-hidden flex flex-col justify-between">
-          <div className="flex items-center justify-between border-b border-[#2D3642] pb-3 text-white">
+        <div className="lg:col-span-2 bg-[#3C2F2F] rounded-2xl p-6 border border-[#52433A] shadow-xl relative overflow-hidden flex flex-col justify-between">
+          <div className="flex items-center justify-between border-b border-[#52433A] pb-3 text-white">
             <div>
               <div className="text-xs font-bold text-[#F7C331] uppercase tracking-wider">{activeIndicator.category}</div>
               <h2 className="text-base font-bold text-white">{activeIndicator.name}</h2>
             </div>
-            <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#232A34] text-[#DCC7AA] border border-[#2D3642]">
+            <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#4A3E3D] text-[#E8D9C8] border border-[#52433A]">
               India Rank: #{activeIndicator.latestIndiaRank}
             </span>
           </div>
@@ -124,7 +125,7 @@ export const InteractiveWorldMap: React.FC<InteractiveWorldMapProps> = ({
                       r={node.r}
                       fill={isSelected ? '#F7882F' : node.color}
                       opacity={isSelected ? 0.95 : 0.65}
-                      stroke={isSelected ? '#ffffff' : '#1B2028'}
+                      stroke={isSelected ? '#ffffff' : '#3C2F2F'}
                       strokeWidth={isSelected ? 3 : 1.5}
                       className="transition-all duration-300 hover:opacity-100 hover:scale-110"
                     />
@@ -149,9 +150,17 @@ export const InteractiveWorldMap: React.FC<InteractiveWorldMapProps> = ({
             </svg>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between text-xs text-[#DCC7AA] pt-2 border-t border-[#2D3642]">
+          <div className="flex flex-wrap items-center justify-between text-xs text-[#E8D9C8] pt-2 border-t border-[#52433A]">
             <span>Click any node to inspect country metrics for this indicator</span>
-            <span className="text-[#F7C331] font-semibold">Source: {activeIndicator.source.organization}</span>
+            <a
+              href={activeIndicator.source.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#F7C331] font-semibold hover:underline flex items-center gap-1"
+            >
+              <span>Source: {activeIndicator.source.organization} ({activeIndicator.source.datasetName})</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
 
@@ -204,7 +213,7 @@ export const InteractiveWorldMap: React.FC<InteractiveWorldMapProps> = ({
 
           <button
             onClick={() => onSelectIndicator(activeIndicator)}
-            className="w-full py-2.5 rounded-xl bg-[#1B2028] hover:bg-[#232A34] text-[#F7C331] text-xs font-semibold transition-colors flex items-center justify-center gap-2 border border-[#F7882F]/30"
+            className="w-full py-2.5 rounded-xl bg-[#3C2F2F] hover:bg-[#4A3E3D] text-[#F7C331] text-xs font-semibold transition-colors flex items-center justify-center gap-2 border border-[#F7882F]/30"
           >
             <span>Open Complete Indicator Deep Dive</span>
             <ChevronRight className="w-4 h-4" />
