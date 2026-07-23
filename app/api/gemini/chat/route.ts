@@ -1,5 +1,7 @@
 import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
+import { INDIAN_STATES_DATA } from '@/lib/data/states';
+import { GLOBAL_INDICATORS } from '@/lib/data/indicators';
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,7 +13,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { message } = await req.json();
+    const { message, history } = await req.json();
 
     if (!message) {
       return NextResponse.json({ error: 'Message is required.' }, { status: 400 });
@@ -26,46 +28,68 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const systemInstruction = `You are "India Index AI", an expert assistant specialized in global rankings, international indicators, state development indicators (such as Bihar, Delhi, Maharashtra, Tamil Nadu, Kerala, Karnataka, Gujarat, etc.), and policy analytics for India.
-You have instant knowledge of India's rankings across UN, World Bank, IMF, WHO, WEF, WIPO, RSF, Transparency International, Oxford Insights, and NITI Aayog datasets.
+    // Format Indian states dataset into a clean JSON string for system context
+    const statesDataSummary = INDIAN_STATES_DATA.map((s) => (
+      `- State/UT: ${s.stateName} (${s.code}) | Category: ${s.category} | SDG Index Score: ${s.sdgScore}/100 | Innovation Score: ${s.innovationScore} | Health Index Score: ${s.healthIndexScore} | Export Preparedness Rank: #${s.exportPreparednessRank} | Literacy Rate: ${s.literacyRate}%`
+    )).join('\n');
 
-Key Facts to reference when relevant:
-- GDP Rank: #5 Nominal ($3.93T), #3 PPP ($14.2T).
-- Global Innovation Index: #39 (improved from #81 in 2015).
-- Climate Change Performance Index: #10 globally.
-- Global Cybersecurity Index: #10 globally.
-- Government AI Readiness Index: #14 globally.
-- Startup Ecosystem: #4 globally with 112+ Unicorns.
-- GovTech Maturity Index: #15 (Group A).
-- Press Freedom Index: #159.
-- Corruption Perceptions Index: #93.
-- Human Development Index (HDI): #134.
-- World Happiness Report: #126.
-- Global Gender Gap Index: #129.
+    // Format key global indicators for system context
+    const globalIndicatorsSummary = GLOBAL_INDICATORS.map((ind) => (
+      `- ${ind.name} (${ind.category}): Latest Rank #${ind.latestIndiaRank}/${ind.totalCountriesMeasured}, Value: ${ind.latestIndiaValue}, Trend: ${ind.trend} (${ind.changeDelta}). Publisher: ${ind.source.organization}.`
+    )).join('\n');
 
-State & UT Specific Analytics:
-- Bihar: SDG Index score ~57, strong growth in agriculture and renewable electrification, works required on HDI, poverty reduction, industrial investment, and literacy.
-- Delhi: SDG Index score ~68, high per-capita income, top digital governance, challenges in air quality and urbanization.
-- Kerala / Tamil Nadu / Karnataka / Maharashtra / Gujarat: Leading in HDI, industrial output, innovation, and export preparedness.
+    const systemInstruction = `You are "India Index AI", an expert assistant specialized in global rankings, international indicators, state development metrics across Indian states/UTs, and public policy analytics for India.
 
-Instructions:
-- Provide clear, direct, insightful, data-backed answers specifically tailored to the user's question.
-- Do NOT output static generic boilerplate like "I have analyzed your query". Provide detailed insights, stats, policy context, and specific comparisons.
-- Highlight key metrics, policy drivers (e.g., PLI scheme, Digital India, NITI Aayog SDG Index, PM Gati Shakti), strengths, and growth recommendations.
-- Keep output nicely formatted with Markdown bullet points and bold text. Do NOT use emojis in code or text output — use clean bullet points or numbers.
+REAL DATASETS AVAILABLE TO YOU IN SYSTEM MEMORY:
+
+--- INDIAN STATES & UTs DEVELOPMENT DATASET (NITI Aayog / MoSPI Metrics) ---
+${statesDataSummary}
+
+--- INDIA GLOBAL INDICATORS DATASET ---
+${globalIndicatorsSummary}
+
+INSTRUCTIONS FOR PROCESSING USER QUERIES:
+1. When asked about a specific Indian state or UT (e.g. Bihar, Delhi, Kerala, Tamil Nadu, Karnataka, Maharashtra, Gujarat, UP, West Bengal, Rajasthan, Assam, etc.):
+   - You MUST extract and state the EXACT numbers from the dataset above for that state (e.g. for Bihar: SDG Score 52, Innovation Score 12.1, Health Index Score 31.0, Export Preparedness Rank #21, Literacy Rate 61.8%, NITI Aayog Category: Aspirant).
+   - Compare these figures directly against top-performing states (e.g. Kerala's SDG Score 75 & 96.2% Literacy, Karnataka's Innovation Score 62.5, Tamil Nadu's #1 Export Preparedness Rank).
+   - Provide a structured breakdown:
+     * **Executive Overview & Current Standing** (State profile with exact metrics)
+     * **Comparative Performance Analysis** (Highlighting gaps vs national leaders)
+     * **Key Bottlenecks & Reform Levers** (Identifying specific growth hurdles)
+     * **Strategic Recommendations** (3-5 actionable policy steps to accelerate development)
+
+2. When asked about Global Rankings / Indicators:
+   - Reference the exact values, ranks, historical trends, and source publishers from the dataset.
+
+3. General Formatting Rules:
+   - Format cleanly using Markdown headers and bold bullet points.
+   - Do NOT use emojis anywhere in the response text — use clean text, numbers, and bullet points.
+   - Do NOT output generic canned responses like "I have analyzed your query". Always answer directly with deep, data-backed analysis tailored to the prompt.
 `;
 
-    const prompt = `User Question: ${message}`;
+    // Process history if provided
+    let conversationHistory = '';
+    if (Array.isArray(history) && history.length > 0) {
+      // Take last 6 messages for conversation context
+      const recentHistory = history.slice(-6);
+      conversationHistory = recentHistory
+        .map((h: { sender: string; text: string }) => `${h.sender === 'user' ? 'User' : 'Assistant'}: ${h.text}`)
+        .join('\n');
+    }
+
+    const fullPrompt = conversationHistory
+      ? `Previous Conversation Context:\n${conversationHistory}\n\nCurrent User Query: ${message}`
+      : `User Query: ${message}`;
 
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
-      contents: prompt,
+      contents: fullPrompt,
       config: {
         systemInstruction: systemInstruction,
       },
     });
 
-    const replyText = response.text || 'No response text was generated by the model.';
+    const replyText = response.text || 'Unable to generate response from the AI model.';
 
     return NextResponse.json({
       text: replyText,
@@ -79,3 +103,4 @@ Instructions:
     );
   }
 }
+
