@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from '../components/Navbar';
 import { IndiaDashboard } from '../components/IndiaDashboard';
 import { EconomyDashboard } from '../components/EconomyDashboard';
@@ -166,111 +167,121 @@ export default function Home() {
 
       {/* Main Container Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16">
-        {activeTab === 'dashboard' && (
-          <IndiaDashboard
-            onSelectCategory={handleSelectCategoryFromDashboard}
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-            onOpenReportCard={() => setIsReportCardOpen(true)}
-          />
-        )}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 14, scale: 0.995 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.995 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+          >
+            {activeTab === 'dashboard' && (
+              <IndiaDashboard
+                onSelectCategory={handleSelectCategoryFromDashboard}
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onOpenReportCard={() => setIsReportCardOpen(true)}
+              />
+            )}
 
-        {activeTab === 'economy' && (
-          <EconomyDashboard
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-            onToggleWatchlist={handleToggleWatchlist}
-            watchlistIds={watchlistIds}
-          />
-        )}
+            {activeTab === 'economy' && (
+              <EconomyDashboard
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onToggleWatchlist={handleToggleWatchlist}
+                watchlistIds={watchlistIds}
+              />
+            )}
 
-        {activeTab === 'society' && (
-          <SocietyDashboard
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-            onToggleWatchlist={handleToggleWatchlist}
-            watchlistIds={watchlistIds}
-          />
-        )}
+            {activeTab === 'society' && (
+              <SocietyDashboard
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onToggleWatchlist={handleToggleWatchlist}
+                watchlistIds={watchlistIds}
+              />
+            )}
 
-        {activeTab === 'governance' && (
-          <GovernanceDashboard
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-            onToggleWatchlist={handleToggleWatchlist}
-            watchlistIds={watchlistIds}
-          />
-        )}
+            {activeTab === 'governance' && (
+              <GovernanceDashboard
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onToggleWatchlist={handleToggleWatchlist}
+                watchlistIds={watchlistIds}
+              />
+            )}
 
-        {activeTab === 'healthcare' && (
-          <HealthcareDashboard
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-            onToggleWatchlist={handleToggleWatchlist}
-            watchlistIds={watchlistIds}
-          />
-        )}
+            {activeTab === 'healthcare' && (
+              <HealthcareDashboard
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onToggleWatchlist={handleToggleWatchlist}
+                watchlistIds={watchlistIds}
+              />
+            )}
 
-        {activeTab === 'safety' && (
-          <SafetyDashboard
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-            onToggleWatchlist={handleToggleWatchlist}
-            watchlistIds={watchlistIds}
-          />
-        )}
+            {activeTab === 'safety' && (
+              <SafetyDashboard
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onToggleWatchlist={handleToggleWatchlist}
+                watchlistIds={watchlistIds}
+              />
+            )}
 
-        {activeTab === 'equality' && (
-          <EqualityDashboard
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-            onToggleWatchlist={handleToggleWatchlist}
-            watchlistIds={watchlistIds}
-          />
-        )}
+            {activeTab === 'equality' && (
+              <EqualityDashboard
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onToggleWatchlist={handleToggleWatchlist}
+                watchlistIds={watchlistIds}
+              />
+            )}
 
-        {activeTab === 'digitalgov' && (
-          <DigitalGovDashboard
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-            onToggleWatchlist={handleToggleWatchlist}
-            watchlistIds={watchlistIds}
-          />
-        )}
+            {activeTab === 'digitalgov' && (
+              <DigitalGovDashboard
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onToggleWatchlist={handleToggleWatchlist}
+                watchlistIds={watchlistIds}
+              />
+            )}
 
-        {activeTab === 'categories' && (
-          <CategoryExplorer
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-          />
-        )}
+            {activeTab === 'categories' && (
+              <CategoryExplorer
+                selectedCategory={selectedCategory}
+                onSelectCategory={setSelectedCategory}
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+              />
+            )}
 
-        {activeTab === 'compare' && (
-          <CountryComparison
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-          />
-        )}
+            {activeTab === 'compare' && (
+              <CountryComparison
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+              />
+            )}
 
-        {activeTab === 'worldmap' && (
-          <InteractiveWorldMap
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-          />
-        )}
+            {activeTab === 'worldmap' && (
+              <InteractiveWorldMap
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+              />
+            )}
 
-        {activeTab === 'trends' && (
-          <TrendAnalysis
-            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
-            onOpenAiAssistant={handleOpenAiAssistant}
-          />
-        )}
+            {activeTab === 'trends' && (
+              <TrendAnalysis
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+              />
+            )}
 
-        {activeTab === 'states' && (
-          <StateExplorer onOpenAiAssistant={handleOpenAiAssistant} />
-        )}
+            {activeTab === 'states' && (
+              <StateExplorer onOpenAiAssistant={handleOpenAiAssistant} />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Footer Bar */}

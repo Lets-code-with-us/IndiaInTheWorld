@@ -367,12 +367,16 @@ export const EconomyDashboard: React.FC<EconomyDashboardProps> = ({
 
       {/* 3. Indicators Grid (All 13 Requested Economy Metrics) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {filteredIndicators.map((indicator) => {
+        {filteredIndicators.map((indicator, idx) => {
           const isWatchlisted = watchlistIds.includes(indicator.id);
 
           return (
-            <div
+            <motion.div
               key={indicator.id}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: idx * 0.035 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="bg-white rounded-2xl p-5 border border-[#DCC7AA] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 group"
             >
               <div className="space-y-2.5">
@@ -487,7 +491,7 @@ export const EconomyDashboard: React.FC<EconomyDashboardProps> = ({
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
