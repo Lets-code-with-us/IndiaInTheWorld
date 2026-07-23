@@ -156,7 +156,7 @@ export const EconomyDashboard: React.FC<EconomyDashboardProps> = ({
             </h1>
 
             <p className="text-xs sm:text-sm text-[#E8D9C8] leading-relaxed">
-              Real-time executive policy intelligence across India's $3.93 Trillion nominal GDP, $14.2 Trillion PPP market scale, inflation stability, logistics modernization, and global FDI capital inflows.
+              Real-time executive policy intelligence across India&apos;s $3.93 Trillion nominal GDP, $14.2 Trillion PPP market scale, inflation stability, logistics modernization, and global FDI capital inflows.
             </p>
           </div>
 

@@ -6,6 +6,7 @@ import { IndiaDashboard } from '../components/IndiaDashboard';
 import { EconomyDashboard } from '../components/EconomyDashboard';
 import { SocietyDashboard } from '../components/SocietyDashboard';
 import { GovernanceDashboard } from '../components/GovernanceDashboard';
+import { HealthcareDashboard } from '../components/HealthcareDashboard';
 import { CategoryExplorer } from '../components/CategoryExplorer';
 import { CountryComparison } from '../components/CountryComparison';
 import { InteractiveWorldMap } from '../components/InteractiveWorldMap';
@@ -49,6 +50,8 @@ export default function Home() {
       setActiveTab('society');
     } else if (cat === 'Governance') {
       setActiveTab('governance');
+    } else if (cat === 'Healthcare') {
+      setActiveTab('healthcare');
     } else {
       setSelectedCategory(cat);
       setActiveTab('categories');
@@ -99,6 +102,15 @@ export default function Home() {
 
         {activeTab === 'governance' && (
           <GovernanceDashboard
+            onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+            onOpenAiAssistant={handleOpenAiAssistant}
+            onToggleWatchlist={handleToggleWatchlist}
+            watchlistIds={watchlistIds}
+          />
+        )}
+
+        {activeTab === 'healthcare' && (
+          <HealthcareDashboard
             onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
             onOpenAiAssistant={handleOpenAiAssistant}
             onToggleWatchlist={handleToggleWatchlist}

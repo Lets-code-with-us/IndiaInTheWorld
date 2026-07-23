@@ -17,6 +17,7 @@ import {
   ArrowUpRight,
   Users,
   Landmark,
+  HeartPulse,
 } from 'lucide-react';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 import { Indicator } from '../lib/types';
@@ -57,6 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'economy', label: 'Economy Category', icon: TrendingUp },
     { id: 'society', label: 'Society Category', icon: Users },
     { id: 'governance', label: 'Governance Category', icon: Landmark },
+    { id: 'healthcare', label: 'Healthcare Category', icon: HeartPulse },
     { id: 'categories', label: 'All Categories', icon: Globe },
     { id: 'compare', label: 'Country Comparison', icon: GitCompare },
     { id: 'worldmap', label: 'Global Map', icon: MapPin },
