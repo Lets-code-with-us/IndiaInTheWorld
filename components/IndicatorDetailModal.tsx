@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
   ExternalLink,
@@ -16,6 +16,10 @@ import {
   ShieldCheck,
   Newspaper,
   Zap,
+  Copy,
+  Check,
+  Link2,
+  FileText,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -45,8 +49,41 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
 }) => {
   const [aiExplanation, setAiExplanation] = useState<string | null>(null);
   const [loadingAi, setLoadingAi] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [shareMenuOpen, setShareMenuOpen] = useState<boolean>(false);
 
   if (!indicator) return null;
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const handleCopyLink = () => {
+    const url = `${window.location.origin}${window.location.pathname}?indicator=${indicator.id}`;
+    navigator.clipboard.writeText(url);
+    showToast('Copied shareable link to clipboard!');
+    setShareMenuOpen(false);
+  };
+
+  const handleCopySummary = () => {
+    const url = `${window.location.origin}${window.location.pathname}?indicator=${indicator.id}`;
+    const summaryText = `📊 India Global Index Performance Brief
+-------------------------------------------
+Indicator: ${indicator.name} (${indicator.category})
+Global Rank: #${indicator.latestIndiaRank} / ${indicator.totalCountriesMeasured}
+Current Value: ${indicator.latestIndiaValue}
+10-Year Change: ${indicator.changeDelta}
+Primary Strengths: ${indicator.strengthsAndGaps.strengths.join(', ')}
+Key Bottlenecks: ${indicator.strengthsAndGaps.gaps.join(', ')}
+Source: ${indicator.source.organization} (${indicator.source.lastUpdatedYear})
+Confidence Score: ${indicator.source.confidenceScore || 95}%
+Explore Live Data: ${url}`;
+
+    navigator.clipboard.writeText(summaryText);
+    showToast('Copied indicator summary brief to clipboard!');
+    setShareMenuOpen(false);
+  };
 
   const fetchAiExplanation = async () => {
     setLoadingAi(true);
@@ -73,6 +110,21 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+      {/* Toast Notification Banner */}
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed top-6 z-50 bg-emerald-600 text-white font-bold text-xs px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2 border border-emerald-400"
+          >
+            <Check className="w-4 h-4" />
+            <span>{toastMessage}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="bg-white rounded-2xl max-w-3xl w-full border border-slate-200 shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col">
         {/* Header Bar */}
         <div className="bg-[#3C2F2F] text-white p-6 flex items-start justify-between border-b border-[#52433A] shrink-0">
@@ -102,6 +154,37 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
+            {/* Share Insight Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setShareMenuOpen((prev) => !prev)}
+                className="flex items-center gap-1 px-3 py-2 rounded-xl bg-[#F7882F] hover:bg-[#D46917] text-white text-xs font-bold transition-all shadow-md"
+                title="Share Insight"
+              >
+                <Share2 className="w-3.5 h-3.5" />
+                <span>Share Insight</span>
+              </button>
+
+              {shareMenuOpen && (
+                <div className="absolute right-0 mt-2 w-56 bg-[#3C2F2F] text-white rounded-2xl border border-[#52433A] shadow-2xl p-2 z-50 space-y-1">
+                  <button
+                    onClick={handleCopyLink}
+                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-[#4A3E3D] flex items-center gap-2 text-xs font-medium text-[#E8D9C8]"
+                  >
+                    <Link2 className="w-4 h-4 text-[#F7882F]" />
+                    <span>Copy Shareable Link</span>
+                  </button>
+                  <button
+                    onClick={handleCopySummary}
+                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-[#4A3E3D] flex items-center gap-2 text-xs font-medium text-[#E8D9C8]"
+                  >
+                    <FileText className="w-4 h-4 text-[#F7C331]" />
+                    <span>Copy Performance Summary</span>
+                  </button>
+                </div>
+              )}
+            </div>
+
             <button
               onClick={() => onToggleWatchlist(indicator.id)}
               className={`p-2 rounded-xl border transition-colors ${

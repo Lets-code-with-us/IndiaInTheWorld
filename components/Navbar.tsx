@@ -13,14 +13,14 @@ import {
   Bookmark,
   Building2,
   ChevronRight,
-  ShieldAlert,
   ShieldCheck,
-  ArrowUpRight,
   Users,
   Landmark,
   HeartPulse,
   Leaf,
   Scale,
+  Keyboard,
+  Command,
 } from 'lucide-react';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 import { Indicator } from '../lib/types';
@@ -33,6 +33,8 @@ interface NavbarProps {
   onOpenWatchlist: () => void;
   onSelectIndicator: (indicator: Indicator) => void;
   watchlistCount: number;
+  onOpenCommandPalette?: () => void;
+  onOpenShortcutsModal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -43,6 +45,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenWatchlist,
   onSelectIndicator,
   watchlistCount,
+  onOpenCommandPalette,
+  onOpenShortcutsModal,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -94,61 +98,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* Search Bar */}
+          {/* Search Bar / Command Palette Trigger */}
           <div className="relative flex-1 max-w-md hidden md:block">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#C4B2A5]" />
-              <input
-                type="text"
-                placeholder="Search 60+ global indicators (e.g. Innovation, GDP, HDI, Climate)..."
-                value={searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  setIsSearchOpen(true);
-                }}
-                onFocus={() => setIsSearchOpen(true)}
-                className="w-full bg-[#4A3E3D] border border-[#52433A] rounded-lg pl-9 pr-4 py-1.5 text-xs text-neutral-100 placeholder-[#C4B2A5] focus:outline-none focus:ring-2 focus:ring-[#F7882F]/50 focus:border-[#F7882F] transition-all"
-              />
-            </div>
-
-            {/* Search Dropdown Results */}
-            {isSearchOpen && filteredIndicators.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-[#3C2F2F] border border-[#52433A] rounded-xl shadow-2xl overflow-hidden z-50">
-                <div className="p-2 text-[11px] font-semibold text-[#C4B2A5] uppercase tracking-wider border-b border-[#52433A]">
-                  Matching Global Indicators ({filteredIndicators.length})
-                </div>
-                <div className="max-h-72 overflow-y-auto divide-y divide-[#52433A]">
-                  {filteredIndicators.map((indicator) => (
-                    <button
-                      key={indicator.id}
-                      onClick={() => {
-                        onSelectIndicator(indicator);
-                        setIsSearchOpen(false);
-                        setSearchQuery('');
-                      }}
-                      className="w-full text-left p-2.5 hover:bg-[#4A3E3D] flex items-center justify-between group transition-colors"
-                    >
-                      <div>
-                        <div className="text-xs font-medium text-neutral-200 group-hover:text-[#F7C331]">
-                          {indicator.name}
-                        </div>
-                        <div className="text-[11px] text-neutral-400 flex items-center gap-2 mt-0.5">
-                          <span className="text-[#C4B2A5]">{indicator.category}</span>
-                          <span>•</span>
-                          <span className="text-[#E8D9C8] font-semibold">{indicator.latestIndiaValue}</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-[#F7882F] bg-[#F7882F]/10 px-2 py-0.5 rounded border border-[#F7882F]/30">
-                          Rank #{indicator.latestIndiaRank}
-                        </span>
-                        <ChevronRight className="w-3.5 h-3.5 text-[#C4B2A5] group-hover:text-white" />
-                      </div>
-                    </button>
-                  ))}
-                </div>
+            <button
+              onClick={() => onOpenCommandPalette?.()}
+              className="w-full bg-[#4A3E3D] hover:bg-[#52433A] border border-[#52433A] rounded-lg pl-9 pr-3 py-1.5 text-xs text-[#E8D9C8] flex items-center justify-between transition-colors cursor-pointer text-left"
+            >
+              <div className="flex items-center gap-2 text-[#C4B2A5] truncate">
+                <Search className="w-4 h-4 text-[#C4B2A5] shrink-0" />
+                <span className="truncate">Search 60+ global indicators or states...</span>
               </div>
-            )}
+              <kbd className="hidden lg:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-mono bg-[#3C2F2F] text-[#F7C331] rounded border border-[#52433A] shrink-0">
+                <Command className="w-3 h-3" />
+                <span>K</span>
+              </kbd>
+            </button>
           </div>
 
           {/* Action Buttons */}
@@ -180,6 +144,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {watchlistCount}
                 </span>
               )}
+            </button>
+
+            <button
+              onClick={() => onOpenShortcutsModal?.()}
+              className="p-2 rounded-lg bg-[#4A3E3D] hover:bg-[#52433A] text-neutral-300 border border-[#52433A] transition-colors cursor-pointer"
+              title="Keyboard Shortcuts (?)"
+            >
+              <Keyboard className="w-4 h-4 text-[#F7C331]" />
             </button>
           </div>
         </div>

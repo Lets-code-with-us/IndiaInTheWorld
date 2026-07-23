@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar';
 import { IndiaDashboard } from '../components/IndiaDashboard';
 import { EconomyDashboard } from '../components/EconomyDashboard';
@@ -20,6 +20,8 @@ import { IndicatorDetailModal } from '../components/IndicatorDetailModal';
 import { AiReportCardModal } from '../components/AiReportCardModal';
 import { AiAssistantDrawer } from '../components/AiAssistantDrawer';
 import { WatchlistExportModal } from '../components/WatchlistExportModal';
+import { CommandPaletteModal } from '../components/CommandPaletteModal';
+import { KeyboardShortcutsModal } from '../components/KeyboardShortcutsModal';
 import { Indicator, CategoryType } from '../lib/types';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 
@@ -33,8 +35,85 @@ export default function Home() {
 
   const [isReportCardOpen, setIsReportCardOpen] = useState<boolean>(false);
   const [isWatchlistOpen, setIsWatchlistOpen] = useState<boolean>(false);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState<boolean>(false);
+  const [isShortcutsModalOpen, setIsShortcutsModalOpen] = useState<boolean>(false);
 
-  const [watchlistIds, setWatchlistIds] = useState<string[]>(['gdp-rank', 'global-innovation-index', 'climate-change-performance-index']);
+  const [watchlistIds, setWatchlistIds] = useState<string[]>([
+    'gdp-rank',
+    'global-innovation-index',
+    'climate-change-performance-index',
+  ]);
+
+  // Handle URL deep linking on initial load
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const indicatorId = params.get('indicator');
+      const tabParam = params.get('tab');
+
+      if (indicatorId) {
+        const found = GLOBAL_INDICATORS.find((ind) => ind.id === indicatorId);
+        if (found) {
+          setSelectedIndicator(found);
+        }
+      }
+
+      if (tabParam) {
+        setActiveTab(tabParam);
+      }
+    }
+  }, []);
+
+  // Global Keyboard Shortcuts Listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Check if user is typing in an input or textarea
+      const target = e.target as HTMLElement;
+      const isInput =
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable);
+
+      // Ctrl+K or Cmd+K -> Open Command Palette
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsCommandPaletteOpen((prev) => !prev);
+        return;
+      }
+
+      // Ctrl+I or Cmd+I -> Open AI Assistant Drawer
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'i') {
+        e.preventDefault();
+        setIsAiAssistantOpen((prev) => !prev);
+        return;
+      }
+
+      // Ctrl+Shift+R or Cmd+Shift+R -> Open Report Card
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'r') {
+        e.preventDefault();
+        setIsReportCardOpen((prev) => !prev);
+        return;
+      }
+
+      // Ctrl+Shift+W or Cmd+Shift+W -> Open Watchlist
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'w') {
+        e.preventDefault();
+        setIsWatchlistOpen((prev) => !prev);
+        return;
+      }
+
+      // '?' key (Shift + /) when not typing in input -> Toggle Keyboard Shortcuts Help
+      if (e.key === '?' && !isInput) {
+        e.preventDefault();
+        setIsShortcutsModalOpen((prev) => !prev);
+        return;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const handleOpenAiAssistant = (initialQuery?: string) => {
     setAiAssistantInitialQuery(initialQuery);
@@ -81,6 +160,8 @@ export default function Home() {
         onOpenWatchlist={() => setIsWatchlistOpen(true)}
         onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
         watchlistCount={watchlistIds.length}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+        onOpenShortcutsModal={() => setIsShortcutsModalOpen(true)}
       />
 
       {/* Main Container Content */}
@@ -233,6 +314,21 @@ export default function Home() {
         watchlistIds={watchlistIds}
         onRemoveFromWatchlist={handleToggleWatchlist}
         onClearWatchlist={() => setWatchlistIds([])}
+      />
+
+      <CommandPaletteModal
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+        onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+        onSelectTab={(tab) => setActiveTab(tab)}
+        onOpenAiAssistant={handleOpenAiAssistant}
+        onOpenReportCard={() => setIsReportCardOpen(true)}
+        onOpenWatchlist={() => setIsWatchlistOpen(false)}
+      />
+
+      <KeyboardShortcutsModal
+        isOpen={isShortcutsModalOpen}
+        onClose={() => setIsShortcutsModalOpen(false)}
       />
     </div>
   );

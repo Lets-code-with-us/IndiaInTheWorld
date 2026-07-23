@@ -12,17 +12,16 @@ This document provides a technical breakdown of the architecture, data models, s
  ├──────────────────────────────────────────────────────────────────┤
  │                                                                  │
  │   Navbar  ─────────►  Global Category Bar  ───► Watchlist Modal  │
+ │     │                                       ───► Command Palette │
+ │     │                                       ───► Shortcuts Help  │
  │     │                                                            │
  │     ├──────────────►  IndiaDashboard (F-Pattern Layout)          │
- │     │                 ├─ Top Macro Key Metrics                   │
- │     │                 ├─ KPI Benchmark Callout Cards             │
- │     │                 ├─ 10 Policy Category Indices              │
- │     │                 └─ Top Strengths vs Bottlenecks & Timeline │
- │     │                                                            │
+ │     ├──────────────►  EconomyDashboard (13 Economic Benchmarks)  │
+ │     ├──────────────►  DigitalGovDashboard (GovTech & AI Readiness)│
  │     ├──────────────►  StateExplorer (36 Indian States/UTs)      │
  │     ├──────────────►  CategoryExplorer (Indicator Deep Dives)    │
  │     ├──────────────►  CountryComparison (India vs G20/BRICS)    │
- │     ├──────────────►  InteractiveWorldMap (Global Heatmap)       │
+ │     ├──────────────►  InteractiveWorldMap (3D Globe & Heatmap)   │
  │     ├──────────────►  TrendAnalysis (10-Yr Historical Trajectory)│
  │     └──────────────►  AiAssistantDrawer (Interactive Chat)      │
  └──────────────────────────────────────────────────────────────────┘
@@ -53,16 +52,21 @@ This document provides a technical breakdown of the architecture, data models, s
 │   │           └── route.ts         # Server-side AI Report Card & Insights API Route
 │   ├── globals.css                   # Global styles & Tailwind CSS imports
 │   ├── layout.tsx                    # Root layout with metadata
-│   └── page.tsx                      # Main App Shell & State Manager
+│   └── page.tsx                      # Main App Shell, Keyboard Listener & Deep Linking
 ├── components/
-│   ├── Navbar.tsx                    # Top navigation & global quick actions
+│   ├── Navbar.tsx                    # Top navigation, Command Palette & Shortcuts Trigger
+│   ├── CommandPaletteModal.tsx       # Ctrl+K Global Search & Quick Action Launcher
+│   ├── KeyboardShortcutsModal.tsx    # Power User Keyboard Reference Guide (?)
 │   ├── IndiaDashboard.tsx            # F-Pattern Executive Dashboard
+│   ├── EconomyDashboard.tsx          # 13-Metric Economic Command Center
+│   ├── DigitalGovDashboard.tsx       # GovTech, EGDI & AI Readiness Hub
 │   ├── StateExplorer.tsx             # 36 Indian States/UTs Development Grid
-│   ├── CategoryExplorer.tsx          # Indicator drill-down & trends
+│   ├── CategoryExplorer.tsx          # Indicator drill-down & category filtering
 │   ├── CountryComparison.tsx         # Multi-country comparison matrix
-│   ├── InteractiveWorldMap.tsx       # World map indicator distribution
+│   ├── InteractiveWorldMap.tsx       # 3D Globe & World map distribution
+│   ├── ThreeDChart.tsx               # WebGL 3D Visualization Canvas
 │   ├── TrendAnalysis.tsx             # 10-year historical trajectory analysis
-│   ├── IndicatorDetailModal.tsx      # Comprehensive indicator modal
+│   ├── IndicatorDetailModal.tsx      # Indicator modal with Share Insight suite
 │   ├── AiAssistantDrawer.tsx         # Slide-over AI Assistant interface
 │   ├── AiReportCardModal.tsx         # Modal for AI-generated annual reports
 │   └── WatchlistExportModal.tsx      # Saved indicator manager & CSV export
@@ -70,10 +74,38 @@ This document provides a technical breakdown of the architecture, data models, s
     ├── types.ts                      # Core TypeScript interfaces
     └── data/
         ├── indicators.ts             # 60+ global metrics dataset
-        ├── categories.ts             # 10 policy category definitions
+        ├── categories.ts             # Policy category definitions
         ├── states.ts                 # 36 Indian States & UTs dataset
         └── countries.ts              # Comparative G20/BRICS country metrics
 ```
+
+---
+
+## Keyboard Shortcuts System (`app/page.tsx`)
+
+The application listens for key combinations at the root window level while respecting input field focus:
+
+| Shortcut | Action | Component Handler |
+| :--- | :--- | :--- |
+| `Ctrl+K` / `Cmd+K` | Toggle Global Command Palette | `CommandPaletteModal.tsx` |
+| `Ctrl+I` / `Cmd+I` | Toggle Gemini AI Policy Assistant | `AiAssistantDrawer.tsx` |
+| `Ctrl+Shift+R` / `Cmd+Shift+R` | Generate AI Annual Report Card | `AiReportCardModal.tsx` |
+| `Ctrl+Shift+W` / `Cmd+Shift+W` | Open Saved Watchlist & CSV Export | `WatchlistExportModal.tsx` |
+| `?` (Shift + `/`) | Open Keyboard Shortcuts Reference | `KeyboardShortcutsModal.tsx` |
+| `Esc` | Close Any Active Modal / Drawer | All Modals |
+
+---
+
+## Deep Linking & Share Insight Architecture
+
+1. **URL Parameter Deep Linking**:
+   - On page load (`app/page.tsx`), `useEffect` parses `window.location.search` for `?indicator={id}` and `?tab={tabName}`.
+   - Automatically opens the `IndicatorDetailModal` for matching indicator IDs.
+
+2. **Share Insight Suite (`IndicatorDetailModal.tsx`)**:
+   - **Copy Shareable Link**: Generates direct link `https://domain/?indicator={id}`.
+   - **Copy Performance Brief**: Formats a clean, structured text summary including rank, current score, 10-year change, primary strengths, key gaps, source attribution, confidence score, and verified link.
+   - **Toast Feedback**: Visual confirmation toast notification.
 
 ---
 
@@ -107,6 +139,14 @@ export interface GlobalIndicator {
     strengths: string[];
     gaps: string[];
   };
+  recentNews?: {
+    title: string;
+    source: string;
+    date: string;
+    summary: string;
+  };
+  isCritical?: boolean;
+  isFluctuating?: boolean;
 }
 ```
 
@@ -161,3 +201,4 @@ To maintain visual harmony without harsh contrasts or prohibited cold blues, the
 | Golden Sand | `#F7C331` | Highlight Badges & AI Tags |
 | Soft Sand Border | `#52433A` / `#DCC7AA` | Dividers & Borders |
 | Earth Taupe Text | `#7C6C62` / `#2C221E` | Body Copy & Label Hierarchy |
+
