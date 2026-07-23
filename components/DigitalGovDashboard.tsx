@@ -3,8 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Scale,
-  Users,
+  Globe,
   Award,
   TrendingUp,
   TrendingDown,
@@ -19,51 +18,51 @@ import {
   CheckCircle2,
   Info,
   ChevronRight,
-  Briefcase,
   Globe2,
-  Heart,
-  DollarSign,
-  Building2,
   ShieldCheck,
+  Cpu,
+  Server,
+  FileCode2,
+  UserCheck,
   Zap,
 } from 'lucide-react';
 import { Indicator } from '../lib/types';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 import { ThreeDChart } from './ThreeDChart';
 
-interface EqualityDashboardProps {
+interface DigitalGovDashboardProps {
   onSelectIndicator: (indicator: Indicator) => void;
   onOpenAiAssistant: (query: string) => void;
   onToggleWatchlist: (id: string) => void;
   watchlistIds: string[];
 }
 
-export function EqualityDashboard({
+export function DigitalGovDashboard({
   onSelectIndicator,
   onOpenAiAssistant,
   onToggleWatchlist,
   watchlistIds,
-}: EqualityDashboardProps) {
+}: DigitalGovDashboardProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSubtype, setSelectedSubtype] = useState<string>('all');
   const [selectedTrend, setSelectedTrend] = useState<string>('all');
   const [selectedChartIndicatorId, setSelectedChartIndicatorId] =
-    useState<string>('global-gender-gap-index');
+    useState<string>('govtech-maturity-index');
   const [chartMode, setChartMode] = useState<'bar' | 'line'>('bar');
   const [activeModalIndicator, setActiveModalIndicator] =
     useState<Indicator | null>(null);
 
-  // Filter all Equality Indicators
-  const equalityIndicators = useMemo(() => {
-    return GLOBAL_INDICATORS.filter((ind) => ind.category === 'Equality');
+  // Filter DigitalGov indicators
+  const digitalGovIndicators = useMemo(() => {
+    return GLOBAL_INDICATORS.filter((ind) => ind.category === 'DigitalGov');
   }, []);
 
   const activeChartIndicator = useMemo(() => {
     return (
-      equalityIndicators.find((ind) => ind.id === selectedChartIndicatorId) ||
-      equalityIndicators[0]
+      digitalGovIndicators.find((ind) => ind.id === selectedChartIndicatorId) ||
+      digitalGovIndicators[0]
     );
-  }, [equalityIndicators, selectedChartIndicatorId]);
+  }, [digitalGovIndicators, selectedChartIndicatorId]);
 
   // Format 3D Chart Data
   const threeDChartData = useMemo(() => {
@@ -91,7 +90,7 @@ export function EqualityDashboard({
 
   // Filtered list based on search and filters
   const filteredIndicators = useMemo(() => {
-    return equalityIndicators.filter((ind) => {
+    return digitalGovIndicators.filter((ind) => {
       const matchesSearch =
         ind.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         ind.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -101,51 +100,43 @@ export function EqualityDashboard({
         selectedTrend === 'all' ? true : ind.trend === selectedTrend;
 
       let matchesSubtype = true;
-      if (selectedSubtype === 'gender') {
+      if (selectedSubtype === 'egov') {
         matchesSubtype =
-          ind.id.includes('gender-gap') || ind.id.includes('inequality');
-      } else if (selectedSubtype === 'labor') {
+          ind.id.includes('egovernment') || ind.id.includes('govtech');
+      } else if (selectedSubtype === 'open') {
         matchesSubtype =
-          ind.id.includes('labour') || ind.id.includes('economic');
-      } else if (selectedSubtype === 'income') {
-        matchesSubtype = ind.id.includes('gini') || ind.id.includes('equal-pay');
+          ind.id.includes('open-data') || ind.id.includes('e-participation');
+      } else if (selectedSubtype === 'tech') {
+        matchesSubtype = ind.id.includes('competitiveness');
       }
 
       return matchesSearch && matchesTrend && matchesSubtype;
     });
-  }, [equalityIndicators, searchQuery, selectedTrend, selectedSubtype]);
+  }, [digitalGovIndicators, searchQuery, selectedTrend, selectedSubtype]);
 
-  const genderGapIndicator = equalityIndicators.find(
-    (i) => i.id === 'global-gender-gap-index'
-  );
-  const giiIndicator = equalityIndicators.find(
-    (i) => i.id === 'gender-inequality-index'
-  );
-  const giniIndicator = equalityIndicators.find(
-    (i) => i.id === 'gini-coefficient'
-  );
-  const flfpIndicator = equalityIndicators.find(
-    (i) => i.id === 'female-labour-force-participation'
-  );
+  const gtmi = digitalGovIndicators.find((i) => i.id === 'govtech-maturity-index');
+  const egdi = digitalGovIndicators.find((i) => i.id === 'egovernment-development-index');
+  const epi = digitalGovIndicators.find((i) => i.id === 'e-participation-index');
+  const odin = digitalGovIndicators.find((i) => i.id === 'open-data-inventory');
 
   return (
     <div className="space-y-8 pb-16">
       {/* 1. Executive Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 p-6 md:p-8 text-white shadow-xl">
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-pink-500/20 blur-2xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-cyan-950 to-slate-900 p-6 md:p-8 text-white shadow-xl">
+        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-cyan-500/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-blue-500/20 blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 backdrop-blur-md text-purple-300 text-xs font-bold uppercase tracking-widest">
-              <Scale className="w-4 h-4 text-purple-400 animate-pulse" />
-              <span>Gender Parity & Social Equity Framework</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/30 backdrop-blur-md text-cyan-300 text-xs font-bold uppercase tracking-widest">
+              <Globe className="w-4 h-4 text-cyan-400 animate-pulse" />
+              <span>Digital Public Infrastructure & Open Governance Matrix</span>
             </div>
             <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
-              India Equality, Gender Parity & Wealth Distribution Matrix
+              India Digital Government, GovTech & Open Data Hub
             </h1>
             <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-              Real-time analytics tracking 6 core equality benchmarks: Global Gender Gap Index (64.1% parity closed), Gender Inequality Index (#108), Gini Wealth Coefficient (32.8 points), Female Labour Force Participation (37.0% FLFP), and 3D WebGL trajectory visualizers.
+              Tracking 5 global e-governance metrics: GovTech Maturity Index (#15 Group A), UN E-Government Development Index (#97), E-Participation Index (#57), Open Data Inventory (ODIN #64), and IMD World Digital Competitiveness (#49).
             </p>
           </div>
 
@@ -153,13 +144,13 @@ export function EqualityDashboard({
             <button
               onClick={() =>
                 onOpenAiAssistant(
-                  'Provide a comprehensive strategic briefing on India’s progress in gender parity, female labor force participation growth (PLFS 37%), Nari Shakti Vandan Adhiniyam 33% reservation bill, and income inequality reduction.'
+                  'Provide a comprehensive executive briefing on India Digital Public Infrastructure (DPI) leadership: India Stack, UPI, Aadhaar, DigiLocker, GovTech Maturity Index Group A, Open Data data.gov.in strategy, and digital e-governance transformation.'
                 )
               }
-              className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-black text-xs md:text-sm shadow-lg shadow-purple-950/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-black text-xs md:text-sm shadow-lg shadow-cyan-950/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <BrainCircuit className="w-4 h-4" />
-              <span>AI Parity Briefing</span>
+              <span>AI Digital Briefing</span>
             </button>
           </div>
         </div>
@@ -168,68 +159,68 @@ export function EqualityDashboard({
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-slate-800/80">
           <div className="bg-slate-900/70 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
             <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
-              <span>Global Gender Gap</span>
-              <Award className="w-4 h-4 text-purple-400" />
+              <span>GovTech Maturity</span>
+              <Award className="w-4 h-4 text-cyan-400" />
             </div>
-            <div className="text-2xl font-black text-purple-300 mt-1">
-              #{genderGapIndicator?.latestIndiaRank || 129}
+            <div className="text-2xl font-black text-cyan-300 mt-1">
+              #{gtmi?.latestIndiaRank || 15}
             </div>
             <div className="text-[11px] text-emerald-400 font-medium mt-1">
-              64.1% Parity (+6 spots)
+              Group A Top Tier
             </div>
           </div>
 
           <div className="bg-slate-900/70 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
             <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
-              <span>Gender Inequality (GII)</span>
-              <Heart className="w-4 h-4 text-pink-400" />
+              <span>UN E-Government</span>
+              <Server className="w-4 h-4 text-blue-400" />
             </div>
             <div className="text-2xl font-black text-white mt-1">
-              #{giiIndicator?.latestIndiaRank || 108}
+              #{egdi?.latestIndiaRank || 97}
             </div>
             <div className="text-[11px] text-emerald-300 font-medium mt-1">
-              Up 14 places (0.437 Score)
+              0.692 Score (High)
             </div>
           </div>
 
           <div className="bg-slate-900/70 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
             <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
-              <span>Gini Inequality Index</span>
-              <DollarSign className="w-4 h-4 text-emerald-400" />
+              <span>E-Participation</span>
+              <UserCheck className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-2xl font-black text-white mt-1">
-              {giniIndicator?.latestIndiaValue || '32.8 Points'}
+              #{epi?.latestIndiaRank || 57}
             </div>
             <div className="text-[11px] text-emerald-300 font-medium mt-1">
-              -1.4 pts lower inequality
+              +11 spots gain
             </div>
           </div>
 
           <div className="bg-slate-900/70 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
             <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
-              <span>Female Labour Force</span>
-              <Briefcase className="w-4 h-4 text-amber-400" />
+              <span>Open Data (ODIN)</span>
+              <FileCode2 className="w-4 h-4 text-amber-400" />
             </div>
             <div className="text-2xl font-black text-white mt-1">
-              {flfpIndicator?.latestIndiaValue || '37.0% FLFP'}
+              #{odin?.latestIndiaRank || 64}
             </div>
             <div className="text-[11px] text-amber-300 font-medium mt-1">
-              +14% surge over 6 years
+              58.4 Open Score
             </div>
           </div>
         </div>
       </div>
 
-      {/* 2. Interactive WebGL 3D Equality Chart Studio */}
+      {/* 2. Interactive WebGL 3D Digital Gov Chart Studio */}
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-md">
           <div className="space-y-1">
-            <div className="text-xs font-extrabold text-purple-600 uppercase tracking-wider flex items-center gap-1.5">
-              <BarChart2 className="w-4 h-4 text-purple-500" />
-              <span>3D WebGL Equality Visualizer Studio</span>
+            <div className="text-xs font-extrabold text-cyan-600 uppercase tracking-wider flex items-center gap-1.5">
+              <BarChart2 className="w-4 h-4 text-cyan-500" />
+              <span>3D WebGL Digital Governance Visualizer</span>
             </div>
             <h2 className="text-lg font-black text-slate-900">
-              Interactive 3D Equity Metric: {activeChartIndicator?.name}
+              Interactive 3D Digital Metric: {activeChartIndicator?.name}
             </h2>
           </div>
 
@@ -238,9 +229,9 @@ export function EqualityDashboard({
             <select
               value={selectedChartIndicatorId}
               onChange={(e) => setSelectedChartIndicatorId(e.target.value)}
-              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
-              {equalityIndicators.map((ind) => (
+              {digitalGovIndicators.map((ind) => (
                 <option key={ind.id} value={ind.id}>
                   {ind.name} (#{ind.latestIndiaRank})
                 </option>
@@ -253,7 +244,7 @@ export function EqualityDashboard({
                 onClick={() => setChartMode('bar')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'bar'
-                    ? 'bg-purple-600 text-white shadow-sm'
+                    ? 'bg-cyan-600 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -263,7 +254,7 @@ export function EqualityDashboard({
                 onClick={() => setChartMode('line')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'line'
-                    ? 'bg-purple-600 text-white shadow-sm'
+                    ? 'bg-cyan-600 text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -283,7 +274,7 @@ export function EqualityDashboard({
               : 'India Historical Trajectory'
           }`}
           subtitle={`Source: ${activeChartIndicator?.source?.organization} (${activeChartIndicator?.source?.lastUpdatedYear})`}
-          accentColor="#a855f7"
+          accentColor="#06b6d4"
           height={380}
         />
       </div>
@@ -295,10 +286,10 @@ export function EqualityDashboard({
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search equality & gender parity metrics..."
+            placeholder="Search digital government metrics..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 text-xs font-bold text-slate-900 rounded-xl border border-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full pl-10 pr-4 py-2 bg-slate-50 text-xs font-bold text-slate-900 rounded-xl border border-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
           />
         </div>
 
@@ -308,41 +299,41 @@ export function EqualityDashboard({
             onClick={() => setSelectedSubtype('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'all'
-                ? 'bg-purple-600 text-white shadow-sm'
+                ? 'bg-cyan-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
-            All 6 Equity Metrics
+            All 5 Digital Metrics
           </button>
           <button
-            onClick={() => setSelectedSubtype('gender')}
+            onClick={() => setSelectedSubtype('egov')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-              selectedSubtype === 'gender'
-                ? 'bg-purple-600 text-white shadow-sm'
+              selectedSubtype === 'egov'
+                ? 'bg-cyan-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
-            Gender & Parity
+            E-Gov & GovTech
           </button>
           <button
-            onClick={() => setSelectedSubtype('labor')}
+            onClick={() => setSelectedSubtype('open')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-              selectedSubtype === 'labor'
-                ? 'bg-purple-600 text-white shadow-sm'
+              selectedSubtype === 'open'
+                ? 'bg-cyan-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
-            Labor & Opportunity
+            Open Data & Participation
           </button>
           <button
-            onClick={() => setSelectedSubtype('income')}
+            onClick={() => setSelectedSubtype('tech')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-              selectedSubtype === 'income'
-                ? 'bg-purple-600 text-white shadow-sm'
+              selectedSubtype === 'tech'
+                ? 'bg-cyan-600 text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
-            Income & Equal Pay
+            Digital Competitiveness
           </button>
         </div>
 
@@ -362,7 +353,7 @@ export function EqualityDashboard({
         </div>
       </div>
 
-      {/* 4. Indicator Grid (6 Equality Metrics) */}
+      {/* 4. Indicator Grid with Framer Motion hover scale and 3D shadow lifts */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredIndicators.map((indicator, idx) => {
           const isWatchlisted = watchlistIds.includes(indicator.id);
@@ -375,22 +366,25 @@ export function EqualityDashboard({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, delay: idx * 0.04 }}
               whileHover={{ scale: 1.025, y: -6 }}
-              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-purple-500/60 p-5 shadow-sm hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-cyan-500/60 p-5 shadow-sm hover:shadow-2xl hover:shadow-cyan-900/10 transition-all duration-300 flex flex-col justify-between cursor-pointer"
             >
               <div>
                 {/* Header & Watchlist */}
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="space-y-1">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-purple-50 text-purple-700 border border-purple-200/60">
+                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-cyan-50 text-cyan-700 border border-cyan-200/60">
                       {indicator.unit} Metric
                     </span>
-                    <h3 className="text-base font-black text-slate-900 group-hover:text-purple-700 transition-colors leading-snug">
+                    <h3 className="text-base font-black text-slate-900 group-hover:text-cyan-700 transition-colors leading-snug">
                       {indicator.name}
                     </h3>
                   </div>
 
                   <button
-                    onClick={() => onToggleWatchlist(indicator.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onToggleWatchlist(indicator.id);
+                    }}
                     className={`p-2 rounded-xl text-xs font-bold transition-all ${
                       isWatchlisted
                         ? 'bg-amber-100 text-amber-700 border border-amber-300'
@@ -421,7 +415,7 @@ export function EqualityDashboard({
                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                       Global Rank / Pos
                     </div>
-                    <div className="text-lg font-black text-purple-600 mt-0.5">
+                    <div className="text-lg font-black text-cyan-600 mt-0.5">
                       #{indicator.latestIndiaRank}{' '}
                       <span className="text-xs font-semibold text-slate-400">
                         / {indicator.totalCountriesMeasured}
@@ -470,7 +464,7 @@ export function EqualityDashboard({
               <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
                 <button
                   onClick={() => setActiveModalIndicator(indicator)}
-                  className="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-purple-700 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                  className="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-cyan-700 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
                 >
                   <Info className="w-3.5 h-3.5" />
                   <span>Deep Dive</span>
@@ -489,104 +483,104 @@ export function EqualityDashboard({
         })}
       </div>
 
-      {/* 5. National Equality & Women Empowerment Action Strategy Matrix */}
+      {/* 5. National Digital Public Infrastructure (DPI) Pillars */}
       <div className="bg-white rounded-3xl border border-slate-200/90 p-6 md:p-8 shadow-md space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
           <div>
-            <div className="text-xs font-extrabold text-purple-600 uppercase tracking-widest flex items-center gap-1.5">
-              <Scale className="w-4 h-4 text-purple-500" />
-              <span>National Social Parity & Women Empowerment Pillars</span>
+            <div className="text-xs font-extrabold text-cyan-600 uppercase tracking-widest flex items-center gap-1.5">
+              <Globe className="w-4 h-4 text-cyan-500" />
+              <span>India Stack & Digital Governance Pillars</span>
             </div>
             <h2 className="text-xl md:text-2xl font-black text-slate-900 mt-1">
-              Gender Equality, Wealth Redistribution & Workplace Inclusion
+              Digital Identity, Financial Inclusion & Open Data Infrastructure
             </h2>
           </div>
 
           <button
             onClick={() =>
               onOpenAiAssistant(
-                'Detail India’s national gender equality policy reforms: Nari Shakti Vandan Adhiniyam 33% parliamentary seats reservation, Lakhpati Didi rural SHG empowerment, Code on Wages 2019 equal pay mandates, and MUDRA collateral-free credit.'
+                'Detail the core pillars of India Digital Public Infrastructure (DPI): Aadhaar digital ID, UPI payments, DigiLocker paperless documents, ONDC e-commerce protocol, and open government data on data.gov.in.'
               )
             }
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 text-xs font-black border border-purple-200 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-50 hover:bg-cyan-100 text-cyan-800 text-xs font-black border border-cyan-200 transition-all"
           >
-            <Sparkles className="w-4 h-4 text-purple-600" />
-            <span>Generate Parity Action Brief</span>
+            <Sparkles className="w-4 h-4 text-cyan-600" />
+            <span>Generate DPI Brief</span>
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
-              <Award className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-cyan-100 flex items-center justify-center text-cyan-700 font-bold">
+              <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
-              1. Nari Shakti Legislative Reservation
+              1. Identity & Consent Architecture
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Constitutional amendment guaranteeing 33% reservation for women in Lok Sabha and State Assemblies, driving political empowerment parity (#59 globally).
+              Aadhaar biometrics & DigiLocker providing 1.4B citizens with instant, paperless identity verification and tamper-proof digital credentials.
             </p>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-pink-100 flex items-center justify-center text-pink-700 font-bold">
-              <Briefcase className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 font-bold">
+              <Zap className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
-              2. Lakhpati Didi & SHG Micro-Credit
+              2. Unified Payments Interface (UPI)
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Empowering 10 Million rural Self Help Group women with formal bank accounts, digital financial literacy, and collateral-free enterprise loans under MUDRA.
+              Open-loop real-time payment protocol processing over 13 Billion instant monthly transactions, powering 46% of all global real-time digital payments.
             </p>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold">
-              <ShieldCheck className="w-5 h-5" />
+              <FileCode2 className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
-              3. Code on Wages & Equal Remuneration
+              3. Open Data & Participatory Gov
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Strict statutory prohibition against gender discrimination in recruitment and wages, paired with 26-week paid maternity leave enforcement in corporate centers.
+              data.gov.in publishing 600,000+ open datasets paired with MyGov.in engaging 30M+ citizens directly in policy consultations and crowdsourced feedback.
             </p>
           </div>
         </div>
 
-        {/* Critical Challenges Box */}
+        {/* Critical Digital Gov Challenges */}
         <div className="p-5 rounded-2xl bg-slate-900 text-white space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-black text-purple-400 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-purple-400" />
-              Key Equality & Female Inclusion Bottlenecks
+            <h4 className="text-sm font-black text-cyan-400 flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 text-cyan-400" />
+              Key E-Governance & Digital Infrastructure Challenges
             </h4>
             <span className="text-[11px] font-extrabold text-slate-400">
-              Target: 50% FLFP by 2035
+              Target: 100% Gram Panchayat Fiber Connectivity
             </span>
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 font-medium">
             <li className="flex items-start gap-2">
-              <span className="text-purple-400 font-bold">•</span>
+              <span className="text-cyan-400 font-bold">•</span>
               <span>
-                <strong>Urban FLFP Stagnation:</strong> Urban female labor participation remains low (~25%) due to caregiving responsibilities and commuting safety concerns.
+                <strong>Rural Connectivity Divide:</strong> Universal fixed broadband penetration needed across remote Gram Panchayats.
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-purple-400 font-bold">•</span>
+              <span className="text-cyan-400 font-bold">•</span>
               <span>
-                <strong>Unpaid Care Economy Burden:</strong> Indian women perform 7x more unpaid domestic care work than men, constraining career progression.
+                <strong>Cybersecurity Resilience:</strong> Protecting critical information infrastructure (CII) and municipal databases.
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-purple-400 font-bold">•</span>
+              <span className="text-cyan-400 font-bold">•</span>
               <span>
-                <strong>Informal Sector Wage Gap:</strong> 20-25% gender pay gap in construction and unorganized manual agricultural labor.
+                <strong>DPDP Privacy Compliance:</strong> Full operationalization of Digital Personal Data Protection (DPDP) Act across state departments.
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-purple-400 font-bold">•</span>
+              <span className="text-cyan-400 font-bold">•</span>
               <span>
-                <strong>Corporate Boardroom Pipeline:</strong> Only ~18% representation of women in senior executive and C-suite decision-making positions.
+                <strong>Regional Language Accessibility:</strong> Expanding AI natural language voice interfaces (Bhashini) for digital public services.
               </span>
             </li>
           </ul>
@@ -612,7 +606,7 @@ export function EqualityDashboard({
 
               <div className="space-y-6">
                 <div>
-                  <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-purple-100 text-purple-800">
+                  <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cyan-100 text-cyan-800">
                     {activeModalIndicator.category} • {activeModalIndicator.unit}
                   </span>
                   <h2 className="text-2xl font-black text-slate-900 mt-2">
@@ -634,11 +628,11 @@ export function EqualityDashboard({
                     </div>
                   </div>
 
-                  <div className="p-3.5 bg-purple-50 rounded-2xl border border-purple-100">
-                    <div className="text-[10px] font-bold text-purple-600 uppercase">
+                  <div className="p-3.5 bg-cyan-50 rounded-2xl border border-cyan-100">
+                    <div className="text-[10px] font-bold text-cyan-600 uppercase">
                       Global Rank
                     </div>
-                    <div className="text-lg font-black text-purple-700 mt-0.5">
+                    <div className="text-lg font-black text-cyan-700 mt-0.5">
                       #{activeModalIndicator.latestIndiaRank}
                     </div>
                   </div>
@@ -647,7 +641,7 @@ export function EqualityDashboard({
                     <div className="text-[10px] font-bold text-slate-400 uppercase">
                       Trend Delta
                     </div>
-                    <div className="text-sm font-extrabold text-purple-700 mt-1">
+                    <div className="text-sm font-extrabold text-cyan-700 mt-1">
                       {activeModalIndicator.changeDelta}
                     </div>
                   </div>
@@ -705,7 +699,7 @@ export function EqualityDashboard({
                     href={activeModalIndicator.source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-purple-700 font-bold hover:underline"
+                    className="inline-flex items-center gap-1 text-cyan-700 font-bold hover:underline"
                   >
                     <span>View Portal</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -720,7 +714,7 @@ export function EqualityDashboard({
                       setActiveModalIndicator(null);
                       onSelectIndicator(ind);
                     }}
-                    className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-purple-700 text-white text-xs font-black transition-all"
+                    className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-cyan-700 text-white text-xs font-black transition-all"
                   >
                     Open Full Metric Dashboard
                   </button>

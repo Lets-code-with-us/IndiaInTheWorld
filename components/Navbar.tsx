@@ -65,6 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'environment', label: 'Environment Category', icon: Leaf },
     { id: 'safety', label: 'Safety Category', icon: ShieldCheck },
     { id: 'equality', label: 'Equality Category', icon: Scale },
+    { id: 'digitalgov', label: 'Digital Gov Category', icon: Globe },
     { id: 'categories', label: 'All Categories', icon: Globe },
     { id: 'compare', label: 'Country Comparison', icon: GitCompare },
     { id: 'worldmap', label: 'Global Map', icon: MapPin },
