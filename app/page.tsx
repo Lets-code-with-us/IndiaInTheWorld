@@ -55,12 +55,12 @@ export default function Home() {
       if (indicatorId) {
         const found = GLOBAL_INDICATORS.find((ind) => ind.id === indicatorId);
         if (found) {
-          setSelectedIndicator(found);
+          setTimeout(() => setSelectedIndicator(found), 0);
         }
       }
 
       if (tabParam) {
-        setActiveTab(tabParam);
+        setTimeout(() => setActiveTab(tabParam), 0);
       }
     }
   }, []);
@@ -220,6 +220,15 @@ export default function Home() {
               />
             )}
 
+            {activeTab === 'environment' && (
+              <EnvironmentDashboard
+                onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
+                onOpenAiAssistant={handleOpenAiAssistant}
+                onToggleWatchlist={handleToggleWatchlist}
+                watchlistIds={watchlistIds}
+              />
+            )}
+
             {activeTab === 'safety' && (
               <SafetyDashboard
                 onSelectIndicator={(indicator) => setSelectedIndicator(indicator)}
@@ -285,37 +294,65 @@ export default function Home() {
       </main>
 
       {/* Footer Bar */}
-      <footer className="bg-slate-900 text-slate-300 text-xs py-10 border-t border-slate-800">
+      <footer className="bg-[#3C2F2F] text-[#E8D9C8] text-xs py-10 border-t border-[#52433A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-800/80">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-[#52433A]/60">
             <div className="space-y-1.5 text-center md:text-left">
-              <div className="font-black text-sm text-white tracking-wide">
-                India Global Index — Policy Intelligence & World Rankings
+              <div className="font-bold text-sm text-white tracking-wide flex items-center justify-center md:justify-start gap-2">
+                <span>India360</span>
+                <span className="text-[10px] text-[#F7C331] bg-[#F7882F]/15 border border-[#F7882F]/30 px-2 py-0.5 rounded-full font-medium">
+                  Policy Intelligence & World Rankings
+                </span>
               </div>
-              <div className="text-slate-400 text-xs max-w-2xl leading-relaxed">
-                Aggregating datasets from World Bank, IMF, UN, WHO, WEF, WIPO, RSF, Transparency International & NITI Aayog.
+              <div className="text-[#C4B2A5] text-xs max-w-2xl leading-relaxed">
+                Aggregating official metrics from World Bank, IMF, UN, WHO, WEF, WIPO, RSF, Transparency International & NITI Aayog.
               </div>
             </div>
             
-            <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 text-xs font-bold text-slate-300">
-              <span className="px-3 py-1 rounded-full bg-slate-800 text-amber-400 border border-amber-500/20">
-                Powered by Gemini AI
-              </span>
-              <span className="px-3 py-1 rounded-full bg-slate-800 text-emerald-400 border border-emerald-500/20">
-                2026 Verified Edition
-              </span>
+            {/* Professional Navigation Links */}
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-5 text-xs font-medium text-[#E8D9C8]">
+              <button 
+                onClick={() => { setActiveTab('overview'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+                className="hover:text-[#F7882F] transition-colors cursor-pointer"
+              >
+                Global Indicators
+              </button>
+              <button 
+                onClick={() => { setActiveTab('compare'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+                className="hover:text-[#F7882F] transition-colors cursor-pointer"
+              >
+                Country Benchmarks
+              </button>
+              <button 
+                onClick={() => { setActiveTab('states'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+                className="hover:text-[#F7882F] transition-colors cursor-pointer"
+              >
+                State Rankings
+              </button>
+              <button 
+                onClick={() => { setActiveTab('trends'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+                className="hover:text-[#F7882F] transition-colors cursor-pointer"
+              >
+                Historical Trends
+              </button>
+              <button 
+                onClick={() => setIsReportCardOpen(true)} 
+                className="text-[#F7C331] hover:text-[#F7882F] font-semibold transition-colors cursor-pointer"
+              >
+                AI Policy Report
+              </button>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-xs">
-            <p>© {new Date().getFullYear()} India Global Index. Open Data Policy Initiative.</p>
-            <p className="flex items-center gap-1.5 font-medium text-slate-300">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[#C4B2A5] text-xs">
+            <p>© {new Date().getFullYear()} India360. Open Data Policy Initiative.</p>
+            <p className="flex items-center gap-1.5 font-medium text-[#E8D9C8]">
               Made with <span className="text-rose-500 animate-pulse">💖</span> by{' '}
               <a
                 href="https://vivekducs.is-a.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-black text-amber-400 hover:text-amber-300 hover:underline transition-colors"
+                className="font-black text-[#F7882F] hover:text-[#F7C331] hover:underline transition-colors"
               >
                 Vivek Kumar
               </a>

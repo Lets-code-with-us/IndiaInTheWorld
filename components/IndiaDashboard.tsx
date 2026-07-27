@@ -96,7 +96,7 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
-              India Global Index Standings
+              India360 Global Index Standings
             </h1>
 
             <p className="text-[#E8D9C8] text-xs sm:text-sm leading-relaxed">
@@ -168,6 +168,127 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
               <div className="text-[10px] text-[#C4B2A5]">17.7% of global population</div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 
+        ========================================================================
+        1.5 QUICK SNAPSHOT WIDGET (Top 3 Trending Indicator Shifts & Policy Updates)
+        - Uses cohesive warm earth-tone palette (#3C2F2F, #F7882F, #F7C331, #DCC7AA, #FFF2E8)
+        - Clean typographic hierarchy, WCAG AA contrast, no emojis
+        ========================================================================
+      */}
+      <section className="bg-white rounded-2xl p-5 sm:p-6 border border-[#DCC7AA] shadow-sm space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#DCC7AA]/60 pb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-[#FFF2E8] text-[#F7882F] border border-[#F7882F]/30 shadow-sm">
+              <Zap className="w-5 h-5 text-[#F7882F]" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-base sm:text-lg font-bold text-neutral-900">
+                  Quick Snapshot — Today&apos;s Top 3 Policy & Indicator Shifts
+                </h2>
+                <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300">
+                  Verified Updates
+                </span>
+              </div>
+              <p className="text-xs text-[#6B7A8F]">
+                Curated briefing of high-velocity ranking shifts and major policy enforcement milestones
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => onOpenAiAssistant('Provide an executive summary of today’s top 3 policy shifts and ranking indicators for India.')}
+            className="self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF6EF] hover:bg-[#FFF2E8] text-[#D46917] text-xs font-bold border border-[#DCC7AA] transition-all hover:border-[#F7882F] cursor-pointer"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-[#F7882F]" />
+            <span>AI Executive Briefing</span>
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            {
+              id: 'global-innovation-index',
+              title: 'Global Innovation Index (GII)',
+              tag: 'Tech & Patent Surge',
+              badgeColor: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+              rank: '#39',
+              change: '+42 Ranks (10-Yr Surge)',
+              source: 'WIPO 2026',
+              summary: 'India achieved Rank #39 globally following record tech patent filings and unicorn ecosystem expansion.',
+              actionText: 'View Innovation Profile',
+            },
+            {
+              id: 'ai-readiness-index',
+              title: 'Oxford AI Readiness Index',
+              tag: 'Compute & Policy Milestone',
+              badgeColor: 'bg-amber-50 text-amber-900 border-amber-200',
+              rank: '#14',
+              change: '+10 Places Shift',
+              source: 'Oxford Insights 2026',
+              summary: 'Climbed 10 positions driven by the $1.2B IndiaAI Mission compute rollout and DPDP governance frameworks.',
+              actionText: 'Analyze AI Metrics',
+            },
+            {
+              id: 'climate-change-performance-index',
+              title: 'Climate Change Performance (CCPI)',
+              tag: 'Clean Energy Benchmark',
+              badgeColor: 'bg-teal-50 text-teal-900 border-teal-200',
+              rank: '#10',
+              change: 'Top 10 Global Leader',
+              source: 'Germanwatch 2026',
+              summary: 'Maintained top-10 global standing with 180GW+ installed non-fossil capacity and national green hydrogen targets.',
+              actionText: 'Explore CCPI Profile',
+            },
+          ].map((item, idx) => {
+            const matchedInd = GLOBAL_INDICATORS.find((i) => i.id === item.id);
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, delay: idx * 0.08 }}
+                whileHover={{ y: -3 }}
+                onClick={() => matchedInd && onSelectIndicator(matchedInd)}
+                className="bg-[#FAF6EF] hover:bg-white rounded-xl p-4 border border-[#DCC7AA] hover:border-[#F7882F] shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col justify-between space-y-3 group"
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide border ${item.badgeColor}`}>
+                      {item.tag}
+                    </span>
+                    <span className="text-[10px] font-bold text-[#6B7A8F]">
+                      {item.source}
+                    </span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <h3 className="text-sm font-black text-neutral-900 group-hover:text-[#F7882F] transition-colors leading-tight">
+                      {item.title}
+                    </h3>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-xl font-black text-[#F7882F]">{item.rank}</span>
+                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                        {item.change}
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-[#6B7A8F] leading-relaxed">
+                    {item.summary}
+                  </p>
+                </div>
+
+                <div className="pt-2.5 border-t border-[#DCC7AA]/60 flex items-center justify-between text-xs font-bold text-[#D46917] group-hover:text-[#F7882F]">
+                  <span>{item.actionText}</span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 

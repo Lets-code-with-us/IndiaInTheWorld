@@ -68,7 +68,7 @@ export const IndicatorDetailModal: React.FC<IndicatorDetailModalProps> = ({
 
   const handleCopySummary = () => {
     const url = `${window.location.origin}${window.location.pathname}?indicator=${indicator.id}`;
-    const summaryText = `📊 India Global Index Performance Brief
+    const summaryText = `📊 India360 Performance Brief
 -------------------------------------------
 Indicator: ${indicator.name} (${indicator.category})
 Global Rank: #${indicator.latestIndiaRank} / ${indicator.totalCountriesMeasured}

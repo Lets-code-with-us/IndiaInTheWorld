@@ -1,121 +1,109 @@
-# India Global Index — Policy Intelligence & World Rankings Dashboard
+# India360 — Policy Intelligence & World Rankings Dashboard
 
-A high-performance policy analytics platform that consolidates 60+ global development indicators and 36 Indian States/UTs development metrics (NITI Aayog SDG Index, Innovation Index, Health Index, Export Preparedness).
+**India360** is a comprehensive, 360-degree policy analytics platform consolidating over **60+ global development indicators** and **36 Indian States/UTs development metrics** (NITI Aayog SDG Index, Innovation Index, Health Index, Export Preparedness).
 
-Powered by the Gemini AI Engine for real-time contextual policy insights, comparative benchmarking, and automated annual performance report generation.
-
----
-
-## Design & Aesthetic System
-
-The platform strictly adheres to a warm neutral palette engineered for maximum legibility and reduced cognitive strain during policy analysis:
-
-- Canvas Background: Warm Off-White (`#FAF6EF`)
-- Primary Hero & Modal Headers: Deep Warm Espresso Brown (`#3C2F2F`)
-- Secondary Card Containers: Warm Cocoa (`#4A3E3D`) with Soft Sand Borders (`#52433A` / `#DCC7AA`)
-- Primary Action Accent: Terracotta Amber (`#F7882F`)
-- Secondary Highlight Accent: Golden Sand (`#F7C331`)
-- Typography & Labels: Roasted Earth Taupe (`#7C6C62` / `#2C221E`)
-- Note: No cold blues, purples, or pure black surfaces are used anywhere in the application.
+Powered by the **Gemini AI Policy Engine**, India360 provides real-time comparative benchmarking, trend forecasting, state-level performance analysis, and automated executive report card generation.
 
 ---
 
-## Key Features & Capabilities
+## 🌟 Executive Highlights & Core Modules
 
-### 1. Global Keyboard Shortcut Navigation (`Ctrl+K`, `Ctrl+I`, `?`)
-Built for power users, analysts, and researchers needing rapid keyboard-driven navigation:
-- `Ctrl+K` / `Cmd+K`: Opens the **Global Command Palette** for instant fuzzy search across 60+ global indicators, 36 Indian states, categories, and direct action triggers.
-- `Ctrl+I` / `Cmd+I`: Opens the **Gemini AI Policy Assistant** slide-over drawer from anywhere.
+### 1. ⚡ Quick Snapshot Widget (Top 3 Daily Trending Shifts)
+An executive summary section positioned directly at the top of the main dashboard highlighting high-velocity ranking movements and urgent policy milestones:
+- **Global Innovation Index (GII)**: Rank #39 globally following record tech patent filings and unicorn ecosystem expansion (+42 rank 10-year surge).
+- **Oxford AI Readiness Index**: Climbed to Rank #14 driven by the $1.2B IndiaAI Mission compute rollout and DPDP governance frameworks (+10 places shift).
+- **Climate Change Performance Index (CCPI)**: Maintained Top 10 global standing with 180GW+ installed non-fossil capacity and national green hydrogen targets.
+- **One-Click AI Briefing Trigger**: Launches the AI Policy Assistant with a pre-loaded query for instant executive briefing notes.
+
+### 2. 🌍 10 Policy Category Hubs (60+ Global Indicators)
+In-depth category dashboards with dedicated visual analytics, benchmark comparisons, and reform drivers:
+1. **Economy (13 Benchmarks)**: Nominal GDP ($3.93T, #5), PPP GDP ($14.2T, #3), GDP Growth (6.8%, #1 among major economies), Inflation (4.6%), FDI Inflows ($71B, #8), Competitiveness (#39), Ease of Doing Business (#63).
+2. **Environment & Clean Energy**: Environment Performance Index (EPI), Renewable Energy Share (44%), Forest Cover (24.6%), Air Quality Index (AQI), Green Hydrogen Mission milestones.
+3. **DigitalGov & GovTech**: World Bank GovTech Maturity Index (Group A Leader), UN E-Government Index (#48), Government AI Readiness (#32), Open Data Inventory (#58).
+4. **Technology & Innovation**: Global Innovation Index (#39), Space Economy Scale, Quantum Mission Progress, Tech Unicorn Density.
+5. **Governance & Legal Standards**: Worldwide Governance Indicators (WGI), Corruption Perceptions Index (#93), Rule of Law Index (#79), E-Participation Index (#28).
+6. **Healthcare & Life Sciences**: Universal Health Coverage Index, Infant Mortality Rate (IMR 27/1000), Life Expectancy (70.8 yrs), Ayushman Bharat Coverage.
+7. **Education & Human Capital**: Human Capital Index (#116), Gross Enrollment Ratio (GER Higher Ed 28.4%), Adult Literacy Rate (77.7%), STEM Graduate Ratio.
+8. **Safety & Internal Security**: Global Peace Index (#126), Cyber Security Index (#10), Crime Rate Trends, Disaster Resilience Index.
+9. **Equality & Inclusion**: Global Gender Gap Index (#129), Financial Inclusion (Jan Dhan Accounts), Multidimensional Poverty Headcount (Reduced by 135M).
+10. **Society & Urbanization**: Human Development Index (#134), Urbanization Rate (36%), Clean Drinking Water Access (Jal Jeevan Mission 76%).
+
+### 3. 🏛️ Sub-National State & UT Development Intelligence
+Interactive explorer covering all **36 Indian States and Union Territories**:
+- Categorized according to NITI Aayog development brackets: **Front Runner**, **Performer**, **Achiever**, and **Aspirant**.
+- Tracks state-specific **SDG Scores**, **Innovation Ranks**, **Health Index Scores**, **Export Preparedness**, and **Literacy Rates**.
+- Allows side-by-side comparative benchmarking against leading states (e.g., comparing Bihar against Kerala, Karnataka, or Tamil Nadu) to identify actionable reform roadmaps.
+
+### 4. 🌐 International Country Benchmark Engine & 3D WebGL Globe
+- Multi-country comparison tool allowing side-by-side metric evaluation of India against G20 & BRICS economies (United States, China, Germany, Japan, United Kingdom, Brazil, South Africa, Vietnam).
+- Interactive 3D WebGL Globe displaying worldwide metric distribution with interactive hover cards and regional comparison metrics.
+
+### 5. 🤖 Gemini AI Policy Assistant & Executive Report Card
+- Fully integrated with Next.js server-side API routes (`/api/gemini/chat` and `/api/gemini/insights`).
+- Injects full system memory of all 60+ global indicators and 36 state metrics into context.
+- Generates data-backed comparative analysis with strict factual accuracy, zero fluff, and cited dataset sources.
+- **2026 Executive AI Report Card**: One-click generation of India's consolidated macro report card complete with letter grades (A-F), key strengths, critical reform bottlenecks, and strategic policy recommendations.
+
+### 6. ⌨️ Global Power User Keyboard Navigation (`Cmd+K`, `Cmd+I`, `?`)
+- `Ctrl+K` / `Cmd+K`: Global Command Palette for instant fuzzy search across 60+ global indicators, 36 Indian states, categories, and direct action triggers.
+- `Ctrl+I` / `Cmd+I`: Opens the Gemini AI Policy Assistant slide-over drawer from anywhere.
 - `Ctrl+Shift+R` / `Cmd+Shift+R`: Generates the **2026 Executive AI Report Card**.
-- `Ctrl+Shift+W` / `Cmd+Shift+W`: Opens the **Saved Watchlist & CSV Export Manager**.
-- `Shift+?` / `?`: Opens the **Keyboard Shortcuts Reference Guide**.
+- `Ctrl+Shift+W` / `Cmd+Shift+W`: Opens Saved Watchlist & CSV Export Manager.
+- `Shift+?` / `?`: Opens Keyboard Shortcuts Reference Guide.
 - `Esc`: Instantly closes open modals and slide-over drawers.
 
-### 2. Dynamic Shareable Link & Formatted Insight Summaries
-Every indicator deep dive includes a **Share Insight** suite:
-- **Copy Shareable Link**: Generates deep-linked URL parameters (`?indicator=gdp-rank`) for direct access to specific metrics.
-- **Copy Performance Summary Brief**: Formats a clean, structured text summary suitable for policy notes, briefings, or social sharing (includes rank, score, 10-year trajectory, drivers, bottlenecks, publisher source, and confidence score).
-- **Toast Notifications**: Interactive visual feedback confirming clipboard operations.
-
-### 3. Digital Government & GovTech Category Hub
-Dedicated command center tracking India's digital transformation across public administration:
-- **World Bank GovTech Maturity Index (GTMI)**: Group A High Maturity leader.
-- **UN E-Government Development Index (EGDI)**: Rank #48 / 193.
-- **Government AI Readiness Index (Oxford Insights)**: Rank #32 / 193.
-- **Open Data Inventory (ODIN)**: Rank #58 / 195.
-- **E-Participation Index (EPI)**: Rank #28 / 193.
-
-### 4. Dedicated Economy Category Command Center
-Comprehensive Category Dashboard dedicated to the 13 core economic and trade benchmarks:
-1. **GDP Rank (Nominal)**: #5 ($3.93 Trillion) - [IMF World Economic Outlook](https://www.imf.org/en/Publications/WEO)
-2. **GDP (PPP) Rank**: #3 ($14.2 Trillion) - [World Bank International Comparison Program](https://www.worldbank.org/en/programs/icp)
-3. **GDP per Capita Rank**: #138 ($2,730) - [IMF Data Mapper](https://www.imf.org/external/datamapper/NGDPDPC@WEO/OEMDC/ADVEC/WEOWORLD)
-4. **GDP Growth Rate**: 6.8% (#1 among major $1T+ economies) - [World Bank Data](https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG)
-5. **Inflation Rate (CPI)**: 4.6% - [Reserve Bank of India Monetary Policy Portal](https://www.rbi.org.in/)
-6. **Unemployment Rate (PLFS)**: 3.2% - [Ministry of Statistics & Programme Implementation (MoSPI)](https://mospi.gov.in/)
-7. **Public Debt to GDP Ratio**: 81.5% - [IMF Fiscal Monitor](https://www.imf.org/en/Publications/FM)
-8. **Ease of Doing Business (Historical)**: Rank #63 - [World Bank Doing Business Archive](https://archive.doingbusiness.org/)
-9. **Global Competitiveness Index**: Rank #39 - [World Economic Forum Competitiveness Platform](https://www.weforum.org/)
-10. **Global Innovation Index**: Rank #39 - [WIPO Global Innovation Index Portal](https://www.wipo.int/global_innovation_index/en/)
-11. **Index of Economic Freedom**: Rank #121 - [Heritage Foundation Index](https://www.heritage.org/index/)
-12. **Logistics Performance Index**: Rank #38 - [World Bank LPI Database](https://lpi.worldbank.org/)
-13. **Foreign Direct Investment Inflows**: #8 ($71 Billion/year) - [UNCTAD World Investment Report](https://unctad.org/topic/investment/world-investment-report)
-
-### 5. F-Pattern Executive Layout Hierarchy
-- Top-Left Anchors: Key macro financial metrics (Nominal GDP $3.93T #5, PPP GDP $14.2T #3, Global Innovation Index #39, Population Scale 1.43B) positioned at top-left for immediate scanning.
-- Top Benchmark Cards: KPI cards with data point spike callouts, contextual definitions, pulse indicators, and publisher citations.
-- Middle Grid: Policy category indices (Economy, Technology, Governance, Healthcare, Education, Environment, Safety, DigitalGov, Equality, Society).
-- Deep-Dive Bottom: Top 5 global strengths vs top 5 critical reform bottlenecks, along with a 10-year national policy reform timeline.
-
-### 6. Gemini AI Assistant with Direct Dataset Memory
-- Fully integrated with the backend (`/api/gemini/chat` and `/api/gemini/insights`).
-- Enforces strict factual responses with no emojis, citing specific dataset URLs.
-- Passes full system memory of all global indicators and 36 Indian states/UTs metrics (NITI Aayog SDG Score, Innovation Score, Health Index, Export Rank, Literacy Rate).
-- Generates data-backed comparative analysis for queries like "Analyze Bihar state development indicators", comparing Bihar directly against leaders like Kerala, Karnataka, and Tamil Nadu with actionable reform steps.
-
-### 7. State & UT Development Intelligence Explorer
-- Comprehensive dataset for all 36 Indian States and Union Territories.
-- Filterable by NITI Aayog development categories (Front Runner, Performer, Aspirant, Achiever).
-- Interactive comparative view matching state performance against national benchmarks.
-
-### 8. Interactive Country Benchmark Engine & 3D WebGL Globe
-- Multi-country comparison tool allowing side-by-side evaluation of India against G20 & BRICS economies (United States, China, Germany, Japan, United Kingdom, Brazil, South Africa, Vietnam).
-- Interactive 3D WebGL Globe visualizing worldwide development metric distribution.
-
-### 9. Annual AI Report Card Generator & Watchlist Manager
-- One-click synthesis of India's annual performance across all macro dimensions.
-- Bookmark any indicator across categories to compile a custom watchlist.
-- Export formatted CSV reports for offline policy research.
+### 7. 🔖 Saved Watchlist & Custom CSV Export Engine
+- Bookmark key indicators across any category to assemble a personalized policy watchlist.
+- Export customized watchlists to structured CSV files for offline academic or government policy reporting.
 
 ---
 
-## Technology Stack
+## 🎨 Cohesive Warm Earth-Tone Design System
 
-- Framework: Next.js 15+ (App Router)
-- UI & Layout: React 18, TypeScript, Tailwind CSS, Framer Motion
-- Visualizations: Recharts, Three.js 3D WebGL Canvas
-- AI Integration: `@google/genai` TypeScript SDK (`gemini-2.5-flash`)
-- Icons: Lucide React
-- Data Serialization: Static Type-Safe Datasets (`lib/data/`)
+India360 strictly adheres to a warm, eye-safe earth-tone palette engineered to eliminate cognitive fatigue during prolonged analytical sessions:
+
+| UI Element | Color Hex | Visual Purpose |
+| :--- | :--- | :--- |
+| **Canvas Background** | `#FAF6EF` | Soft, warm off-white background |
+| **Primary Headers / Modals** | `#3C2F2F` | Deep warm espresso brown for high-contrast headlines |
+| **Secondary Containers** | `#4A3E3D` | Warm cocoa brown for structured content cards |
+| **Borders & Dividers** | `#52433A` / `#DCC7AA` | Muted sand and soft tan borders |
+| **Primary Action Accent** | `#F7882F` | Terracotta amber for primary buttons and callouts |
+| **Secondary Highlight** | `#F7C331` | Golden sand for status badges and metrics |
+| **Typography & Labels** | `#7C6C62` / `#2C221E` | Earthy taupe and roasted coffee body text |
+
+*No generic cold blues, neon pinks, or pure black (#000) surfaces are used anywhere in the application.*
 
 ---
 
-## Quick Start & Setup Instructions
+## 🛠️ Technical Stack & Architecture
+
+- **Framework**: Next.js 15+ (App Router)
+- **Language**: TypeScript (Strict Type Safety)
+- **Styling & Motion**: Tailwind CSS v4, Framer Motion
+- **Visualizations**: Recharts, Three.js / React Three Fiber (3D WebGL Globe)
+- **AI Integration**: `@google/genai` TypeScript SDK (`gemini-2.5-flash`)
+- **Icons**: Lucide React
+- **Data Architecture**: Immutable static dataset registries in `lib/data/` (Indicators, States, Categories)
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js: v18.0.0 or higher
-- npm / yarn / pnpm
+- npm / pnpm / yarn
 - Gemini API Key: Set in `.env.local`
 
-### 1. Clone & Install
+### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/your-org/india-global-index.git
-cd india-global-index
+git clone https://github.com/your-org/india360.git
+cd india360
 npm install
 ```
 
 ### 2. Configure Environment Variables
-Create a `.env.local` file in the project root:
+Create a `.env.local` file in the root directory:
 ```env
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
@@ -134,24 +122,23 @@ npm run start
 
 ---
 
-## Primary Data Sources & Official Citations
+## 📚 Primary Data Sources & Citations
 
-All facts and metrics presented in the dashboard and AI assistant are directly backed by official publications:
+All indicators and metrics presented in India360 are sourced from official multilateral publications:
 
-1. [International Monetary Fund (IMF) — World Economic Outlook](https://www.imf.org/en/Publications/WEO)
-2. [World Bank — World Development Indicators & GovTech Index](https://databank.worldbank.org/source/world-development-indicators)
-3. [World Intellectual Property Organization (WIPO) — Global Innovation Index](https://www.wipo.int/global_innovation_index/en/)
-4. [United Nations Development Programme (UNDP) — Human Development Index](https://hdr.undp.org/)
-5. [NITI Aayog — SDG India Index & Reports Portal](https://www.niti.gov.in/sdg-india-index)
-6. [World Economic Forum (WEF) — Global Gender Gap Report](https://www.weforum.org/reports/global-gender-gap-report-2024/)
-7. [Reporters Without Borders (RSF) — Press Freedom Index](https://rsf.org/en/index)
-8. [Transparency International — Corruption Perceptions Index](https://www.transparency.org/en/cpi)
-9. [Germanwatch — Climate Change Performance Index](https://ccpi.org/)
-10. [Oxford Insights — Government AI Readiness Index](https://oxfordinsights.com/ai-readiness/ai-readiness-index/)
+1. **IMF**: [World Economic Outlook & Data Mapper](https://www.imf.org/en/Publications/WEO)
+2. **World Bank**: [World Development Indicators & LPI](https://databank.worldbank.org/)
+3. **WIPO**: [Global Innovation Index Portal](https://www.wipo.int/global_innovation_index/en/)
+4. **UNDP**: [Human Development Reports](https://hdr.undp.org/)
+5. **NITI Aayog**: [SDG India Index & State Dashboard](https://www.niti.gov.in/sdg-india-index)
+6. **World Economic Forum**: [Global Gender Gap & Competitiveness Reports](https://www.weforum.org/)
+7. **Reporters Without Borders**: [Press Freedom Index](https://rsf.org/en/index)
+8. **Transparency International**: [Corruption Perceptions Index](https://www.transparency.org/en/cpi)
+9. **Germanwatch**: [Climate Change Performance Index (CCPI)](https://ccpi.org/)
+10. **Oxford Insights**: [Government AI Readiness Index](https://oxfordinsights.com/ai-readiness/ai-readiness-index/)
 
 ---
 
-## License
+## 📄 License
 
-MIT License — free for educational, research, and public policy analysis use.
-
+MIT License — Created for open data research, educational analysis, and public policy intelligence.

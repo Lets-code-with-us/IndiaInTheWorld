@@ -1,6 +1,6 @@
 # Architecture & Implementation Documentation
 
-This document provides a technical breakdown of the architecture, data models, state flows, and AI integration powering the **India Global Index — Policy Intelligence & World Rankings Dashboard**.
+This document provides a technical breakdown of the architecture, data models, state flows, and AI integration powering the **India360 — Policy Intelligence & World Rankings Dashboard**.
 
 ---
 

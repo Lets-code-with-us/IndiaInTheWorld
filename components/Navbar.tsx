@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-lg tracking-tight text-white">India Global Index</span>
+                <span className="font-bold text-lg tracking-tight text-white">India360</span>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#F7882F]/20 text-[#F7C331] border border-[#F7882F]/30">
                   2026 Live
                 </span>

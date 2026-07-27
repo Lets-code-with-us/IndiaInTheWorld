@@ -45,9 +45,12 @@ export function CommandPaletteModal({
 
   useEffect(() => {
     if (isOpen) {
-      setQuery('');
-      setSelectedIndex(0);
-      setTimeout(() => inputRef.current?.focus(), 50);
+      const timer = setTimeout(() => {
+        setQuery('');
+        setSelectedIndex(0);
+        inputRef.current?.focus();
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
@@ -138,7 +141,8 @@ export function CommandPaletteModal({
     (query.trim() ? 0 : navActions.length);
 
   useEffect(() => {
-    setSelectedIndex(0);
+    const timer = setTimeout(() => setSelectedIndex(0), 0);
+    return () => clearTimeout(timer);
   }, [query]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -298,7 +302,7 @@ export function CommandPaletteModal({
                 </div>
                 {filteredStates.map((state) => (
                   <button
-                    key={state.id}
+                    key={state.code}
                     onClick={() => {
                       onClose();
                       onSelectTab('states');

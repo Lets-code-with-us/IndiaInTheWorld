@@ -39,7 +39,7 @@ export interface Indicator {
   name: string;
   category: CategoryType;
   description: string;
-  unit: 'Rank' | 'Score' | 'Percentage' | 'USD' | 'Index' | 'Ratio' | 'Count';
+  unit: 'Rank' | 'Score' | 'Percentage' | 'USD' | 'Index' | 'Ratio' | 'Count' | string;
   higherIsBetter: boolean; // e.g. Rank 1 is better, so for rank false, for score true
   latestIndiaRank: number;
   latestIndiaValue: string | number;
