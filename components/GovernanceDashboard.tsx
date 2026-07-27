@@ -158,7 +158,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn text-slate-800">
       {/* 1. Header Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-6 sm:p-10 text-white shadow-2xl shadow-slate-950/20 border border-slate-800">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3C2F2F] via-[#2A2121] to-[#1B2028] p-6 sm:p-10 text-white shadow-2xl shadow-black/20 border border-[#52433A]">
         {/* Animated 3D Light Orbs */}
         <motion.div
           animate={{
@@ -168,17 +168,17 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
             y: [0, -20, 0],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-indigo-500/30 to-purple-400/10 blur-3xl pointer-events-none"
+          className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-[#F7882F]/20 to-[#F7C331]/10 blur-3xl pointer-events-none"
         />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3.5 py-1 rounded-full bg-indigo-500/20 text-indigo-200 text-xs font-bold uppercase tracking-wider border border-indigo-400/30 flex items-center gap-1.5 backdrop-blur-md">
-                <Landmark className="w-3.5 h-3.5 text-indigo-300" />
+              <span className="px-3.5 py-1 rounded-full bg-[#F7882F]/20 text-[#F7C331] text-xs font-bold uppercase tracking-wider border border-[#F7882F]/30 flex items-center gap-1.5 backdrop-blur-md">
+                <Landmark className="w-3.5 h-3.5 text-[#F7C331]" />
                 <span>Governance & Institutional Quality Intelligence Center</span>
               </span>
-              <span className="text-xs text-slate-300 bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md">
+              <span className="text-xs text-[#E8D9C8] bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md">
                 9 Benchmark Metrics
               </span>
             </div>
@@ -187,7 +187,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
               India Governance, Rule of Law & Institutional Reform Dashboard
             </h1>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-[#E8D9C8] leading-relaxed font-normal">
               Deep analytics across World Bank Worldwide Governance Indicators (WGI), Democracy Index (#41), Corruption Perceptions Index, Government Effectiveness (#57), Regulatory Quality, and Fiscal Transparency.
             </p>
           </div>
@@ -199,74 +199,74 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                   'Provide a comprehensive governance evaluation of India’s World Bank WGI scores, Government Effectiveness rise, and Rule of Law reforms.'
                 )
               }
-              className="px-4 py-3 rounded-2xl bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-indigo-400 hover:to-sky-400 text-white font-extrabold text-xs transition-all shadow-lg shadow-indigo-500/25 flex items-center gap-2"
+              className="px-4 py-3 rounded-2xl bg-[#F7882F] hover:bg-[#E0731E] text-white font-extrabold text-xs transition-all shadow-lg shadow-[#F7882F]/25 flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-white" />
+              <Sparkles className="w-4 h-4 text-[#F7C331]" />
               <span>Ask Gemini AI Governance Analyst</span>
             </button>
 
             <button
               onClick={handleExportCsv}
-              className="px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all border border-white/20 backdrop-blur-md flex items-center gap-2"
+              className="px-4 py-3 rounded-2xl bg-[#4A3E3D] hover:bg-[#52433A] text-[#E8D9C8] text-xs font-bold transition-all border border-[#52433A] backdrop-blur-md flex items-center gap-2"
             >
-              <Download className="w-4 h-4 text-sky-300" />
+              <Download className="w-4 h-4 text-[#F7C331]" />
               <span>Export Governance CSV</span>
             </button>
           </div>
         </div>
 
         {/* 4 Executive KPI Callouts */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-slate-800">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-[#52433A]">
           <motion.div
             whileHover={{ scale: 1.03, y: -2 }}
-            className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 space-y-1"
+            className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A] space-y-1"
           >
-            <div className="text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <div className="text-[11px] font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Government Effectiveness</span>
-              <Building className="w-3.5 h-3.5 text-sky-300" />
+              <Building className="w-3.5 h-3.5 text-[#F7C331]" />
             </div>
             <div className="text-xl sm:text-2xl font-black text-white">#57</div>
-            <div className="text-[11px] text-sky-300 font-bold">66.2 Percentile</div>
-            <div className="text-[10px] text-slate-300">World Bank WGI</div>
+            <div className="text-[11px] text-[#F7C331] font-bold">66.2 Percentile</div>
+            <div className="text-[10px] text-[#C4B2A5]">World Bank WGI</div>
           </motion.div>
 
           <motion.div
             whileHover={{ scale: 1.03, y: -2 }}
-            className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 space-y-1"
+            className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A] space-y-1"
           >
-            <div className="text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <div className="text-[11px] font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>EIU Democracy Index</span>
-              <Landmark className="w-3.5 h-3.5 text-indigo-300" />
+              <Landmark className="w-3.5 h-3.5 text-[#F7882F]" />
             </div>
             <div className="text-xl sm:text-2xl font-black text-white">#41</div>
-            <div className="text-[11px] text-indigo-300 font-bold">7.18 / 10 Score</div>
-            <div className="text-[10px] text-slate-300">Economist Intelligence Unit</div>
+            <div className="text-[11px] text-[#F7C331] font-bold">7.18 / 10 Score</div>
+            <div className="text-[10px] text-[#C4B2A5]">Economist Intelligence Unit</div>
           </motion.div>
 
           <motion.div
             whileHover={{ scale: 1.03, y: -2 }}
-            className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 space-y-1"
+            className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A] space-y-1"
           >
-            <div className="text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <div className="text-[11px] font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Regulatory Quality</span>
               <Scale className="w-3.5 h-3.5 text-teal-300" />
             </div>
             <div className="text-xl sm:text-2xl font-black text-white">#68</div>
             <div className="text-[11px] text-teal-300 font-bold">58.4 Percentile</div>
-            <div className="text-[10px] text-slate-300">World Bank Database</div>
+            <div className="text-[10px] text-[#C4B2A5]">World Bank Database</div>
           </motion.div>
 
           <motion.div
             whileHover={{ scale: 1.03, y: -2 }}
-            className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 space-y-1"
+            className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A] space-y-1"
           >
-            <div className="text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <div className="text-[11px] font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Open Budget Index</span>
               <FileText className="w-3.5 h-3.5 text-emerald-300" />
             </div>
             <div className="text-xl sm:text-2xl font-black text-white">51 / 100</div>
             <div className="text-[11px] text-emerald-300 font-bold">Rank #53 Globally</div>
-            <div className="text-[10px] text-slate-300">IBP Fiscal Survey</div>
+            <div className="text-[10px] text-[#C4B2A5]">IBP Fiscal Survey</div>
           </motion.div>
         </div>
       </div>
@@ -275,8 +275,8 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-md">
           <div className="space-y-1">
-            <div className="text-xs font-extrabold text-indigo-600 uppercase tracking-wider flex items-center gap-1.5">
-              <BarChart2 className="w-4 h-4 text-indigo-500" />
+            <div className="text-xs font-extrabold text-[#D46917] uppercase tracking-wider flex items-center gap-1.5">
+              <BarChart2 className="w-4 h-4 text-[#F7882F]" />
               <span>3D WebGL Governance Trend Studio</span>
             </div>
             <h2 className="text-lg font-black text-slate-900">
@@ -289,7 +289,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
             <select
               value={selectedChartIndicatorId}
               onChange={(e) => setSelectedChartIndicatorId(e.target.value)}
-              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]"
             >
               {governanceIndicators.map((ind) => (
                 <option key={ind.id} value={ind.id}>
@@ -304,7 +304,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                 onClick={() => setChartMode('bar')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'bar'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'bg-[#F7882F] text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -314,7 +314,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                 onClick={() => setChartMode('line')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'line'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'bg-[#F7882F] text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -332,7 +332,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
             chartMode === 'bar' ? 'Global Country Comparison' : 'India 10-Year Trajectory'
           }`}
           subtitle={`Source: ${activeChartIndicator.source.organization} (${activeChartIndicator.source.lastUpdatedYear})`}
-          accentColor="#4f46e5"
+          accentColor="#F7882F"
           height={380}
         />
       </div>
@@ -347,7 +347,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
             placeholder="Search Governance metrics..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 text-xs font-medium text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:bg-white transition-all"
+            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 text-xs font-medium text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]/50 focus:bg-white transition-all"
           />
         </div>
 
@@ -357,7 +357,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
             onClick={() => setSelectedSubtype('all')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'all'
-                ? 'bg-slate-900 text-white shadow-md'
+                ? 'bg-[#F7882F] text-white shadow-md shadow-[#F7882F]/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -367,7 +367,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
             onClick={() => setSelectedSubtype('integrity')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'integrity'
-                ? 'bg-slate-900 text-white shadow-md'
+                ? 'bg-[#F7882F] text-white shadow-md shadow-[#F7882F]/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -377,7 +377,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
             onClick={() => setSelectedSubtype('democracy')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'democracy'
-                ? 'bg-slate-900 text-white shadow-md'
+                ? 'bg-[#F7882F] text-white shadow-md shadow-[#F7882F]/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -387,7 +387,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
             onClick={() => setSelectedSubtype('wgi')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'wgi'
-                ? 'bg-slate-900 text-white shadow-md'
+                ? 'bg-[#F7882F] text-white shadow-md shadow-[#F7882F]/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -400,7 +400,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
           <select
             value={selectedTrend}
             onChange={(e) => setSelectedTrend(e.target.value)}
-            className="px-3 py-2 bg-slate-50 text-xs font-semibold text-slate-700 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-3 py-2 bg-slate-50 text-xs font-semibold text-slate-700 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]"
           >
             <option value="all">All Trends</option>
             <option value="improving">Improving Trend</option>
@@ -431,16 +431,16 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                   scale: 1.01,
                   transition: { duration: 0.2 },
                 }}
-                className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/80 shadow-md hover:shadow-xl shadow-slate-200/60 hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col justify-between space-y-4 group relative overflow-hidden"
+                className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/80 shadow-md hover:shadow-xl shadow-slate-200/60 hover:shadow-[#F7882F]/10 transition-all duration-300 flex flex-col justify-between space-y-4 group relative overflow-hidden"
               >
                 {/* Accent top line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-sky-400 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#F7882F] via-[#F7C331] to-[#D46917] opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-2">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-extrabold text-indigo-600 uppercase tracking-wider bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
+                        <span className="text-[10px] font-extrabold text-[#D46917] uppercase tracking-wider bg-[#FFF2E8] px-2.5 py-0.5 rounded-full border border-[#F7882F]/20">
                           {indicator.unit}
                         </span>
                         {indicator.trend === 'improving' && (
@@ -463,7 +463,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                         )}
                       </div>
 
-                      <h3 className="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors pt-1">
+                      <h3 className="text-base font-extrabold text-slate-900 group-hover:text-[#D46917] transition-colors pt-1">
                         {indicator.name}
                       </h3>
                     </div>
@@ -476,7 +476,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                         }}
                         className={`p-2 rounded-xl transition-colors ${
                           isWatchlisted
-                            ? 'bg-indigo-600 text-white'
+                            ? 'bg-[#F7882F] text-white'
                             : 'text-slate-400 hover:bg-slate-100'
                         }`}
                         title={isWatchlisted ? 'Remove Bookmark' : 'Bookmark Metric'}
@@ -491,7 +491,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                   </p>
 
                   {/* Glass Stat Block */}
-                  <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 p-3.5 rounded-2xl border border-slate-200/80 grid grid-cols-2 gap-2 shadow-inner">
+                  <div className="bg-gradient-to-br from-slate-50 to-[#FFF2E8]/40 p-3.5 rounded-2xl border border-slate-200/80 grid grid-cols-2 gap-2 shadow-inner">
                     <div>
                       <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wide">
                         India Rank
@@ -508,7 +508,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                       <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wide">
                         Latest Score
                       </div>
-                      <div className="text-sm font-black text-indigo-600">
+                      <div className="text-sm font-black text-[#D46917]">
                         {indicator.latestIndiaValue}
                       </div>
                     </div>
@@ -518,14 +518,14 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                   <div className="space-y-1">
                     <div className="text-[11px] font-bold text-slate-800 flex items-center gap-1">
                       <span className="text-slate-500">Trajectory Delta:</span>
-                      <span className="text-indigo-600 font-bold">{indicator.changeDelta}</span>
+                      <span className="text-[#D46917] font-bold">{indicator.changeDelta}</span>
                     </div>
 
                     <a
                       href={indicator.source.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[10px] text-slate-500 hover:text-indigo-600 transition-colors flex items-center gap-1"
+                      className="text-[10px] text-slate-500 hover:text-[#D46917] transition-colors flex items-center gap-1"
                     >
                       <span>Source: {indicator.source.organization}</span>
                       <ExternalLink className="w-2.5 h-2.5" />
@@ -536,7 +536,7 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                 <div className="pt-3 border-t border-slate-100">
                   <button
                     onClick={() => onSelectIndicator(indicator)}
-                    className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1.5 shadow-md shadow-slate-900/10 hover:shadow-indigo-600/25"
+                    className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-[#F7882F] text-white text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1.5 shadow-md shadow-slate-900/10 hover:shadow-[#F7882F]/25"
                   >
                     <span>Metric Deep Dive</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -587,31 +587,31 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
 
         <div className="bg-white/90 backdrop-blur-xl p-6 rounded-2xl border border-slate-200/80 shadow-md space-y-4">
           <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-            <AlertCircle className="w-5 h-5 text-indigo-600" />
+            <AlertCircle className="w-5 h-5 text-[#D46917]" />
             <h3 className="text-base font-black text-slate-900">
               Institutional Bottlenecks & Judicial Reform Priorities
             </h3>
           </div>
 
           <ul className="space-y-3 text-xs text-slate-600">
-            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
-              <AlertCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FFF2E8]/60 border border-[#F7882F]/20">
+              <AlertCircle className="w-4 h-4 text-[#D46917] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-slate-900 block">Judicial Trial Delay Backlog (&gt;45 Million Cases):</strong>
                 Constrains Rule of Law Index score and contract enforcement speed for international commerce.
               </div>
             </li>
 
-            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
-              <AlertCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FFF2E8]/60 border border-[#F7882F]/20">
+              <AlertCircle className="w-4 h-4 text-[#D46917] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-slate-900 block">Corruption Perceptions Score Deficit (CPI #93):</strong>
                 Requires municipal-level licensing digitization and state-level administrative transparency.
               </div>
             </li>
 
-            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
-              <AlertCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FFF2E8]/60 border border-[#F7882F]/20">
+              <AlertCircle className="w-4 h-4 text-[#D46917] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-slate-900 block">Political Finance Disclosure:</strong>
                 Scrutiny surrounding campaign funding transparency and district-level administrative enforcement.
@@ -622,9 +622,9 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
       </div>
 
       {/* 6. Gemini AI Governance Prompts */}
-      <div className="bg-gradient-to-r from-indigo-50 via-sky-50 to-teal-50 p-6 rounded-2xl border border-indigo-100 space-y-4">
+      <div className="bg-gradient-to-r from-[#FFF2E8] via-[#FFFBE8] to-amber-50 p-6 rounded-2xl border border-[#F7882F]/20 space-y-4">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4.5 h-4.5 text-indigo-600" />
+          <Sparkles className="w-4.5 h-4.5 text-[#D46917]" />
           <h3 className="text-sm font-black text-slate-900">
             Gemini AI Specialized Governance Reform Prompts
           </h3>
@@ -637,10 +637,10 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                 'How can India elevate its Government Effectiveness Index score from 66th percentile into the top 30 globally by 2030?'
               )
             }
-            className="p-3.5 bg-white hover:bg-indigo-600 hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
+            className="p-3.5 bg-white hover:bg-[#F7882F] hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
           >
             <span>Government Effectiveness Top 30 Plan</span>
-            <ChevronRight className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white self-end" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#D46917] group-hover:text-white self-end" />
           </button>
 
           <button
@@ -649,10 +649,10 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                 'Propose an E-Courts and digital dispute resolution roadmap to clear India’s 45 million court case backlog and improve Rule of Law scores.'
               )
             }
-            className="p-3.5 bg-white hover:bg-indigo-600 hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
+            className="p-3.5 bg-white hover:bg-[#F7882F] hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
           >
             <span>Judicial Reforms & E-Courts Roadmap</span>
-            <ChevronRight className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white self-end" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#D46917] group-hover:text-white self-end" />
           </button>
 
           <button
@@ -661,10 +661,10 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                 'Analyze the impact of Jan Vishwas deregulation act on India’s Regulatory Quality Index score.'
               )
             }
-            className="p-3.5 bg-white hover:bg-indigo-600 hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
+            className="p-3.5 bg-white hover:bg-[#F7882F] hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
           >
             <span>Jan Vishwas Deregulation Impact</span>
-            <ChevronRight className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white self-end" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#D46917] group-hover:text-white self-end" />
           </button>
 
           <button
@@ -673,10 +673,10 @@ export const GovernanceDashboard: React.FC<GovernanceDashboardProps> = ({
                 'How can India improve its Open Budget Index score from 51/100 through pre-budget public consultation and state-level disclosures?'
               )
             }
-            className="p-3.5 bg-white hover:bg-indigo-600 hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
+            className="p-3.5 bg-white hover:bg-[#F7882F] hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
           >
             <span>Open Budget Fiscal Transparency Strategy</span>
-            <ChevronRight className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white self-end" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#D46917] group-hover:text-white self-end" />
           </button>
         </div>
       </div>

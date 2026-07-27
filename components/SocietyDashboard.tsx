@@ -163,7 +163,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn text-slate-800">
       {/* 1. Light 3D Header Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900 via-blue-800 to-indigo-950 p-6 sm:p-10 text-white shadow-2xl shadow-indigo-900/20 border border-indigo-700/50">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3C2F2F] via-[#2A2121] to-[#1B2028] p-6 sm:p-10 text-white shadow-2xl shadow-black/20 border border-[#52433A]">
         {/* Animated 3D Light Orbs in Background */}
         <motion.div
           animate={{
@@ -173,7 +173,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             y: [0, -20, 0],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-sky-400/30 to-teal-400/10 blur-3xl pointer-events-none"
+          className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-[#F7882F]/20 to-[#F7C331]/10 blur-3xl pointer-events-none"
         />
         <motion.div
           animate={{
@@ -183,17 +183,17 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             y: [0, 30, 0],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-gradient-to-tr from-indigo-500/30 to-violet-400/20 blur-3xl pointer-events-none"
+          className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-gradient-to-tr from-[#D46917]/20 to-[#F7882F]/10 blur-3xl pointer-events-none"
         />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3.5 py-1 rounded-full bg-sky-400/20 text-sky-200 text-xs font-bold uppercase tracking-wider border border-sky-300/30 flex items-center gap-1.5 backdrop-blur-md">
-                <Users className="w-3.5 h-3.5 text-sky-300" />
+              <span className="px-3.5 py-1 rounded-full bg-[#F7882F]/20 text-[#F7C331] text-xs font-bold uppercase tracking-wider border border-[#F7882F]/30 flex items-center gap-1.5 backdrop-blur-md">
+                <Users className="w-3.5 h-3.5 text-[#F7C331]" />
                 <span>Society & Human Wellbeing Command Center</span>
               </span>
-              <span className="text-xs text-indigo-200 bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md">
+              <span className="text-xs text-[#E8D9C8] bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md">
                 9 Benchmark Metrics
               </span>
             </div>
@@ -202,7 +202,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
               India Social Progress, Well-Being & Human Capital Dashboard
             </h1>
 
-            <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-[#E8D9C8] leading-relaxed font-normal">
               Real-time analytics on India’s Human Development Index (0.644), 248 Million Multidimensional Poverty reduction, 1.43 Billion demographic transition, cost of living, and urban expansion.
             </p>
           </div>
@@ -214,74 +214,74 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                   'Provide an executive societal analysis of India’s Human Development Index (HDI), Multidimensional Poverty drop to 11.28%, and human capital development roadmap.'
                 )
               }
-              className="px-4 py-3 rounded-2xl bg-gradient-to-r from-sky-400 to-teal-400 hover:from-sky-300 hover:to-teal-300 text-slate-950 font-extrabold text-xs transition-all shadow-lg shadow-teal-500/25 flex items-center gap-2"
+              className="px-4 py-3 rounded-2xl bg-[#F7882F] hover:bg-[#E0731E] text-white font-extrabold text-xs transition-all shadow-lg shadow-[#F7882F]/25 flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-slate-950" />
+              <Sparkles className="w-4 h-4 text-[#F7C331]" />
               <span>Ask Gemini AI Social Analyst</span>
             </button>
 
             <button
               onClick={handleExportCsv}
-              className="px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all border border-white/20 backdrop-blur-md flex items-center gap-2"
+              className="px-4 py-3 rounded-2xl bg-[#4A3E3D] hover:bg-[#52433A] text-[#E8D9C8] text-xs font-bold transition-all border border-[#52433A] backdrop-blur-md flex items-center gap-2"
             >
-              <Download className="w-4 h-4 text-sky-300" />
+              <Download className="w-4 h-4 text-[#F7C331]" />
               <span>Export Society CSV</span>
             </button>
           </div>
         </div>
 
         {/* 4 Executive KPI Callouts with 3D Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-indigo-700/60">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-[#52433A]">
           <motion.div
             whileHover={{ scale: 1.03, y: -2 }}
-            className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 space-y-1"
+            className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A] space-y-1"
           >
-            <div className="text-[11px] font-semibold text-indigo-200 flex items-center justify-between">
+            <div className="text-[11px] font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Human Dev Index (HDI)</span>
-              <Heart className="w-3.5 h-3.5 text-teal-300" />
+              <Heart className="w-3.5 h-3.5 text-[#F7C331]" />
             </div>
             <div className="text-xl sm:text-2xl font-black text-white">0.644</div>
-            <div className="text-[11px] text-teal-300 font-bold">Rank #134 / 193</div>
-            <div className="text-[10px] text-indigo-200">UNDP Medium HD Category</div>
+            <div className="text-[11px] text-[#F7C331] font-bold">Rank #134 / 193</div>
+            <div className="text-[10px] text-[#C4B2A5]">UNDP Medium HD Category</div>
           </motion.div>
 
           <motion.div
             whileHover={{ scale: 1.03, y: -2 }}
-            className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 space-y-1"
+            className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A] space-y-1"
           >
-            <div className="text-[11px] font-semibold text-indigo-200 flex items-center justify-between">
+            <div className="text-[11px] font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Multidimensional Poverty</span>
-              <Award className="w-3.5 h-3.5 text-sky-300" />
+              <Award className="w-3.5 h-3.5 text-[#F7882F]" />
             </div>
             <div className="text-xl sm:text-2xl font-black text-white">11.28%</div>
-            <div className="text-[11px] text-sky-300 font-bold">248M Lifted Out</div>
-            <div className="text-[10px] text-indigo-200">NITI Aayog & UNDP MPI</div>
+            <div className="text-[11px] text-[#F7C331] font-bold">248M Lifted Out</div>
+            <div className="text-[10px] text-[#C4B2A5]">NITI Aayog & UNDP MPI</div>
           </motion.div>
 
           <motion.div
             whileHover={{ scale: 1.03, y: -2 }}
-            className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 space-y-1"
+            className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A] space-y-1"
           >
-            <div className="text-[11px] font-semibold text-indigo-200 flex items-center justify-between">
+            <div className="text-[11px] font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Cost of Living Index</span>
-              <Scale className="w-3.5 h-3.5 text-emerald-300" />
+              <Scale className="w-3.5 h-3.5 text-emerald-400" />
             </div>
             <div className="text-xl sm:text-2xl font-black text-white">24.2 / 100</div>
             <div className="text-[11px] text-emerald-300 font-bold">#138 / 140 (Affordable)</div>
-            <div className="text-[10px] text-indigo-200">Numbeo Global Index</div>
+            <div className="text-[10px] text-[#C4B2A5]">Numbeo Global Index</div>
           </motion.div>
 
           <motion.div
             whileHover={{ scale: 1.03, y: -2 }}
-            className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 space-y-1"
+            className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A] space-y-1"
           >
-            <div className="text-[11px] font-semibold text-indigo-200 flex items-center justify-between">
+            <div className="text-[11px] font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Urbanization Rate</span>
-              <Building className="w-3.5 h-3.5 text-teal-300" />
+              <Building className="w-3.5 h-3.5 text-[#F7C331]" />
             </div>
             <div className="text-xl sm:text-2xl font-black text-white">36.4%</div>
-            <div className="text-[11px] text-teal-300 font-bold">Urban Shift (+2.4%)</div>
-            <div className="text-[10px] text-indigo-200">World Bank Database</div>
+            <div className="text-[11px] text-[#F7C331] font-bold">Urban Shift (+2.4%)</div>
+            <div className="text-[10px] text-[#C4B2A5]">World Bank Database</div>
           </motion.div>
         </div>
       </div>
@@ -290,8 +290,8 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-md">
           <div className="space-y-1">
-            <div className="text-xs font-extrabold text-sky-600 uppercase tracking-wider flex items-center gap-1.5">
-              <BarChart2 className="w-4 h-4 text-sky-500" />
+            <div className="text-xs font-extrabold text-[#D46917] uppercase tracking-wider flex items-center gap-1.5">
+              <BarChart2 className="w-4 h-4 text-[#F7882F]" />
               <span>3D WebGL Society Trend Studio</span>
             </div>
             <h2 className="text-lg font-black text-slate-900">
@@ -304,7 +304,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             <select
               value={selectedChartIndicatorId}
               onChange={(e) => setSelectedChartIndicatorId(e.target.value)}
-              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]"
             >
               {societyIndicators.map((ind) => (
                 <option key={ind.id} value={ind.id}>
@@ -319,7 +319,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 onClick={() => setChartMode('bar')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'bar'
-                    ? 'bg-amber-600 text-white shadow-sm'
+                    ? 'bg-[#F7882F] text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -329,7 +329,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 onClick={() => setChartMode('line')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'line'
-                    ? 'bg-amber-600 text-white shadow-sm'
+                    ? 'bg-[#F7882F] text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -347,7 +347,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             chartMode === 'bar' ? 'Global Country Benchmarking' : 'India 10-Year Trajectory'
           }`}
           subtitle={`Source: ${activeChartIndicator.source.organization} (${activeChartIndicator.source.lastUpdatedYear})`}
-          accentColor="#D97706"
+          accentColor="#F7882F"
           height={380}
         />
       </div>
@@ -362,7 +362,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             placeholder="Search Society indicators..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 text-xs font-medium text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:bg-white transition-all"
+            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 text-xs font-medium text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]/50 focus:bg-white transition-all"
           />
         </div>
 
@@ -372,7 +372,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             onClick={() => setSelectedSubtype('all')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'all'
-                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
+                ? 'bg-[#F7882F] text-white shadow-md shadow-[#F7882F]/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -382,7 +382,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             onClick={() => setSelectedSubtype('wellbeing')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'wellbeing'
-                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
+                ? 'bg-[#F7882F] text-white shadow-md shadow-[#F7882F]/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -392,7 +392,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             onClick={() => setSelectedSubtype('capital')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'capital'
-                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
+                ? 'bg-[#F7882F] text-white shadow-md shadow-[#F7882F]/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -402,7 +402,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             onClick={() => setSelectedSubtype('demographics')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'demographics'
-                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/30'
+                ? 'bg-[#F7882F] text-white shadow-md shadow-[#F7882F]/30'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200/70 border border-slate-200'
             }`}
           >
@@ -415,7 +415,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
           <select
             value={selectedTrend}
             onChange={(e) => setSelectedTrend(e.target.value)}
-            className="px-3 py-2 bg-slate-50 text-xs font-semibold text-slate-700 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-3 py-2 bg-slate-50 text-xs font-semibold text-slate-700 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]"
           >
             <option value="all">All Trends</option>
             <option value="improving">Improving Trend</option>
@@ -446,16 +446,16 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                   scale: 1.01,
                   transition: { duration: 0.2 },
                 }}
-                className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/80 shadow-md hover:shadow-xl shadow-slate-200/60 hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col justify-between space-y-4 group relative overflow-hidden"
+                className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/80 shadow-md hover:shadow-xl shadow-slate-200/60 hover:shadow-[#F7882F]/10 transition-all duration-300 flex flex-col justify-between space-y-4 group relative overflow-hidden"
               >
                 {/* Subtle top gradient accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-400 via-indigo-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#F7882F] via-[#F7C331] to-[#D46917] opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-2">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-extrabold text-indigo-600 uppercase tracking-wider bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
+                        <span className="text-[10px] font-extrabold text-[#D46917] uppercase tracking-wider bg-[#FFF2E8] px-2.5 py-0.5 rounded-full border border-[#F7882F]/20">
                           {indicator.unit}
                         </span>
                         {indicator.trend === 'improving' && (
@@ -478,7 +478,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                         )}
                       </div>
 
-                      <h3 className="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors pt-1">
+                      <h3 className="text-base font-extrabold text-slate-900 group-hover:text-[#D46917] transition-colors pt-1">
                         {indicator.name}
                       </h3>
                     </div>
@@ -491,7 +491,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                         }}
                         className={`p-2 rounded-xl transition-colors ${
                           isWatchlisted
-                            ? 'bg-indigo-600 text-white'
+                            ? 'bg-[#F7882F] text-white'
                             : 'text-slate-400 hover:bg-slate-100'
                         }`}
                         title={isWatchlisted ? 'Remove Bookmark' : 'Bookmark Metric'}
@@ -506,7 +506,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                   </p>
 
                   {/* 3D Glass Stat Block */}
-                  <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 p-3.5 rounded-2xl border border-slate-200/80 grid grid-cols-2 gap-2 shadow-inner">
+                  <div className="bg-gradient-to-br from-slate-50 to-[#FFF2E8]/40 p-3.5 rounded-2xl border border-slate-200/80 grid grid-cols-2 gap-2 shadow-inner">
                     <div>
                       <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wide">
                         India Rank
@@ -523,7 +523,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                       <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wide">
                         Latest Value
                       </div>
-                      <div className="text-sm font-black text-indigo-600">
+                      <div className="text-sm font-black text-[#D46917]">
                         {indicator.latestIndiaValue}
                       </div>
                     </div>
@@ -540,7 +540,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                       href={indicator.source.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[10px] text-slate-500 hover:text-indigo-600 transition-colors flex items-center gap-1"
+                      className="text-[10px] text-slate-500 hover:text-[#D46917] transition-colors flex items-center gap-1"
                     >
                       <span>Source: {indicator.source.organization}</span>
                       <ExternalLink className="w-2.5 h-2.5" />
@@ -551,7 +551,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 <div className="pt-3 border-t border-slate-100">
                   <button
                     onClick={() => onSelectIndicator(indicator)}
-                    className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1.5 shadow-md shadow-slate-900/10 hover:shadow-indigo-600/25"
+                    className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-[#F7882F] text-white text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1.5 shadow-md shadow-slate-900/10 hover:shadow-[#F7882F]/25"
                   >
                     <span>Metric Deep Dive</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -567,8 +567,8 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
       <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xl shadow-slate-200/50 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-4">
           <div className="space-y-1">
-            <div className="text-xs font-extrabold text-indigo-600 uppercase tracking-wider flex items-center gap-1.5">
-              <BarChart2 className="w-4 h-4 text-sky-500" />
+            <div className="text-xs font-extrabold text-[#D46917] uppercase tracking-wider flex items-center gap-1.5">
+              <BarChart2 className="w-4 h-4 text-[#F7882F]" />
               <span>Interactive Societal Trajectory Studio</span>
             </div>
             <h2 className="text-xl font-black text-slate-900">
@@ -585,7 +585,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
               <select
                 value={selectedChartIndicatorId}
                 onChange={(e) => setSelectedChartIndicatorId(e.target.value)}
-                className="px-3 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]"
               >
                 {societyIndicators.map((ind) => (
                   <option key={ind.id} value={ind.id}>
@@ -603,7 +603,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
               <select
                 value={comparisonCountry}
                 onChange={(e) => setComparisonCountry(e.target.value)}
-                className="px-3 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]"
               >
                 <option value="china">China (CHN)</option>
                 <option value="usa">United States (USA)</option>
@@ -619,9 +619,9 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
         {/* Selected Indicator Matrix */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Summary Card */}
-          <div className="bg-gradient-to-br from-indigo-50 to-sky-50/50 p-6 rounded-2xl border border-indigo-100 space-y-4 flex flex-col justify-between shadow-sm">
+          <div className="bg-gradient-to-br from-[#FFF2E8] to-amber-50/50 p-6 rounded-2xl border border-[#F7882F]/20 space-y-4 flex flex-col justify-between shadow-sm">
             <div className="space-y-2">
-              <span className="text-xs font-extrabold text-indigo-600 uppercase tracking-wider">
+              <span className="text-xs font-extrabold text-[#D46917] uppercase tracking-wider">
                 {activeChartIndicator.category} Metric Overview
               </span>
               <h3 className="text-lg font-black text-slate-900">
@@ -632,9 +632,9 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
               </p>
             </div>
 
-            <div className="bg-white p-4 rounded-xl border border-indigo-100/80 space-y-2 shadow-sm">
-              <div className="text-xs font-bold text-indigo-600 flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-sky-500" />
+            <div className="bg-white p-4 rounded-xl border border-[#F7882F]/20 space-y-2 shadow-sm">
+              <div className="text-xs font-bold text-[#D46917] flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-[#F7882F]" />
                 <span>Key Reform Policies & Catalysts</span>
               </div>
               <ul className="space-y-1.5 text-xs text-slate-700">
@@ -665,7 +665,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                     whileHover={{ scale: 1.01 }}
                     className={`p-3.5 rounded-xl border transition-all flex items-center justify-between ${
                       isIndia
-                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/20'
+                        ? 'bg-[#F7882F] text-white border-[#F7882F] shadow-md shadow-[#F7882F]/20'
                         : 'bg-white border-slate-200 text-slate-800'
                     }`}
                   >
@@ -673,7 +673,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                       <div
                         className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-xs ${
                           isIndia
-                            ? 'bg-white text-indigo-600'
+                            ? 'bg-white text-[#D46917]'
                             : 'bg-slate-100 text-slate-700'
                         }`}
                       >
@@ -690,7 +690,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                         </div>
                         <div
                           className={`text-[10px] ${
-                            isIndia ? 'text-indigo-100' : 'text-slate-400'
+                            isIndia ? 'text-amber-100' : 'text-slate-400'
                           }`}
                         >
                           {country.rank ? `Global Rank: #${country.rank}` : 'Value comparison'}
@@ -701,7 +701,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                     <div className="text-right">
                       <div
                         className={`text-sm font-black ${
-                          isIndia ? 'text-sky-200' : 'text-indigo-600'
+                          isIndia ? 'text-[#F7C331]' : 'text-[#D46917]'
                         }`}
                       >
                         {country.formattedValue}
@@ -756,31 +756,31 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
         {/* Structural Challenges */}
         <div className="bg-white/90 backdrop-blur-xl p-6 rounded-2xl border border-slate-200/80 shadow-md space-y-4">
           <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-            <AlertCircle className="w-5 h-5 text-indigo-600" />
+            <AlertCircle className="w-5 h-5 text-[#D46917]" />
             <h3 className="text-base font-black text-slate-900">
               Human Capital & Quality of Life Bottlenecks
             </h3>
           </div>
 
           <ul className="space-y-3 text-xs text-slate-600">
-            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
-              <AlertCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FFF2E8]/60 border border-[#F7882F]/20">
+              <AlertCircle className="w-4 h-4 text-[#D46917] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-slate-900 block">Human Capital Score Deficit (HCI 0.49):</strong>
                 Requires accelerated investments in early childhood nutrition and foundational learning to match East Asian standards (~0.70+).
               </div>
             </li>
 
-            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
-              <AlertCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FFF2E8]/60 border border-[#F7882F]/20">
+              <AlertCircle className="w-4 h-4 text-[#D46917] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-slate-900 block">Rapid Urbanization Infrastructure Pressure:</strong>
                 36.4% urban transition requires Tier-2 & Tier-3 smart city drainage, mass transit, and affordable housing expansion.
               </div>
             </li>
 
-            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-indigo-50/60 border border-indigo-100">
-              <AlertCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FFF2E8]/60 border border-[#F7882F]/20">
+              <AlertCircle className="w-4 h-4 text-[#D46917] shrink-0 mt-0.5" />
               <div>
                 <strong className="text-slate-900 block">Air Quality & Commute Friction in Metros:</strong>
                 Indo-Gangetic winter smog and urban traffic delays constrain subjective Quality of Life Index scores.
@@ -791,9 +791,9 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
       </div>
 
       {/* 6. Gemini AI Quick Policy Analyst Prompts */}
-      <div className="bg-gradient-to-r from-indigo-50 via-sky-50 to-teal-50 p-6 rounded-2xl border border-indigo-100 space-y-4">
+      <div className="bg-gradient-to-r from-[#FFF2E8] via-[#FFFBE8] to-amber-50 p-6 rounded-2xl border border-[#F7882F]/20 space-y-4">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4.5 h-4.5 text-indigo-600" />
+          <Sparkles className="w-4.5 h-4.5 text-[#D46917]" />
           <h3 className="text-sm font-black text-slate-900">
             Gemini AI Specialized Societal Policy Simulation Prompts
           </h3>
@@ -806,10 +806,10 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 'How can India accelerate its Human Development Index (HDI) score from 0.644 to above 0.750 by 2035?'
               )
             }
-            className="p-3.5 bg-white hover:bg-indigo-600 hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
+            className="p-3.5 bg-white hover:bg-[#F7882F] hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
           >
             <span>HDI Acceleration Strategy to 0.750</span>
-            <ChevronRight className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white self-end" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#D46917] group-hover:text-white self-end" />
           </button>
 
           <button
@@ -818,10 +818,10 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 'Analyze the impact of NITI Aayog Multidimensional Poverty Index reductions on child health and education outcomes.'
               )
             }
-            className="p-3.5 bg-white hover:bg-indigo-600 hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
+            className="p-3.5 bg-white hover:bg-[#F7882F] hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
           >
             <span>Multidimensional Poverty Drop Impact</span>
-            <ChevronRight className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white self-end" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#D46917] group-hover:text-white self-end" />
           </button>
 
           <button
@@ -830,10 +830,10 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 'Evaluate India’s Human Capital Index (HCI 0.49) versus Vietnam (0.69) and recommend NEP 2020 action points.'
               )
             }
-            className="p-3.5 bg-white hover:bg-indigo-600 hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
+            className="p-3.5 bg-white hover:bg-[#F7882F] hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
           >
             <span>Human Capital Gap vs Vietnam Analysis</span>
-            <ChevronRight className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white self-end" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#D46917] group-hover:text-white self-end" />
           </button>
 
           <button
@@ -842,10 +842,10 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
                 'How can Smart Cities Mission and RRTS transit corridors boost Urbanization Rate productivity across Tier-2 cities?'
               )
             }
-            className="p-3.5 bg-white hover:bg-indigo-600 hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
+            className="p-3.5 bg-white hover:bg-[#F7882F] hover:text-white rounded-2xl border border-slate-200 text-left text-xs font-bold text-slate-800 transition-all group shadow-sm flex flex-col justify-between space-y-2"
           >
             <span>Tier-2 Urbanization Productivity Roadmap</span>
-            <ChevronRight className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white self-end" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#D46917] group-hover:text-white self-end" />
           </button>
         </div>
       </div>
