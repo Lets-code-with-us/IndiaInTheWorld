@@ -93,6 +93,23 @@ Please format your response in Markdown with:
 4. **Comparative Analysis**: How India compares against peers like China, Vietnam, US, and Germany.
 5. **Actionable Roadmap**: 3 high-priority policy recommendations to improve India's rank by 10-20 places.
 `;
+    } else if (action === 'feature-compare') {
+      const feature = body.featureName || indicatorName || 'selected global metric';
+      const countriesList = body.countriesList || 'USA, China, Japan, Germany, United Kingdom, Brazil, South Africa';
+      prompt = `
+You are a senior global policy & economic benchmarking analyst.
+Provide a detailed comparative policy analysis for the feature/indicator: "${feature}" (Category: ${category || 'Global Index'}).
+Compare India's performance directly against global peers: ${countriesList}.
+
+IMPORTANT RULE: DO NOT use any emojis anywhere in your output. Use clean Markdown formatting, bold headings, bullet points, and data-backed insights.
+
+Please structure your response in clear Markdown:
+1. **Feature Executive Context**: What "${feature}" measures and why it matters for global power, prosperity, and governance.
+2. **Multi-Country Standing & Comparison**: Compare India vs top global leaders (e.g. USA, Japan, China, Germany) and emerging peers (e.g. Brazil, South Africa, Vietnam). Highlight rank differentials and real-world impact.
+3. **India's Key Strategic Advantages**: Areas where India holds structural strength, growth velocity, or demographic advantage in this feature.
+4. **Key Policy Lessons & Best Practices**: Specific policy frameworks, institutional reforms, or technology deployments from top leaders (like Japan, USA, or China) that India can adapt.
+5. **Strategic Reform Roadmap for India (2026-2030)**: 3-4 concrete, actionable policy steps for Indian policymakers to advance India's rank and global standing in this metric.
+`;
     } else if (action === 'compare-country') {
       prompt = `
 You are a macroeconomic analyst.

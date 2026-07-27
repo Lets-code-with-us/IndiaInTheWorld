@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { FormattedMarkdown } from './FormattedMarkdown';
 import {
   X,
   Sparkles,
@@ -120,8 +121,8 @@ export const AiReportCardModal: React.FC<AiReportCardModalProps> = ({ isOpen, on
               </p>
             </div>
           ) : (
-            <div className="prose prose-slate max-w-none text-xs text-slate-800 leading-relaxed space-y-4 bg-[#FAF6EF] p-6 rounded-2xl border border-[#DCC7AA] whitespace-pre-line">
-              {reportText}
+            <div className="bg-[#FAF6EF] p-6 rounded-2xl border border-[#DCC7AA]">
+              {reportText && <FormattedMarkdown content={reportText} variant="light" />}
             </div>
           )}
         </div>

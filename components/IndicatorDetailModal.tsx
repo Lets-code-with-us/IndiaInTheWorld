@@ -31,6 +31,7 @@ import {
   Tooltip,
 } from 'recharts';
 import { Indicator } from '../lib/types';
+import { FormattedMarkdown } from './FormattedMarkdown';
 
 interface IndicatorDetailModalProps {
   indicator: Indicator | null;
@@ -324,8 +325,8 @@ Explore Live Data: ${url}`;
             </div>
 
             {aiExplanation ? (
-              <div className="p-3 bg-[#4A3E3D] rounded-xl text-[#E8D9C8] text-xs leading-relaxed max-h-52 overflow-y-auto whitespace-pre-line border border-[#52433A]">
-                {aiExplanation}
+              <div className="p-4 bg-[#4A3E3D] rounded-xl text-xs leading-relaxed max-h-64 overflow-y-auto border border-[#52433A]">
+                <FormattedMarkdown content={aiExplanation} variant="dark" />
               </div>
             ) : (
               <p className="text-[#C4B2A5] text-xs">

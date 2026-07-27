@@ -12,6 +12,7 @@ import {
   Globe,
 } from 'lucide-react';
 import { ChatMessage } from '../lib/types';
+import { FormattedMarkdown } from './FormattedMarkdown';
 
 interface AiAssistantDrawerProps {
   isOpen: boolean;
@@ -155,7 +156,11 @@ export const AiAssistantDrawer: React.FC<AiAssistantDrawerProps> = ({
                     : 'bg-white text-neutral-800 border border-[#DCC7AA] rounded-tl-none shadow-sm'
                 }`}
               >
-                <div className="leading-relaxed whitespace-pre-line">{msg.text}</div>
+                {msg.sender === 'assistant' ? (
+                  <FormattedMarkdown content={msg.text} variant="light" />
+                ) : (
+                  <div className="leading-relaxed">{msg.text}</div>
+                )}
 
                 {msg.suggestedQueries && (
                   <div className="pt-2 border-t border-[#DCC7AA]/60 space-y-1.5">
