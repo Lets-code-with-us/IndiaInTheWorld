@@ -163,7 +163,10 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn text-slate-800">
       {/* 1. Light 3D Header Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3C2F2F] via-[#2A2121] to-[#1B2028] p-6 sm:p-10 text-white shadow-2xl shadow-black/20 border border-[#52433A]">
+      <motion.div
+        layoutId="category-card-Society"
+        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3C2F2F] via-[#2A2121] to-[#1B2028] p-6 sm:p-10 text-white shadow-2xl shadow-black/20 border border-[#52433A]"
+      >
         {/* Animated 3D Light Orbs in Background */}
         <motion.div
           animate={{
@@ -189,18 +192,27 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3.5 py-1 rounded-full bg-[#F7882F]/20 text-[#F7C331] text-xs font-bold uppercase tracking-wider border border-[#F7882F]/30 flex items-center gap-1.5 backdrop-blur-md">
+              <motion.span
+                layoutId="category-icon-Society"
+                className="px-3.5 py-1 rounded-full bg-[#F7882F]/20 text-[#F7C331] text-xs font-bold uppercase tracking-wider border border-[#F7882F]/30 flex items-center gap-1.5 backdrop-blur-md"
+              >
                 <Users className="w-3.5 h-3.5 text-[#F7C331]" />
                 <span>Society & Human Wellbeing Command Center</span>
-              </span>
-              <span className="text-xs text-[#E8D9C8] bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md">
+              </motion.span>
+              <motion.span
+                layoutId="category-badge-Society"
+                className="text-xs text-[#E8D9C8] bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md"
+              >
                 9 Benchmark Metrics
-              </span>
+              </motion.span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+            <motion.h1
+              layoutId="category-title-Society"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight"
+            >
               India Social Progress, Well-Being & Human Capital Dashboard
-            </h1>
+            </motion.h1>
 
             <p className="text-xs sm:text-sm text-[#E8D9C8] leading-relaxed font-normal">
               Real-time analytics on India’s Human Development Index (0.644), 248 Million Multidimensional Poverty reduction, 1.43 Billion demographic transition, cost of living, and urban expansion.
@@ -284,7 +296,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             <div className="text-[10px] text-[#C4B2A5]">World Bank Database</div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* 2. Interactive React Three Fiber 3D Chart Canvas */}
       <div className="space-y-4">
@@ -434,6 +446,7 @@ export const SocietyDashboard: React.FC<SocietyDashboardProps> = ({
             return (
               <motion.div
                 key={indicator.id}
+                layoutId={`indicator-card-${indicator.id}`}
                 layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

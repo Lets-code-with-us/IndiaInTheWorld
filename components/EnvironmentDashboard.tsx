@@ -123,20 +123,29 @@ export function EnvironmentDashboard({
   return (
     <div className="space-y-8 pb-16">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-950 via-teal-900 to-green-950 p-6 md:p-8 text-white shadow-xl">
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-green-500/20 blur-2xl pointer-events-none" />
+      <motion.div
+        layoutId="category-card-Environment"
+        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3C2F2F] via-[#2A2121] to-[#1B2028] p-6 md:p-8 text-white shadow-2xl shadow-black/20 border border-[#52433A]"
+      >
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-[#F7882F]/20 to-[#F7C331]/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-gradient-to-tr from-[#D46917]/20 to-[#F7882F]/10 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 backdrop-blur-md text-emerald-300 text-xs font-bold uppercase tracking-widest">
-              <Leaf className="w-4 h-4 text-emerald-400 animate-pulse" />
+            <motion.div
+              layoutId="category-icon-Environment"
+              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F7882F]/20 border border-[#F7882F]/30 backdrop-blur-md text-[#F7C331] text-xs font-bold uppercase tracking-widest"
+            >
+              <Leaf className="w-4 h-4 text-[#F7C331] animate-pulse" />
               <span>Climate & Ecosystem Intelligence</span>
-            </div>
-            <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
+            </motion.div>
+            <motion.h1
+              layoutId="category-title-Environment"
+              className="text-2xl md:text-4xl font-black text-white tracking-tight"
+            >
               India Environment Dashboard & Net-Zero 2070 Tracker
-            </h1>
-            <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+            </motion.h1>
+            <p className="text-[#E8D9C8] text-sm md:text-base leading-relaxed">
               Real-time analytics tracking 9 key environmental parameters: Climate Change Performance (CCPI #10), 44.8% Renewable Share, Air Quality, Forest Canopy Gain, and 3D WebGL climate trajectory models.
             </p>
           </div>
@@ -148,74 +157,74 @@ export function EnvironmentDashboard({
                   'Synthesize India’s 2025 environmental performance across CCPI rank #10, 44.8% renewable energy capacity, PM2.5 air quality interventions, and forest cover expansion.'
                 )
               }
-              className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs md:text-sm shadow-lg shadow-emerald-950/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-[#F7882F] hover:bg-[#E0731E] text-white font-black text-xs md:text-sm shadow-lg shadow-[#F7882F]/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
-              <BrainCircuit className="w-4 h-4" />
+              <BrainCircuit className="w-4 h-4 text-[#F7C331]" />
               <span>AI Climate Briefing</span>
             </button>
           </div>
         </div>
 
         {/* Executive Stats Cards */}
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-slate-700/60">
-          <div className="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
-            <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-[#52433A]">
+          <div className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A]">
+            <div className="text-xs font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>CCPI Climate Rank</span>
-              <Award className="w-4 h-4 text-emerald-400" />
+              <Award className="w-4 h-4 text-[#F7C331]" />
             </div>
-            <div className="text-2xl font-black text-emerald-300 mt-1">
+            <div className="text-2xl font-black text-[#F7C331] mt-1">
               #{topCcpi?.latestIndiaRank || 10} Global
             </div>
-            <div className="text-[11px] text-emerald-400 font-medium mt-1">
+            <div className="text-[11px] text-[#F7C331] font-medium mt-1">
               Top 10 Global Climate Leader
             </div>
           </div>
 
-          <div className="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
-            <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
+          <div className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A]">
+            <div className="text-xs font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Renewable Capacity Share</span>
-              <Zap className="w-4 h-4 text-amber-400" />
+              <Zap className="w-4 h-4 text-[#F7882F]" />
             </div>
             <div className="text-2xl font-black text-white mt-1">
               {renewableShare?.latestIndiaValue || '44.8%'}
             </div>
-            <div className="text-[11px] text-amber-300 font-medium mt-1">
+            <div className="text-[11px] text-[#C4B2A5] font-medium mt-1">
               Surpassed 2030 target early
             </div>
           </div>
 
-          <div className="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
-            <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
+          <div className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A]">
+            <div className="text-xs font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Forest & Tree Cover</span>
-              <Trees className="w-4 h-4 text-emerald-400" />
+              <Trees className="w-4 h-4 text-[#F7C331]" />
             </div>
             <div className="text-2xl font-black text-white mt-1">
               {forestCover?.latestIndiaValue || '24.62%'}
             </div>
-            <div className="text-[11px] text-emerald-300 font-medium mt-1">
+            <div className="text-[11px] text-[#F7C331] font-medium mt-1">
               +2,261 sq km 2-yr net gain
             </div>
           </div>
 
-          <div className="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80">
-            <div className="text-xs font-semibold text-slate-400 flex items-center justify-between">
+          <div className="bg-[#4A3E3D]/80 backdrop-blur-md p-4 rounded-2xl border border-[#52433A]">
+            <div className="text-xs font-semibold text-[#E8D9C8] flex items-center justify-between">
               <span>Per Capita CO₂</span>
-              <Globe2 className="w-4 h-4 text-emerald-400" />
+              <Globe2 className="w-4 h-4 text-[#F7C331]" />
             </div>
             <div className="text-2xl font-black text-white mt-1">1.9 Tonnes</div>
-            <div className="text-[11px] text-emerald-300 font-medium mt-1">
+            <div className="text-[11px] text-[#F7C331] font-medium mt-1">
               Vs 4.7 World Average
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* 2. Interactive WebGL 3D Climate Chart Canvas */}
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-md">
           <div className="space-y-1">
-            <div className="text-xs font-extrabold text-emerald-600 uppercase tracking-wider flex items-center gap-1.5">
-              <BarChart2 className="w-4 h-4 text-emerald-500" />
+            <div className="text-xs font-extrabold text-[#D46917] uppercase tracking-wider flex items-center gap-1.5">
+              <BarChart2 className="w-4 h-4 text-[#F7882F]" />
               <span>3D WebGL Environmental Visualizer Studio</span>
             </div>
             <h2 className="text-lg font-black text-slate-900">
@@ -228,7 +237,7 @@ export function EnvironmentDashboard({
             <select
               value={selectedChartIndicatorId}
               onChange={(e) => setSelectedChartIndicatorId(e.target.value)}
-              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="px-3.5 py-2 bg-slate-50 text-xs font-bold text-slate-800 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#F7882F]"
             >
               {environmentIndicators.map((ind) => (
                 <option key={ind.id} value={ind.id}>
@@ -243,7 +252,7 @@ export function EnvironmentDashboard({
                 onClick={() => setChartMode('bar')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'bar'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-[#F7882F] text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -253,7 +262,7 @@ export function EnvironmentDashboard({
                 onClick={() => setChartMode('line')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
                   chartMode === 'line'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-[#F7882F] text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -271,7 +280,7 @@ export function EnvironmentDashboard({
             chartMode === 'bar' ? 'Global Benchmarking' : 'India Historical Trajectory'
           }`}
           subtitle={`Source: ${activeChartIndicator?.source?.organization} (${activeChartIndicator?.source?.lastUpdatedYear})`}
-          accentColor="#10B981"
+          accentColor="#F7882F"
           height={380}
         />
       </div>
@@ -286,7 +295,7 @@ export function EnvironmentDashboard({
             placeholder="Search environment metrics..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-slate-50 text-xs font-bold text-slate-900 rounded-xl border border-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full pl-10 pr-4 py-2 bg-slate-50 text-xs font-bold text-slate-900 rounded-xl border border-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F7882F]"
           />
         </div>
 
@@ -296,7 +305,7 @@ export function EnvironmentDashboard({
             onClick={() => setSelectedSubtype('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'all'
-                ? 'bg-emerald-600 text-white shadow-sm'
+                ? 'bg-[#F7882F] text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -306,7 +315,7 @@ export function EnvironmentDashboard({
             onClick={() => setSelectedSubtype('climate')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'climate'
-                ? 'bg-emerald-600 text-white shadow-sm'
+                ? 'bg-[#F7882F] text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -316,7 +325,7 @@ export function EnvironmentDashboard({
             onClick={() => setSelectedSubtype('energy')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'energy'
-                ? 'bg-emerald-600 text-white shadow-sm'
+                ? 'bg-[#F7882F] text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -326,7 +335,7 @@ export function EnvironmentDashboard({
             onClick={() => setSelectedSubtype('ecosystems')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
               selectedSubtype === 'ecosystems'
-                ? 'bg-emerald-600 text-white shadow-sm'
+                ? 'bg-[#F7882F] text-white shadow-sm'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -359,19 +368,20 @@ export function EnvironmentDashboard({
           return (
             <motion.div
               key={indicator.id}
+              layoutId={`indicator-card-${indicator.id}`}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, delay: idx * 0.04 }}
-              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-500/50 p-5 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-[#F7882F]/50 p-5 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
             >
               <div>
                 {/* Header & Watchlist */}
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="space-y-1">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#FFF2E8] text-[#D46917] border border-[#F7882F]/20">
                       {indicator.unit} Metric
                     </span>
-                    <h3 className="text-base font-black text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
+                    <h3 className="text-base font-black text-slate-900 group-hover:text-[#D46917] transition-colors leading-snug">
                       {indicator.name}
                     </h3>
                   </div>
@@ -380,7 +390,7 @@ export function EnvironmentDashboard({
                     onClick={() => onToggleWatchlist(indicator.id)}
                     className={`p-2 rounded-xl text-xs font-bold transition-all ${
                       isWatchlisted
-                        ? 'bg-amber-100 text-amber-700 border border-amber-300'
+                        ? 'bg-[#F7882F] text-white'
                         : 'bg-slate-100 text-slate-400 hover:text-slate-700'
                     }`}
                     title={isWatchlisted ? 'In Watchlist' : 'Add to Watchlist'}
@@ -408,7 +418,7 @@ export function EnvironmentDashboard({
                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                       Global Rank
                     </div>
-                    <div className="text-lg font-black text-emerald-600 mt-0.5">
+                    <div className="text-lg font-black text-[#D46917] mt-0.5">
                       #{indicator.latestIndiaRank}{' '}
                       <span className="text-xs font-semibold text-slate-400">
                         / {indicator.totalCountriesMeasured}
@@ -444,7 +454,7 @@ export function EnvironmentDashboard({
                   <div className="text-xs text-slate-600 flex items-center justify-between pt-3 border-t border-slate-100 mb-4">
                     <span className="font-semibold text-slate-500">Benchmark Leader:</span>
                     <span className="font-bold text-slate-800 flex items-center gap-1">
-                      <Globe2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <Globe2 className="w-3.5 h-3.5 text-[#F7882F]" />
                       {topCountry.name} ({topCountry.formattedValue})
                     </span>
                   </div>
@@ -455,7 +465,7 @@ export function EnvironmentDashboard({
               <div className="pt-3 border-t border-slate-100 flex items-center gap-2">
                 <button
                   onClick={() => setActiveModalIndicator(indicator)}
-                  className="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-emerald-700 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                  className="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-[#F7882F] text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
                 >
                   <Info className="w-3.5 h-3.5" />
                   <span>Deep Dive</span>
@@ -478,8 +488,8 @@ export function EnvironmentDashboard({
       <div className="bg-white rounded-3xl border border-slate-200/90 p-6 md:p-8 shadow-md space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
           <div>
-            <div className="text-xs font-extrabold text-emerald-600 uppercase tracking-widest flex items-center gap-1.5">
-              <Sun className="w-4 h-4 text-amber-500" />
+            <div className="text-xs font-extrabold text-[#D46917] uppercase tracking-widest flex items-center gap-1.5">
+              <Sun className="w-4 h-4 text-[#F7882F]" />
               <span>Panchamrit Net-Zero 2070 Blueprint</span>
             </div>
             <h2 className="text-xl md:text-2xl font-black text-slate-900 mt-1">
@@ -493,16 +503,16 @@ export function EnvironmentDashboard({
                 'Detail India’s Panchamrit climate goals: 500 GW non-fossil capacity by 2030, 45% carbon intensity reduction, and Net-Zero by 2070.'
               )
             }
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-200 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FFF2E8] hover:bg-[#FFE6D5] text-[#D46917] text-xs font-black border border-[#F7882F]/30 transition-all"
           >
-            <Sparkles className="w-4 h-4 text-emerald-600" />
+            <Sparkles className="w-4 h-4 text-[#F7882F]" />
             <span>Generate Net-Zero Policy Brief</span>
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 font-bold">
+            <div className="w-10 h-10 rounded-xl bg-[#FFF2E8] flex items-center justify-center text-[#D46917] font-bold">
               <Sun className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
@@ -514,7 +524,7 @@ export function EnvironmentDashboard({
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold">
+            <div className="w-10 h-10 rounded-xl bg-[#FFF2E8] flex items-center justify-center text-[#D46917] font-bold">
               <Zap className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
@@ -526,7 +536,7 @@ export function EnvironmentDashboard({
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center text-teal-700 font-bold">
+            <div className="w-10 h-10 rounded-xl bg-[#FFF2E8] flex items-center justify-center text-[#D46917] font-bold">
               <Trees className="w-5 h-5" />
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">
@@ -541,27 +551,27 @@ export function EnvironmentDashboard({
         {/* Critical Challenges Box */}
         <div className="p-5 rounded-2xl bg-slate-900 text-white space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-black text-emerald-400 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-emerald-400" />
+            <h4 className="text-sm font-black text-[#F7C331] flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 text-[#F7C331]" />
               Primary Ecological & Environmental Bottlenecks
             </h4>
             <span className="text-[11px] font-extrabold text-slate-400">Target: PM2.5 &lt; 40 µg/m³</span>
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 font-medium">
             <li className="flex items-start gap-2">
-              <span className="text-emerald-400 font-bold">•</span>
+              <span className="text-[#F7882F] font-bold">•</span>
               <span><strong>Indo-Gangetic Air Smog (#3 Polluted):</strong> Requires regional agricultural biomass crop residue management.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-emerald-400 font-bold">•</span>
+              <span className="text-[#F7882F] font-bold">•</span>
               <span><strong>Groundwater Stress (#13 Most Stressed):</strong> Urgent need for micro-irrigation in Punjab, Haryana, and Rajasthan.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-emerald-400 font-bold">•</span>
+              <span className="text-[#F7882F] font-bold">•</span>
               <span><strong>Grid Battery Storage Scaling:</strong> Energy storage system (ESS) subsidies needed to manage 500 GW solar intermittency.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-emerald-400 font-bold">•</span>
+              <span className="text-[#F7882F] font-bold">•</span>
               <span><strong>Extreme Weather Resilience:</strong> Urban storm drainage and heatwave protection for outdoor workers.</span>
             </li>
           </ul>
@@ -587,7 +597,7 @@ export function EnvironmentDashboard({
 
               <div className="space-y-6">
                 <div>
-                  <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-100 text-emerald-800">
+                  <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#FFF2E8] text-[#D46917]">
                     {activeModalIndicator.category} • {activeModalIndicator.unit}
                   </span>
                   <h2 className="text-2xl font-black text-slate-900 mt-2">
@@ -609,11 +619,11 @@ export function EnvironmentDashboard({
                     </div>
                   </div>
 
-                  <div className="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-100">
-                    <div className="text-[10px] font-bold text-emerald-600 uppercase">
+                  <div className="p-3.5 bg-[#FFF2E8] rounded-2xl border border-[#F7882F]/20">
+                    <div className="text-[10px] font-bold text-[#D46917] uppercase">
                       Global Rank
                     </div>
-                    <div className="text-lg font-black text-emerald-700 mt-0.5">
+                    <div className="text-lg font-black text-[#D46917] mt-0.5">
                       #{activeModalIndicator.latestIndiaRank}
                     </div>
                   </div>
@@ -622,7 +632,7 @@ export function EnvironmentDashboard({
                     <div className="text-[10px] font-bold text-slate-400 uppercase">
                       Trend Delta
                     </div>
-                    <div className="text-sm font-extrabold text-emerald-700 mt-1">
+                    <div className="text-sm font-extrabold text-[#D46917] mt-1">
                       {activeModalIndicator.changeDelta}
                     </div>
                   </div>
@@ -640,12 +650,12 @@ export function EnvironmentDashboard({
 
                 {/* Strengths and Gaps */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 space-y-2">
-                    <h5 className="text-xs font-black text-emerald-900 flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <div className="p-4 rounded-2xl bg-[#FFF2E8]/70 border border-[#F7882F]/20 space-y-2">
+                    <h5 className="text-xs font-black text-[#D46917] flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#F7882F]" />
                       Key National Strengths
                     </h5>
-                    <ul className="text-xs text-emerald-950 space-y-1 list-disc pl-4 font-medium">
+                    <ul className="text-xs text-slate-800 space-y-1 list-disc pl-4 font-medium">
                       {activeModalIndicator.strengthsAndGaps.strengths.map((str, i) => (
                         <li key={i}>{str}</li>
                       ))}
@@ -676,7 +686,7 @@ export function EnvironmentDashboard({
                     href={activeModalIndicator.source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-emerald-700 font-bold hover:underline"
+                    className="inline-flex items-center gap-1 text-[#D46917] font-bold hover:underline"
                   >
                     <span>View Portal</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -691,7 +701,7 @@ export function EnvironmentDashboard({
                       setActiveModalIndicator(null);
                       onSelectIndicator(ind);
                     }}
-                    className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-700 text-white text-xs font-black transition-all"
+                    className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-[#F7882F] text-white text-xs font-black transition-all"
                   >
                     Open Full Metric Dashboard
                   </button>

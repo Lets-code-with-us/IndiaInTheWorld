@@ -116,19 +116,28 @@ export function SafetyDashboard({
   return (
     <div className="space-y-8 pb-16">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-stone-950 via-amber-950 to-stone-900 p-6 md:p-8 text-white shadow-xl">
+      <motion.div
+        layoutId="category-card-Safety"
+        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-stone-950 via-amber-950 to-stone-900 p-6 md:p-8 text-white shadow-xl"
+      >
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-amber-500/20 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-orange-500/20 blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 backdrop-blur-md text-amber-300 text-xs font-bold uppercase tracking-widest">
+            <motion.div
+              layoutId="category-icon-Safety"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 backdrop-blur-md text-amber-300 text-xs font-bold uppercase tracking-widest"
+            >
               <ShieldCheck className="w-4 h-4 text-amber-400 animate-pulse" />
               <span>National Security & Homeland Protection</span>
-            </div>
-            <h1 className="text-2xl md:text-4xl font-black text-white tracking-tight">
+            </motion.div>
+            <motion.h1
+              layoutId="category-title-Safety"
+              className="text-2xl md:text-4xl font-black text-white tracking-tight"
+            >
               India Safety, Peace & Disaster Resilience Matrix
-            </h1>
+            </motion.h1>
             <p className="text-slate-300 text-sm md:text-base leading-relaxed">
               Real-time intelligence tracking 6 key safety benchmarks: Global Peace Index (GPI #126), Crime Index (44.2), Global Terrorism Index (GTI #14), Road Safety (11.3 fatalities/100k), and 3D WebGL trajectory analytics.
             </p>
@@ -203,7 +212,7 @@ export function SafetyDashboard({
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* 2. Interactive WebGL 3D Safety Chart Studio */}
       <div className="space-y-4">
@@ -354,6 +363,7 @@ export function SafetyDashboard({
           return (
             <motion.div
               key={indicator.id}
+              layoutId={`indicator-card-${indicator.id}`}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, delay: idx * 0.04 }}

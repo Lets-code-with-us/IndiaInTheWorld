@@ -140,22 +140,34 @@ export const EconomyDashboard: React.FC<EconomyDashboardProps> = ({
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* 1. Header & Executive Macro Banner */}
-      <div className="bg-[#3C2F2F] text-white rounded-3xl p-6 sm:p-8 border border-[#52433A] shadow-2xl relative overflow-hidden">
+      <motion.div
+        layoutId="category-card-Economy"
+        className="bg-[#3C2F2F] text-white rounded-3xl p-6 sm:p-8 border border-[#52433A] shadow-2xl relative overflow-hidden"
+      >
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1 rounded-full bg-[#F7882F]/20 text-[#F7C331] text-xs font-bold uppercase tracking-wider border border-[#F7882F]/30 flex items-center gap-1.5">
+              <motion.span
+                layoutId="category-icon-Economy"
+                className="px-3 py-1 rounded-full bg-[#F7882F]/20 text-[#F7C331] text-xs font-bold uppercase tracking-wider border border-[#F7882F]/30 flex items-center gap-1.5"
+              >
                 <TrendingUp className="w-3.5 h-3.5" />
                 <span>Macroeconomy & Trade Category Dashboard</span>
-              </span>
-              <span className="text-xs text-[#E8D9C8] bg-[#4A3E3D] px-2.5 py-1 rounded-full border border-[#52433A]">
+              </motion.span>
+              <motion.span
+                layoutId="category-badge-Economy"
+                className="text-xs text-[#E8D9C8] bg-[#4A3E3D] px-2.5 py-1 rounded-full border border-[#52433A]"
+              >
                 13 Benchmark Metrics
-              </span>
+              </motion.span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+            <motion.h1
+              layoutId="category-title-Economy"
+              className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight"
+            >
               India Economy & Global Competitiveness Command Center
-            </h1>
+            </motion.h1>
 
             <p className="text-xs sm:text-sm text-[#E8D9C8] leading-relaxed">
               Real-time executive policy intelligence across India&apos;s $3.93 Trillion nominal GDP, $14.2 Trillion PPP market scale, inflation stability, logistics modernization, and global FDI capital inflows.
@@ -223,7 +235,7 @@ export const EconomyDashboard: React.FC<EconomyDashboardProps> = ({
             <div className="text-[10px] text-[#C4B2A5]">UNCTAD World Investment</div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* 2. Interactive React Three Fiber 3D Chart Canvas */}
       <div className="space-y-4">
@@ -373,6 +385,7 @@ export const EconomyDashboard: React.FC<EconomyDashboardProps> = ({
           return (
             <motion.div
               key={indicator.id}
+              layoutId={`indicator-card-${indicator.id}`}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: idx * 0.035 }}

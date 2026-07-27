@@ -321,6 +321,7 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
             return (
               <motion.div
                 key={ind.id}
+                layoutId={`indicator-card-${ind.id}`}
                 whileHover={{ scale: 1.02, y: -3 }}
                 onClick={() => onSelectIndicator(ind)}
                 className="relative bg-white rounded-xl p-4 border border-[#DCC7AA] shadow-sm hover:shadow-md hover:border-[#F7882F] cursor-pointer transition-all flex flex-col justify-between group min-h-[160px]"
@@ -395,25 +396,36 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
             const Icon = CATEGORY_ICONS[catKey] || Globe;
 
             return (
-              <div
+              <motion.div
                 key={catKey}
+                layoutId={`category-card-${catKey}`}
                 onClick={() => onSelectCategory(catKey)}
+                whileHover={{ scale: 1.02, y: -3 }}
                 className="bg-white rounded-xl p-4 border border-[#DCC7AA] hover:border-[#F7882F] shadow-sm hover:shadow-md cursor-pointer transition-all space-y-3 group min-h-[170px] flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="p-2 rounded-lg bg-[#FFF2E8] text-[#F7882F] border border-[#F7882F]/20 group-hover:bg-[#F7882F] group-hover:text-white transition-colors">
+                    <motion.div
+                      layoutId={`category-icon-${catKey}`}
+                      className="p-2 rounded-lg bg-[#FFF2E8] text-[#F7882F] border border-[#F7882F]/20 group-hover:bg-[#F7882F] group-hover:text-white transition-colors"
+                    >
                       <Icon className="w-4 h-4" />
-                    </div>
-                    <span className="text-[10px] font-bold text-[#6B7A8F] bg-[#FAF6EF] border border-[#DCC7AA] px-2 py-0.5 rounded-full">
+                    </motion.div>
+                    <motion.span
+                      layoutId={`category-badge-${catKey}`}
+                      className="text-[10px] font-bold text-[#6B7A8F] bg-[#FAF6EF] border border-[#DCC7AA] px-2 py-0.5 rounded-full"
+                    >
                       Avg Rank #{cat.averageRank}
-                    </span>
+                    </motion.span>
                   </div>
 
                   <div className="mt-2">
-                    <h3 className="text-xs font-bold text-neutral-800 group-hover:text-[#F7882F] transition-colors">
+                    <motion.h3
+                      layoutId={`category-title-${catKey}`}
+                      className="text-xs font-bold text-neutral-800 group-hover:text-[#F7882F] transition-colors"
+                    >
                       {cat.title}
-                    </h3>
+                    </motion.h3>
                     <p className="text-[11px] text-[#6B7A8F] mt-0.5 line-clamp-2">{cat.description}</p>
                   </div>
                 </div>
@@ -433,7 +445,7 @@ export const IndiaDashboard: React.FC<IndiaDashboardProps> = ({
                   <span>Explore ({cat.totalIndicators})</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
