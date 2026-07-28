@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   GitCompare,
@@ -139,7 +139,7 @@ export const CountryComparison: React.FC<CountryComparisonProps> = ({
   }, []);
 
   // Helper to extract country metric data for the selected indicator
-  const getCountryMetricData = (country: CountryProfile) => {
+  const getCountryMetricData = useCallback((country: CountryProfile) => {
     if (country.code === 'IND') {
       return {
         code: 'IND',
@@ -212,7 +212,7 @@ export const CountryComparison: React.FC<CountryComparisonProps> = ({
       rawNumericValue: estimatedRank,
       isIndia: false,
     };
-  };
+  }, [activeIndicator]);
 
   // Active comparison dataset across selected countries
   const activeComparisonData = useMemo(() => {
@@ -224,7 +224,7 @@ export const CountryComparison: React.FC<CountryComparisonProps> = ({
         const rankB = typeof b.rank === 'number' ? b.rank : 999;
         return rankA - rankB;
       });
-  }, [selectedCountryCodes, activeIndicator]);
+  }, [selectedCountryCodes, getCountryMetricData]);
 
   // Historical trend comparison data across active indicator's historicalData
   const historicalTrendData = useMemo(() => {
