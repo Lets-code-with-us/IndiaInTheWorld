@@ -1,21 +1,23 @@
 # India360 — Policy Intelligence & World Rankings Dashboard
 
+**Live Demo:** https://india360.vercel.app/
+
 **India360** is a comprehensive, 360-degree policy analytics platform consolidating over **60+ global development indicators** and **36 Indian States/UTs development metrics** (NITI Aayog SDG Index, Innovation Index, Health Index, Export Preparedness).
 
 Powered by the **Gemini AI Policy Engine**, India360 provides real-time comparative benchmarking, trend forecasting, state-level performance analysis, and automated executive report card generation.
 
 ---
 
-## 🌟 Executive Highlights & Core Modules
+##  Executive Highlights & Core Modules
 
-### 1. ⚡ Quick Snapshot Widget (Top 3 Daily Trending Shifts)
+### 1.  Quick Snapshot Widget (Top 3 Daily Trending Shifts)
 An executive summary section positioned directly at the top of the main dashboard highlighting high-velocity ranking movements and urgent policy milestones:
 - **Global Innovation Index (GII)**: Rank #39 globally following record tech patent filings and unicorn ecosystem expansion (+42 rank 10-year surge).
 - **Oxford AI Readiness Index**: Climbed to Rank #14 driven by the $1.2B IndiaAI Mission compute rollout and DPDP governance frameworks (+10 places shift).
 - **Climate Change Performance Index (CCPI)**: Maintained Top 10 global standing with 180GW+ installed non-fossil capacity and national green hydrogen targets.
 - **One-Click AI Briefing Trigger**: Launches the AI Policy Assistant with a pre-loaded query for instant executive briefing notes.
 
-### 2. 🌍 10 Policy Category Hubs (60+ Global Indicators)
+### 2.  10 Policy Category Hubs (60+ Global Indicators)
 In-depth category dashboards with dedicated visual analytics, benchmark comparisons, and reform drivers:
 1. **Economy (13 Benchmarks)**: Nominal GDP ($3.93T, #5), PPP GDP ($14.2T, #3), GDP Growth (6.8%, #1 among major economies), Inflation (4.6%), FDI Inflows ($71B, #8), Competitiveness (#39), Ease of Doing Business (#63).
 2. **Environment & Clean Energy**: Environment Performance Index (EPI), Renewable Energy Share (44%), Forest Cover (24.6%), Air Quality Index (AQI), Green Hydrogen Mission milestones.
@@ -34,11 +36,11 @@ Interactive explorer covering all **36 Indian States and Union Territories**:
 - Tracks state-specific **SDG Scores**, **Innovation Ranks**, **Health Index Scores**, **Export Preparedness**, and **Literacy Rates**.
 - Allows side-by-side comparative benchmarking against leading states (e.g., comparing Bihar against Kerala, Karnataka, or Tamil Nadu) to identify actionable reform roadmaps.
 
-### 4. 🌐 International Country Benchmark Engine & 3D WebGL Globe
+### 4.  International Country Benchmark Engine & 3D WebGL Globe
 - Multi-country comparison tool allowing side-by-side metric evaluation of India against G20 & BRICS economies (United States, China, Germany, Japan, United Kingdom, Brazil, South Africa, Vietnam).
 - Interactive 3D WebGL Globe displaying worldwide metric distribution with interactive hover cards and regional comparison metrics.
 
-### 5. 🤖 Gemini AI Policy Assistant & Executive Report Card
+### 5.  Gemini AI Policy Assistant & Executive Report Card
 - Fully integrated with Next.js server-side API routes (`/api/gemini/chat` and `/api/gemini/insights`).
 - Injects full system memory of all 60+ global indicators and 36 state metrics into context.
 - Generates data-backed comparative analysis with strict factual accuracy, zero fluff, and cited dataset sources.
@@ -52,13 +54,13 @@ Interactive explorer covering all **36 Indian States and Union Territories**:
 - `Shift+?` / `?`: Opens Keyboard Shortcuts Reference Guide.
 - `Esc`: Instantly closes open modals and slide-over drawers.
 
-### 7. 🔖 Saved Watchlist & Custom CSV Export Engine
+### 7.  Saved Watchlist & Custom CSV Export Engine
 - Bookmark key indicators across any category to assemble a personalized policy watchlist.
 - Export customized watchlists to structured CSV files for offline academic or government policy reporting.
 
 ---
 
-## 🎨 Cohesive Warm Earth-Tone Design System
+##  Cohesive Warm Earth-Tone Design System
 
 India360 strictly adheres to a warm, eye-safe earth-tone palette engineered to eliminate cognitive fatigue during prolonged analytical sessions:
 
@@ -76,7 +78,7 @@ India360 strictly adheres to a warm, eye-safe earth-tone palette engineered to e
 
 ---
 
-## 🛠️ Technical Stack & Architecture
+##  Technical Stack & Architecture
 
 - **Framework**: Next.js 15+ (App Router)
 - **Language**: TypeScript (Strict Type Safety)
@@ -88,7 +90,7 @@ India360 strictly adheres to a warm, eye-safe earth-tone palette engineered to e
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js: v18.0.0 or higher
@@ -122,7 +124,7 @@ npm run start
 
 ---
 
-## 📚 Primary Data Sources & Citations
+##  Primary Data Sources & Citations
 
 All indicators and metrics presented in India360 are sourced from official multilateral publications:
 
@@ -139,6 +141,6 @@ All indicators and metrics presented in India360 are sourced from official multi
 
 ---
 
-## 📄 License
+##  License
 
 MIT License — Created for open data research, educational analysis, and public policy intelligence.
