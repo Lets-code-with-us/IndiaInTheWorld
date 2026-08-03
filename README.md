@@ -144,3 +144,12 @@ All indicators and metrics presented in India360 are sourced from official multi
 ##  License
 
 MIT License — Created for open data research, educational analysis, and public policy intelligence.
+
+---
+
+## 👨‍💻 Author
+
+**Created and maintained by Vivek Kumar**
+
+- **Portfolio:** [vivekducs.is-a.dev](https://vivekducs.is-a.dev/)
+- **GitHub:** [github.com/vivekducs](https://github.com/vivekducs)
