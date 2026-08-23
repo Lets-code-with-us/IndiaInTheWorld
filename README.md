@@ -1,6 +1,6 @@
 # India360 — Policy Intelligence & World Rankings Dashboard
 
-**Live Demo:** [https://india360.vercel.app/](https://india-in-the-world.vercel.app/)
+**Live Demo:** https://india-in-the-world.vercel.app/
 
 **India360** is a comprehensive, 360-degree policy analytics platform consolidating over **60+ global development indicators** and **36 Indian States/UTs development metrics** (NITI Aayog SDG Index, Innovation Index, Health Index, Export Preparedness).
 
