@@ -2,6 +2,7 @@ import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
 import { INDIAN_STATES_DATA } from '@/lib/data/states';
 import { GLOBAL_INDICATORS } from '@/lib/data/indicators';
+import { getCachedGeminiResponse } from '@/lib/cache/geminiCache';
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,26 +20,29 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Message is required.' }, { status: 400 });
     }
 
-    const ai = new GoogleGenAI({
-      apiKey: apiKey,
-      httpOptions: {
-        headers: {
-          'User-Agent': 'aistudio-build',
+    const cachePayload = { route: 'chat', message, history };
+
+    return await getCachedGeminiResponse(cachePayload, async () => {
+      const ai = new GoogleGenAI({
+        apiKey: apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          },
         },
-      },
-    });
+      });
 
-    // Format Indian states dataset into a clean JSON string for system context
-    const statesDataSummary = INDIAN_STATES_DATA.map((s) => (
-      `- State/UT: ${s.stateName} (${s.code}) | Category: ${s.category} | SDG Index Score: ${s.sdgScore}/100 | Innovation Score: ${s.innovationScore} | Health Index Score: ${s.healthIndexScore} | Export Preparedness Rank: #${s.exportPreparednessRank} | Literacy Rate: ${s.literacyRate}%`
-    )).join('\n');
+      // Format Indian states dataset into a clean JSON string for system context
+      const statesDataSummary = INDIAN_STATES_DATA.map((s) => (
+        `- State/UT: ${s.stateName} (${s.code}) | Category: ${s.category} | SDG Index Score: ${s.sdgScore}/100 | Innovation Score: ${s.innovationScore} | Health Index Score: ${s.healthIndexScore} | Export Preparedness Rank: #${s.exportPreparednessRank} | Literacy Rate: ${s.literacyRate}%`
+      )).join('\n');
 
-    // Format key global indicators for system context
-    const globalIndicatorsSummary = GLOBAL_INDICATORS.map((ind) => (
-      `- ${ind.name} (${ind.category}): Latest Rank #${ind.latestIndiaRank}/${ind.totalCountriesMeasured}, Value: ${ind.latestIndiaValue}, Trend: ${ind.trend} (${ind.changeDelta}). Publisher: ${ind.source.organization}.`
-    )).join('\n');
+      // Format key global indicators for system context
+      const globalIndicatorsSummary = GLOBAL_INDICATORS.map((ind) => (
+        `- ${ind.name} (${ind.category}): Latest Rank #${ind.latestIndiaRank}/${ind.totalCountriesMeasured}, Value: ${ind.latestIndiaValue}, Trend: ${ind.trend} (${ind.changeDelta}). Publisher: ${ind.source.organization}.`
+      )).join('\n');
 
-    const systemInstruction = `You are "India Index AI", an expert assistant specialized in global rankings, international indicators, state development metrics across Indian states/UTs, and public policy analytics for India.
+      const systemInstruction = `You are "India Index AI", an expert assistant specialized in global rankings, international indicators, state development metrics across Indian states/UTs, and public policy analytics for India.
 
 REAL DATASETS AVAILABLE TO YOU IN SYSTEM MEMORY:
 
@@ -67,33 +71,34 @@ INSTRUCTIONS FOR PROCESSING USER QUERIES:
    - Do NOT output generic canned responses like "I have analyzed your query". Always answer directly with deep, data-backed analysis tailored to the prompt.
 `;
 
-    // Process history if provided
-    let conversationHistory = '';
-    if (Array.isArray(history) && history.length > 0) {
-      // Take last 6 messages for conversation context
-      const recentHistory = history.slice(-6);
-      conversationHistory = recentHistory
-        .map((h: { sender: string; text: string }) => `${h.sender === 'user' ? 'User' : 'Assistant'}: ${h.text}`)
-        .join('\n');
-    }
+      // Process history if provided
+      let conversationHistory = '';
+      if (Array.isArray(history) && history.length > 0) {
+        // Take last 6 messages for conversation context
+        const recentHistory = history.slice(-6);
+        conversationHistory = recentHistory
+          .map((h: { sender: string; text: string }) => `${h.sender === 'user' ? 'User' : 'Assistant'}: ${h.text}`)
+          .join('\n');
+      }
 
-    const fullPrompt = conversationHistory
-      ? `Previous Conversation Context:\n${conversationHistory}\n\nCurrent User Query: ${message}`
-      : `User Query: ${message}`;
+      const fullPrompt = conversationHistory
+        ? `Previous Conversation Context:\n${conversationHistory}\n\nCurrent User Query: ${message}`
+        : `User Query: ${message}`;
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: fullPrompt,
-      config: {
-        systemInstruction: systemInstruction,
-      },
-    });
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: fullPrompt,
+        config: {
+          systemInstruction: systemInstruction,
+        },
+      });
 
-    const replyText = response.text || 'Unable to generate response from the AI model.';
+      const replyText = response.text || 'Unable to generate response from the AI model.';
 
-    return NextResponse.json({
-      text: replyText,
-      model: 'gemini-2.5-flash',
+      return {
+        text: replyText,
+        model: 'gemini-2.5-flash',
+      };
     });
   } catch (err: any) {
     console.error('Gemini Chat Error:', err);
@@ -103,4 +108,5 @@ INSTRUCTIONS FOR PROCESSING USER QUERIES:
     );
   }
 }
+
 

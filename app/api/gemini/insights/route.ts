@@ -1,5 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
+import { getCachedGeminiResponse } from '@/lib/cache/geminiCache';
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,21 +13,24 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { action, indicatorId, indicatorName, category, compareCountryCode, promptCustom } = body;
+    const cachePayload = { route: 'insights', ...body };
 
-    const ai = new GoogleGenAI({
-      apiKey: apiKey,
-      httpOptions: {
-        headers: {
-          'User-Agent': 'aistudio-build',
+    return await getCachedGeminiResponse(cachePayload, async () => {
+      const { action, indicatorId, indicatorName, category, compareCountryCode, promptCustom } = body;
+
+      const ai = new GoogleGenAI({
+        apiKey: apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          },
         },
-      },
-    });
+      });
 
-    let prompt = '';
+      let prompt = '';
 
-    if (action === 'report-card') {
-      prompt = `
+      if (action === 'report-card') {
+        prompt = `
 You are a lead senior economic & public policy intelligence analyst evaluating India's global performance.
 Generate a comprehensive, data-driven "India Annual Global Progress & Policy Report Card" evaluating India's performance across 10 major dimensions:
 1. Economy & Trade
@@ -79,8 +83,8 @@ Please provide your response in clear, beautifully formatted Markdown with the f
 4. [Recommendation 4]
 5. [Recommendation 5]
 `;
-    } else if (action === 'explain-indicator') {
-      prompt = `
+      } else if (action === 'explain-indicator') {
+        prompt = `
 You are an expert global policy researcher.
 Provide an in-depth breakdown of India's ranking for the indicator: "${indicatorName}" in the "${category}" category.
 
@@ -93,10 +97,10 @@ Please format your response in Markdown with:
 4. **Comparative Analysis**: How India compares against peers like China, Vietnam, US, and Germany.
 5. **Actionable Roadmap**: 3 high-priority policy recommendations to improve India's rank by 10-20 places.
 `;
-    } else if (action === 'feature-compare') {
-      const feature = body.featureName || indicatorName || 'selected global metric';
-      const countriesList = body.countriesList || 'USA, China, Japan, Germany, United Kingdom, Brazil, South Africa';
-      prompt = `
+      } else if (action === 'feature-compare') {
+        const feature = body.featureName || indicatorName || 'selected global metric';
+        const countriesList = body.countriesList || 'USA, China, Japan, Germany, United Kingdom, Brazil, South Africa';
+        prompt = `
 You are a senior global policy & economic benchmarking analyst.
 Provide a detailed comparative policy analysis for the feature/indicator: "${feature}" (Category: ${category || 'Global Index'}).
 Compare India's performance directly against global peers: ${countriesList}.
@@ -110,8 +114,8 @@ Please structure your response in clear Markdown:
 4. **Key Policy Lessons & Best Practices**: Specific policy frameworks, institutional reforms, or technology deployments from top leaders (like Japan, USA, or China) that India can adapt.
 5. **Strategic Reform Roadmap for India (2026-2030)**: 3-4 concrete, actionable policy steps for Indian policymakers to advance India's rank and global standing in this metric.
 `;
-    } else if (action === 'compare-country') {
-      prompt = `
+      } else if (action === 'compare-country') {
+        prompt = `
 You are a macroeconomic analyst.
 Provide a comparative strategic analysis comparing **India (IND)** and **Country Code: ${compareCountryCode}**.
 
@@ -124,19 +128,20 @@ Structure your output in clear Markdown:
 4. **Supply Chain & Strategic Opportunities**: Potential synergies, trade links, and lesson sharing.
 5. **Policy Takeaways for India**: What India can emulate to close gaps.
 `;
-    } else {
-      prompt = promptCustom || 'Provide a concise analytical summary on India’s global economic and technological rankings.';
-    }
+      } else {
+        prompt = promptCustom || 'Provide a concise analytical summary on India’s global economic and technological rankings.';
+      }
 
-    // Call Gemini 2.5 Flash
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-    });
+      // Call Gemini 2.5 Flash
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+      });
 
-    return NextResponse.json({
-      text: response.text || 'Analysis generation completed.',
-      model: 'gemini-2.5-flash',
+      return {
+        text: response.text || 'Analysis generation completed.',
+        model: 'gemini-2.5-flash',
+      };
     });
   } catch (err: any) {
     console.error('Gemini Insights Error:', err);
@@ -146,3 +151,4 @@ Structure your output in clear Markdown:
     );
   }
 }
+
