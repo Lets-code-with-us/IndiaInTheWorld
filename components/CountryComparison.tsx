@@ -57,7 +57,7 @@ interface CountryComparisonProps {
 }
 
 // Category icons map
-const CATEGORY_ICONS: Record<string, React.ElementType> = {
+const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   Economy: TrendingUp,
   Governance: Landmark,
   Healthcare: HeartPulse,
