@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { GLOBAL_INDICATORS } from '../lib/data/indicators';
 import { Indicator } from '../lib/types';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
   activeTab: string;
@@ -78,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-[#3C2F2F] border-b border-[#52433A] text-neutral-100 shadow-md">
+    <header className="sticky top-0 z-40 bg-white dark:bg-[#3C2F2F] border-b border-slate-200 dark:border-[#52433A] text-slate-900 dark:text-neutral-100 shadow-md">
       {/* Top Banner Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
@@ -89,12 +90,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-lg tracking-tight text-white">India360</span>
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#F7882F]/20 text-[#F7C331] border border-[#F7882F]/30">
+                <span className="font-bold text-lg tracking-tight text-slate-900 dark:text-white">India360</span>
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#F7882F]/20 text-[#F7882F] dark:text-[#F7C331] border border-[#F7882F]/30">
                   2026 Live
                 </span>
               </div>
-              <p className="text-xs text-[#E8D9C8] hidden sm:block">Consolidated Global Rankings & Policy Intelligence</p>
+              <p className="text-xs text-slate-500 dark:text-[#E8D9C8] hidden sm:block">Consolidated Global Rankings & Policy Intelligence</p>
             </div>
           </div>
 
@@ -102,13 +103,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="relative flex-1 max-w-md hidden md:block">
             <button
               onClick={() => onOpenCommandPalette?.()}
-              className="w-full bg-[#4A3E3D] hover:bg-[#52433A] border border-[#52433A] rounded-lg pl-9 pr-3 py-1.5 text-xs text-[#E8D9C8] flex items-center justify-between transition-colors cursor-pointer text-left"
+              className="w-full bg-white dark:bg-[#4A3E3D] hover:bg-slate-50 dark:hover:bg-[#52433A] border border-slate-200 dark:border-[#52433A] rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-500 dark:text-[#E8D9C8] flex items-center justify-between transition-colors cursor-pointer text-left"
             >
-              <div className="flex items-center gap-2 text-[#C4B2A5] truncate">
-                <Search className="w-4 h-4 text-[#C4B2A5] shrink-0" />
+              <div className="flex items-center gap-2 text-slate-500 dark:text-[#C4B2A5] truncate">
+                <Search className="w-4 h-4 text-slate-500 dark:text-[#C4B2A5] shrink-0" />
                 <span className="truncate">Search 60+ global indicators or states...</span>
               </div>
-              <kbd className="hidden lg:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-mono bg-[#3C2F2F] text-[#F7C331] rounded border border-[#52433A] shrink-0">
+              <kbd className="hidden lg:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-mono bg-white dark:bg-[#3C2F2F] text-[#F7882F] dark:text-[#F7C331] rounded border border-slate-200 dark:border-[#52433A] shrink-0">
                 <Command className="w-3 h-3" />
                 <span>K</span>
               </kbd>
@@ -117,17 +118,19 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2">
+            <ThemeToggle />
+
             <button
               onClick={() => onOpenAiAssistant()}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#F7882F] to-[#D46917] hover:from-[#FFA155] hover:to-[#F7882F] text-white text-xs font-semibold shadow-md shadow-black/30 transition-all border border-[#F7C331]/30 cursor-pointer"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#F7C331]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#F7882F] dark:text-[#F7C331]" />
               <span>Ask AI</span>
             </button>
 
             <button
               onClick={onOpenReportCard}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#4A3E3D] hover:bg-[#52433A] text-neutral-200 border border-[#52433A] text-xs font-medium transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-[#4A3E3D] hover:bg-slate-50 dark:hover:bg-[#52433A] text-slate-600 dark:text-neutral-200 border border-slate-200 dark:border-[#52433A] text-xs font-medium transition-colors cursor-pointer"
             >
               <FileText className="w-3.5 h-3.5 text-[#F7882F]" />
               <span className="hidden sm:inline">Annual Report Card</span>
@@ -135,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={onOpenWatchlist}
-              className="relative p-2 rounded-lg bg-[#4A3E3D] hover:bg-[#52433A] text-neutral-300 border border-[#52433A] transition-colors cursor-pointer"
+              className="relative p-2 rounded-lg bg-white dark:bg-[#4A3E3D] hover:bg-slate-50 dark:hover:bg-[#52433A] text-slate-600 dark:text-neutral-300 border border-slate-200 dark:border-[#52433A] transition-colors cursor-pointer"
               title="Saved Watchlist"
             >
               <Bookmark className="w-4 h-4" />
@@ -148,16 +151,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={() => onOpenShortcutsModal?.()}
-              className="p-2 rounded-lg bg-[#4A3E3D] hover:bg-[#52433A] text-neutral-300 border border-[#52433A] transition-colors cursor-pointer"
+              className="p-2 rounded-lg bg-white dark:bg-[#4A3E3D] hover:bg-slate-50 dark:hover:bg-[#52433A] text-slate-600 dark:text-neutral-300 border border-slate-200 dark:border-[#52433A] transition-colors cursor-pointer"
               title="Keyboard Shortcuts (?)"
             >
-              <Keyboard className="w-4 h-4 text-[#F7C331]" />
+              <Keyboard className="w-4 h-4 text-[#F7882F] dark:text-[#F7C331]" />
             </button>
           </div>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-1 overflow-x-auto no-scrollbar border-t border-[#52433A] pt-1 pb-1">
+        <div className="flex items-center gap-1 overflow-x-auto no-scrollbar border-t border-slate-200 dark:border-[#52433A] pt-1 pb-1">
           {navItems.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -167,11 +170,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-[#4A3E3D] text-[#F7C331] border border-[#F7882F]/40 font-semibold shadow-inner'
-                    : 'text-[#C4B2A5] hover:text-white hover:bg-[#4A3E3D]/50'
+                    ? 'bg-white dark:bg-[#4A3E3D] text-[#F7882F] dark:text-[#F7C331] border border-[#F7882F] dark:border-[#F7882F]/40 font-semibold shadow-inner'
+                    : 'text-slate-500 dark:text-[#C4B2A5] hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-[#4A3E3D]/50'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#F7882F]' : 'text-[#C4B2A5]'}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#F7882F]' : 'text-slate-500 dark:text-[#C4B2A5]'}`} />
                 <span>{tab.label}</span>
               </button>
             );
